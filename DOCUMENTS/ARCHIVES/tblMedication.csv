@@ -1,0 +1,837 @@
+medicId;medicConId;medicNom;medicDossages;medicPrisematin;medicPrisemidi;medicPrisesoir;medicPrisenoctu;medicPrecicom
+1;1175782861;Lévétiracetam;500;1;;1 - 18h;;
+2;2554;Nivea;;;;;;Mettre de la crème Nivea ou Nizoral sur le visage au niveau des rougeurs
+3;2210;paraffine;15ml;1;;;;
+4;1087391122;CeHarley;;1;;;;
+5;1087391122;Practolyse;;1;;;;le 4ème jour s'il n'a pas été à selles
+6;1087391122;;;;;;;
+7;2080662280;Beloc;50mg;1;;;;
+8;-1887115141;Aspirine Cardio;100mg;1;;;;
+9;-1887115141;Pantozol;20mg;1;;;;
+10;-1887115141;Risperidone;0.5mg;1;;2;;
+11;-1887115141;Sortis;40mg;;;1;;
+12;2146189179;Liorésal;25mg;1;1;1;0;Myorelaxant à action centrale
+13;2146189179;Alfuzosine retard;10mg;0;0;1;0;Urologique
+14;2146189179;Molaxole;1sachet;1;0;0;0;Laxatif
+15;2146189191;Kardégic;;1;;;;anti-aggrégant
+16;2146189191;Amlodipine;5mg;1;;;;Hypo TA
+17;2146189191;PED;;15 mg;15 mg;15 mg;;sirop laxatif
+18;2146189191;Métamucile;;1;;;;Régulateur intestinal
+19;2146189191;Torasémid;5mg;1;;;;anti-HTA
+20;2146189191;Liorésal;25mg;1;1;1;;Anti-Spasmodique
+21;2146189191;Dafaflgan;500mg;1;1;1;;
+22;1014636521;Liorésal;;1;1/2;;;
+23;2146189224;Risperdal;;1;;;;
+24;2146189224;Ursanil;;1;2;;;
+25;2146189224;Trileptal;;1;1;1/2;;
+26;2146189224;Circadin;;;;;2;1h avant le coucher
+27;2146189203;Belok Zok;50mg;1;;;;Bêta-bloquant, anti-HTA
+28;2146189203;Lisitril;10mg;1;;;;anti-HTA
+29;2146189203;Sortis;40mg;;;1;;Anti-cholest
+30;2146189203;Omezol Mepha;20mg;1;;;;inhib.pompe prot
+31;2146189203;Risperdal;1mg;1/2;1/2;1/2;;Neuroleptique
+32;2146189203;Aspirin cardio;100mg;1;;;;acetylsalicylique
+33;2146189203;Fluoxetin;20mg;1;;;;Anti-dép. IMAO
+34;2146189203;Sintrom Mitis;1mg;;;1 (18h00);;Anti-coagulant
+35;2146189203;Konakion Ampoule;62.5mg;1;;;;en réserve: utilisation orale: mettre le contenu du flacon (10 mg) dans une seringue pour ensuite injecter le contenu dans la bouche puis rincer la bouche, selon examen sanguin (TP)
+36;2146189203;Dafalgan;500mg;;;;;en réserve max 2cp/24h (céphalée)
+37;2146189203;Témesta;1mg;;;;;en réserve max 3cp/24h (Etat dépressif)
+38;2146189226;Atorvastatine;40 mg;1;;;;Anti- hypercholestérolémie
+39;2146189226;Atacand;16 mg;1;;;;anti-hypertenseur
+40;2146189226;Fluctine;20mg;1;;;;Anti-dépresseur
+41;2146189226;Metfin;500mg;1;;1;;Anti-diabétique oral
+42;2146189226;Eliquis;5 mg;1;;1;;Anti-coagulant
+43;2146189226;Liorésal;10mg;1 1/2;1 1/2;1 1/2;;Anti-spasmodique
+44;2146189226;Keppra;750mg;1;;;1(21h00);Anti-épileptique
+45;2146189226;Lyrica;75mg;1;1;1;;TTT. Douleurs neuro
+46;2146189226;Redormin;250mg;;;;1;Somnifère
+47;2655;Midazolam;;;;;;Réserve: spray en cas de crise d'épilepsie
+48;1220344826;Temesta;2,5mg;1/2;;1/2;;
+49;1220344826;Gutron;2.5mg;1;;1;;
+50;1220344826;Sertraline;100mg;1;;1/2;;
+51;1220344826;Nozinan;25mg;1/4;;1/4;;
+52;2146189274;Motilium;10 mg;;1;;;Gastrocinétique
+53;2146189274;madopar liq.;62.5 mg;1;1;1;;Anti-parkinsonien
+54;2146189218;Blopress;8 mg;;;1 à 18h;;anti-hypertenseur
+55;2146189287;Cellcept;500mg;1;;1;;Prises : 8h le matin et 20h le soir
+56;2146189287;Prednisone;5mg;1;;;;Prises : 8h le matin
+57;2146189287;Advagraf;3.5mg;1;;;;Prises : 8h le matin
+58;2146189287;Impostal;10ml;1;;;;Prises : 8h le matin
+59;-1887115141;Cerazette;;;;1;;pillule contraceptive
+60;-959706217;Ditropan;5mg;1;1;1;;Antispasmolique urininaire
+61;-959706217;Push Tramadol;5 gouttes;2;1;3;1;Antalgique + 2 push en R/24h
+62;-959706217;Dafalgan;500mg;;;;;en réserve si douleur 2x
+63;-959706217;Granorulscht;5mg;;1;;;
+64;1306411305;Sintrom mitis;1 mg;;;à 18h;;selon carnet (anticoagulant)
+65;1306411305;Dafalgan;1 g;1;1;;1 à 20h;antalgique
+66;2146189295;Dafalgan (sachet);250mg;;;;;en cas de fracture
+67;2653;Dulcolax;1 suppo;;;;;2x/semaine  Mardi soir et vendredi soir
+68;1014636521;Importal sachet;sachet;1 à 2;;;;diluer
+69;297;Lexotanil;3 mg;;;1;;
+70;1100016670;Fucithalmic;;;;;;antibiotique (si yeux rouges)
+71;2347;Nozinan;25 mg;1/2;1/2;1/2;;en réserve la nuit - 1/2 comprimé par nuit si angoisse ou agitation. Lui donner en la rassurant
+72;2347;Balarina;;;;1;;indispensable, en continu, suivre le déroulement de la plaquette est important
+73;2347;Inulin poudre ou graines moulu;;1 càc;;;;ou huile de lin Bien diluer dans la boisson ou du yoghurt
+74;2347;Temesta expidet;1mg;;;;;Réserve journée - Ordre médical. Toujours noter si on donne et pourquoi (heures + jours). 1 cp par jour si forte agitation ou angoisse (dernier recours)
+75;1138806721;Nozinan 4% en gttes;;;;3 gttes;;"8 gttes dans de l'eau, 1 heures avant de rentrer à la castalie lors de week-end ou camp.
+Réserve: 3-4 gouttes / jour"
+76;2146189118;Pregabalin;50mg;1;1;1;1;douleurs neuropat.
+77;2146189118;Rudolac;20mg;x;;x;;laxatif
+78;2146189337;Indéral;40 mg;1;0;0;0;Beta-Bloquant cardoselectif
+79;2146189337;Pradif T retard cp;400 mcg;1;0;0;0;Hyperplasie begnine prostate
+80;2146189337;Toviaz cp;4 mg;1;0;0;0;contre vessie hyperactive
+81;2146189337;Lioresal cp;10 mg;1;1;0;1 à 20h;myorelaxant
+82;2146189337;Movicol sachet;;1;0;0;0;Laxatif
+83;2146189599;Eutynox;;1;;;;A jeun / attendre 1 h pour le biberon
+84;2146189337;Keto-Med;;X;0;0;0;Shampoing
+85;2146189337;Distraneurin;300 mg;0;0;0;1 à 20h;
+86;2146189337;Atrova cp;40 mg;0;0;1;0;
+87;2146189343;Liorésal;10mg;1;1;1;;Antispasmodique
+88;2146189343;Toviaz;4mg;;;1;;Vessie hyperactive
+89;2146189343;Risperdal Quicklet;0.5mg;1;1;1;;Neuroléptique
+90;2146189343;Seresta;15mg;;;;1;sédatif
+91;2146189343;Fentanyl patch;25mcg;;;;;analgésique opioïde 1 chaque 72h
+92;2146189343;PED;20ml;1;;;;laxatif
+93;2146189343;Arcoxia;60mg;1;;;;anti-inflammatoire
+94;2146189343;Oméprazole;40mg;1;;;;protection gastrique (à jeûn)
+95;2146189343;Dafalgan;1gr;1;1;1;;Analgésique
+96;2146189343;Seroquel;25mg;1;;1;;Fibre
+97;2146189343;Nizoral 2% crèem visage;;1;;;;
+98;2146189343;Ketozole shampoing;;1;;;;
+99;2146189343;Antidry calm lotion;;1;;;;
+100;2146189330;;;;;;;Dès que des vomissements en jet apparaissent avertir en urgence les parents
+101;2146189323;Levetiracetam;500;2;;1.5;;
+102;2146189380;ability;;;;1;;17h 1 comprimé pour que l'angoisse ne se transfère pas en agressivité et en troubles de comportement
+103;2146189362;homéopathie;;1;;1;;
+104;1298294561;Calcimago D3;;;1;;;
+105;-568750303;Transipeg;;1;;;;Pour faciliter le transit, ne le prend pas toujours. S'il doit le prendre, le transipeg est dans les pages de son carnet de santé dans la trousse de toilette Habituellement lundi, mercredi, vendredi matin a jeun
+106;-22390883;Bronco vaxom;;1;;;;Seulement en hiver Octobre à Mars
+107;1191915897;Mydocalm;;;;;;
+108;1191915897;Dafalgan;;;;;;Si douleurs (1 à 2 durant la journée)
+109;1191915897;;;;1;1;;En cas de besoin / après repas
+110;1191915897;;;;;;;Pour aphtes, badinage avec tenture de propolis (seulement en cas de nécessité)
+111;1191915897;;;;;;;Pour allergie cutanée: appliquer pommade PARFENAC (les deux sont dans le sac de voyage d'Andreï)
+112;1087386639;Bénéfibre;;2 cs;0;0;0;Avec boisson du matin
+113;1087386639;Transipeg - sachet;;2;0;0;0;Avec boisson du matin
+114;297;Akineton;2 mg;;;1;;
+115;297;Olanzapine;7.5;;;1;;
+116;1119443187;Lamotrigine;50 mg;2;;1 (au souper);;dans une cuillère avec des aliments
+117;1119443187;Rivotril;2.5mg/ml;1gtte;2 gttes;2 gttes;;dans une cuillère au souper
+118;1119443187;Prato cylss;;;;;;Si le 4ème jour il n’as pas été à selles
+119;1119443187;Melatoline;5mg;;;;1;au coucher, lors du brossage des dents
+120;-486550603;Cipralex;10 mg;1.5;;;;antidépresseur
+121;-486550603;Dafalgan effervet;1 gr;;;;1;En réserve 3 cp / Max
+122;-486550603;Detrusitol;4 mg;1;;;;antispastique vésical
+123;-486550603;Esomep 40 = pantoprazol;40 mg;1;1;1;;pompe à protons
+124;-486550603;Magnésium diasporal 300;;1;;;;1/4h avant manger
+125;-486550603;Malaxole sachet;;;1/2;;;+ 1/2 sachet Réserve si constipation
+126;-486550603;Motilium lingual;;;;;1;
+127;-486550603;Quetiapin = seroquel 100;100 mg;;;;1/2;
+128;1306135154;Antramups;10 mg;1;;1;;dilué dans l'eau, 30min avant le repas
+129;1306135154;Lioresal;2,5 mg;1;;;;2,5 mg = 1/4 de comprimé
+130;2215;Brancho-vaxum;;1;;;;Agen gélule bleu, en hiver cures de 10 jours dans le mois
+131;1194358603;Lioresal;10 mg;2;2;2;;
+132;1194358603;Valium;2 mg;1;;1;;
+133;1194358603;Practo;;;;;;Mardi matin et vendredi matin
+134;1194358603;Broncho Vaxun;;1;;;;Uniquement l'hiver
+135;1194358603;Felden;;;;1;;
+136;1298294561;Dafalgan;1 g;1;;1;Réserve;Antalgique
+137;1298294561;Ubretid;5mg;1;;;;Aug. Tonus musculaire vessie
+138;1298294561;Prednisone;5 mg;1;;;;Cortisone
+139;1298294561;Nasonex;;1;;1;;
+140;1100016670;Tégrétol;200 mg;1;1;1;;avant le souper, écraser dans une cuillère avec du sirop
+141;1100016670;Urbanyl;10 mg;;;1;;avant le souper
+142;1100016670;Sanalepsi;;;;25 gouttes;;après le souper. Et si agitation 25 gouttes
+143;1100016670;Blephagel;;;;;;Le matin si besoin (yeux sec)
+144;-1029621688;Sirdalud;4 mg;1/2;1/2;;1 (21h);
+145;-1029621688;Atrovastatine;40 mg;;;1/2;;
+146;-1120356771;Antra;10 mg;1;;;;À diluer dans l'eau chaude, puis passer dans la sonde.
+147;-1120356771;Nonzinan 4% (en gouttes);;15;15;10 (au coucher);;Le matin et le soir les gouttes de Nozinan sont à mettre par la sonde.
+148;-1120356771;Rudolac (laxatif);;5 ml;;5 ml;;Le Rudolac n'est pas distribué pendant les week-ends Cérébral.
+149;-1120356771;Dafalgan;500mg;;;;;en reserve en cas de cris de douleurs
+150;-1120356771;;;;;;;
+151;2210;Dulcolax supp.;;;;;;1 suppositoire les lundis et les vendredis
+152;2210;Sirop de figues;20ml;;;1;;
+153;2210;Sertaline;50mg;1/2;;;;
+154;1299487111;Ditropan;5 mg;1;;1;;Elle est autonome pour prendre ses médicaments, il faut éventuellement le lui rappeler.
+155;1299487111;Daflon 500;;;1;1;;en cas d'infection urinaire pour améliorer la circulation du sang.
+156;-1354980006;Jemalt vitamine;;4cc 30 ml eau;;;;
+157;-1354980006;Antra;;1;;;;
+158;-1354980006;Flatulex Spray;;1;1;1;;Spray
+159;-1354980006;Bouillon 200 ml et 400 ml eau;;;1;;;Après dîner lors du changement de position
+160;-1354980006;Dépakine sirop;4 ml;1;;4ml;;Par la sonde
+161;-1354980006;Dafalgan sachet;;1;1;;1;6 heures entre chaque prises
+162;-1354980006;Fresubin;400ml+100ml d'eau;;;;1;Par la sonde et toute la nuit
+163;-1354980006;Atarax;10 ml;;;;1;Facilite l'endormissement
+164;-1354980006;Spray Midazolam nasal;;;;;;Dans le sac de la chaise roulante, en cas d'épilepsie
+165;207468492;Liorésal;;1;;1;;1 comprimé
+166;982284145;Lamotrigin;25mg;2;;1;;
+167;982284145;Phenydan;100 mg;1;0;1;0;
+168;982284145;Practoclyse;;;;;;env. chaque 4 jours.
+169;982284145;Midazolam;10 mg;;;;;(réserve) si crise dans la journée
+170;982284145;Transipeg Forte;;2;0;0;0;Donner bcp à boire avec transipeg
+171;1127891338;Dépakine 500;;1;;1;;
+172;1127891338;Risperdal;;;;1;;
+173;287;Omezol;;1;;;;Estomac. Avant déjeuner (pas avec du jus d'orange)
+174;1191915897;Temesta;;;;1;;Tranquillisant. Rarement et uniquement s'il exige.
+175;1148904896;Keppra;1000 mg;1.5;;1.5;;
+176;1148904896;Treliptal;;600 mg;;900mg;;
+177;1148904896;Midazolam;;;;;;En cas  de longues crises d'épilepsie 10mg/1ml
+178;1194356555;Ménéfacid;125 mg;1;;1;;En cas de température ou douleurs. A intervalle de 8h
+179;1194356555;Dafalgan;300 mg;1;;1;;En cas de température ou douleurs. A intervalle de 8h.
+180;-959706217;Atorvastatine;40mg;;;;1;
+181;1100158231;Sertraline;50 mg;1;;;;
+182;1100158231;Risperidone;;0.5;;0.5;;
+183;1228923808;Cettalerg;;1;;;;Pendant la saison des pollens
+184;1228923808;Huile de paraffine;;1 cs;;1 cs;;
+185;1228923808;Valium;5 mg;1/2;;;;
+186;1228923808;Liorésal;10 mg;1.5;;1.5;;
+187;2080662280;Dépakine;500mg;1;;1.5;;
+188;2080662280;;;;;;;Si elle fait une fausse route ou si elle vomit, rien lui donner ou alors donner un peut de coca. Eventuellement lui taper dans le dos
+189;1228924280;Omezol-Mepha MT 20;;;;1;;
+190;1228924280;Lioresal;10 mg;1;1;;;
+191;1228924280;Sirop de figue;ml;15;;10;;
+192;1228924280;Practo (Noryalax);;;;;;4 jours si constipation
+193;1228924280;Cetallerg;;1;;;;Au printemps, si rhume des foins
+194;1228924280;Broncho Vaxum;;1;;;;En hiver (10 jours par mois)
+195;1228924280;Ferrum;;;;;;Indiqué sur la boite si elle doit le prendre ou non
+196;1196153139;Lioresal;10 mg;1;1;;;
+197;1196153139;Ludiomil;25 mg;1;;1;;
+198;1196153139;Dafalgan;500 mg;;;;;En cas de maux de tête et de fièvre
+199;1196153139;Omezol-Mephamt 20;;;;1;;
+200;1196153139;Itinérol B6;;;;;;En casa de longs trajet, 1cp 1/2 heure avant le départ.
+201;1196153139;Tegretol;400 mg;;;1;;
+202;1196153139;Cetrum;;1;;;;
+203;1196153139;Felden;;1;;;;
+204;1196153139;Importal Sachet;;;;;;
+205;1196153139;;;;;1;;
+206;-1887115141;Citalopram;20 mg;1/2;;;;
+207;1457402239;Stésolid;;;;;;(suppositoire liquide) de suite pendant la crise. P.S. N'a plus refai de crises depuis environ 5 ans
+208;303;Depakine;500;1;1;1;;Partager en 2. Donner au milieu du repas
+209;303;Nozinan;;1;1/2;1;;Donner au milieu du repas. Sur la tartine le matin et sur la cuillère avec la nourriture le soir et le midi
+210;303;;;;;;;
+211;1197467512;Akineton;2ml;;;1;;
+212;1197467512;Aldol;1ml;1;;1;;
+213;1197467512;huile de Paraffine;;;;2cs;;cs = cuillère à soupe. Favoriser le transit
+214;1730687754;Metamucil;1cc;X;;;;
+215;2291;;;;;;;NE LUI DONNER AUCUN MEDICAMENT SANS AVOIR CONSULTE SA MAMAN !
+216;1958467881;;;;;;;POMPE A BACLOFEN !!
+217;182;spasmo-urgenin;;1;;1;;
+218;182;dafalgan;1g;1/2;1/2;1/2;1/2;
+219;182;Omezole;20mg;1;;1;;
+220;182;toviaz;;1;;;;
+221;-1354980006;bioflorin ou perenterol;;;;;;en cas de diarrhée
+222;-1354980006;desomedin monodose;;;;;;ou fucithalmic gel en cas de conjonctivite
+223;1228923808;Centrum Comprimé;;1;;;;
+224;1228923808;Norgalax;;;;;;Mini lavement de 4 en 4 jours en cas de constipation
+225;-959706217;Relaxane;;1;1;1;1;
+226;2655;Practo clyss;;;;;;Si le 4ème jour il n'a pas été à selles
+227;2655;Importal sachet;;2 sachets;;;;Dans un yaourt
+228;2146189118;Redoxon;500mg;1;;;;vitamine C
+229;2146189118;Aphénylbarbite/Luminal;100mg;;;1;;antiépileptique
+230;2146189118;Mg-5 Longoral;5 mmol;1;;;;magnésium
+231;2146189118;Paracetamol;1gr;;;1;;analgésique
+232;2146189118;Sertraline;50mg;;;1;;anti- dépresseur
+233;1100158231;Tamsulosine Sandoz eco;;1;;;;
+234;1100158231;Spasmo-Urgenin néo;;;;1;;traitement ponctuel
+235;1100158231;Cellufluid / Lacrifluid;;1;1;1;;1 goutte dans les 2 yeux
+236;-479406894;Protonlax supp me-sa;;1;;;;mercredi - samedi mettre pendant la veille
+237;-1029621688;Magnesiocard citron;;1;;1;;
+238;-1029621688;Allopur = Mephanol;300 mg;1;;;;
+239;-1029621688;Irbesartan-mepha;150 mg;1;;;;
+240;-1029621688;Irfen retard;800 mg;1;;;1 (21h);
+241;1175783172;Tranxilium;5 mg;;;;1;
+242;1175783172;Dafalgan supp;600 mg;1;R;R;R;
+243;1175783172;Rivotril;0.5 mg;;;1/2;1/2;Cp
+244;1175783172;Rivotril s/c;;1/2 amp.;;;;si pas de personnel pour faire l'injection, donner 1 cp de rivotril
+245;292;Brancho - vaxum;;;;;;Mois d'hivers
+246;982284145;Dafalgan;500 mg cp;;;;;réserve: En cas de fièvre et douleurs 3x par jours
+247;1100158231;Crestor;5 mg;1;;;;
+248;2146189203;Haldol 20 gttes;;;;;;en reserve: 1x/ jour (si agressivité)
+249;1119443187;Midazolam;;;;;;En réserve: spray en cas de crise d'épilepsie
+250;1119443187;Importal sachet;;2 sachet;;;;dans un yaourt
+251;1119443187;Risperidone;0.5 mg;1;;1;;
+252;1298294561;Fluoxetine;20 mg;1;;;;Anti-dépresseur
+253;1298294561;Seretid Spray;250;1;;1;;Broncho-dilatateur
+254;2541;Tegretol CR;200mg;1;1/2;1;0;
+255;2541;Valium;5mg;1/4;0;0;1/4;
+256;2541;Urbanyl;10mg;0;0;1/2;0;
+257;2541;Lioresal;10mg;1/2;0;1/2;0;
+258;2146189466;risperdon;100mg;;;0.3 mg;;directement par voie orale
+259;2146189466;movicol junior;;1 sachet;;;;Mélanger dans environ 2dl de jus de pomme ou cacao
+260;2146189475;Risperidon 1mg/ml;1 mg;;;0,4 ml;;délayer dans du sirop
+261;2146189475;Movicol Junior;1 sachet;1;;;;délayer dans du sirop
+262;1035988716;Pantoprazole;;1;;;;
+263;281;Temesta exiped;;;;;;1mg en réserve
+264;1138806721;Temesta expidet;1.0 mg;;;;;en réserve max 2cp/jour
+265;2146189226;Pantozol;40 mg;1;;;;Protect. Gastrique
+266;2146189463;aspirine cardio;100 mg;1;;;;
+267;2146189463;Nexium;20 mg;1;;;;
+268;2146189463;Sertraline;50 mg;1;;;;
+269;2146189463;duphalac;10 ml;;;1;;
+270;2146189463;Seroquel;20mg;;;1;;
+271;2146189463;Metamucil Mite sachet;;1;;;;1 Cc dans 1 dl d'eau
+272;2146189463;Celluvisc gouttes;;;;;;lundis, jeudis, vendredis et dimanches
+273;2146189463;Optava gouttes;;;;;;mardis, jeudis et samedis
+274;2146189502;Motilium;10 mg;1;1;1;;
+275;2146189502;Omezol-Mepha;20 mg;;;1;;
+276;2146189502;Sertralin eco;50mg;1;;;;
+277;2146189502;Nozinan;25 mg;2;1;1;4;
+278;2146189502;;;;;;;
+279;2146189502;Olanzapin;10mg;1;;1;;
+280;2146189502;Certallerg;10 mg;;;;1;Durant le printemps
+281;2146189502;Nervifène;25 ml;;;;;2.5ml
+282;2146189502;Transipeg;;1;;;;
+283;2146189502;Dalmadorm;30 mg;;;;1;seulement au printemps
+284;2146189502;Supradin;;1;;;;
+285;2146189502;Huile de paraffine;20 ml;20 ml;;;;
+286;2146189502;Lorasifar;1 mg;;;;;
+287;2146189502;Nozinan;25 mg;;;;;réserve pour la nuit 2cp/nuit au maximum
+288;2146189333;MST;;9h 4ml;;21h4ml;;diluer le sachet de 10ml et aspirer 4ml
+289;2146189333;Largactil;;9h 5 gttes;14h 5 gttes;21h 8 gttes;2h 8 gttes;diluer les gouttes dans 3-5ml d'eau
+290;2146189333;Dafalgan;;9h 6 ml;;21h 6ml;2h 6 ml;en sirop
+291;2146189333;Omerazol;;9h 7.5 ml;;21h 7.5 ml;;au frigo, en bouteil
+292;2146189333;Oranol;;9h 12 gttes;;;;au frigo
+293;2146189369;Calcimagon;;1;;;;
+294;2146189369;Mercilon;;1;;;;
+295;2146189369;Anti-alergique;;1;;;;
+296;2146189478;algifor sirops 15 ml;;;;;;en cas de maux de gorge ou de migraine
+297;1855965489;Aerius;500 mg;1;;;;
+298;1855965489;Maltofer;gttes;5;5;5;;
+299;1270805862;Movicol;;1;;;;A mettre dans du jus d'orange
+300;-1974002318;lamitrigine;12ml;1;;1;;
+301;-1974002318;baclofen;2ml;1;;1;;
+302;-1974002318;topiramat;8ml;1;;1;;
+303;-1974002318;urbanyl;10ml;1;;1;;
+304;-1974002318;sabril;500mg;;;1;;
+305;-1974002318;partagol;15ml;1;;1;;
+306;2146189529;Tégrol;4ml;1;;1;;
+307;2146189529;Sabril gélule;250 mg;1;;;;
+308;2146189529;Sabriln sachet;50 mg;;;1;;
+309;2146189529;Gatinar;5 ml;1;;1;;
+310;2146189529;Lamotrigine;5 ml;1;;1;;
+311;2146189529;Stesolid;1 ml;;;;;En réserve si crise d'epilepsie
+312;2146189529;;;;;;;Si elle pleure et quelle n'est pas bien lui donner 8ml de dafalgan ou 5ml d'algifort
+313;297;sertralin;50 mg;0.5;;;;
+314;1035988716;;;;;;;Alain n'a pas les médicaments avec lui pendant les week-ends. Il les prend seulement pour les camps.
+315;2146189541;Carsol = tégretol;200 mg;2;;;1;antiépileptique
+316;2146189541;Rivotril;2 mg;;;1;;Antiépileptique
+317;2146189541;Distraneurin;300 mg;;;;1;Sédatif, hypnotique
+318;2146189541;Molaxole;scht;1;;1R;;Laxatif osmotique
+319;2146189541;Dafalgan;500 mg;1;;1;;Antalgique
+320;2146189541;Risperdal=Risperidone;1mg;0.5;;1.5;;Neuroleptique
+321;2146189541;Nexium= Esomeprazole Mepha;40 mg;1;;;;Inhibiteur pompe à proton
+322;2146189541;Bulboïd;supp;1;;;;LU-ME-VE à 6h30 Mis par la veilleuse
+323;2146189541;Dulcolax;supp;1;;;;LU-ME-VE à 6h30 Mis par la veilleuse
+324;2146189541;Motilium SL;10mg;;;;;LU-ME-VE à 6h30 Mis par la veilleuse
+325;2146189541;Isoket;spray;;;;;1à2 pressions en réserve si se plaint de dlrs précordiales
+326;2146189471;Risperidon Comprimé;0,5;;;1;;Avant le coucher.
+327;2146189552;Mianserine;30mg;;;;1;
+328;2146189552;Maltofer;50ml;10;;10;;
+329;2146189552;Panadol;40mg;1;;1;;
+330;2146189552;Co-Dafalgan;500mg;1;;;;
+331;2146189552;Dafalgan;;;;1;1;
+332;2146189552;Sirdalud;6mg;;;;1;
+333;2146189552;Alucol Gel;;;;;2;
+334;2146189550;Ribif;;;;;;3 x par semaines
+335;2146189550;Dranobinole;;1;;1;;
+336;2146189463;;;;;;;la médication se trouve en général à la cuisine mais est donner de manière général par l'entourage. (Si rougeur de l'œil droit remettre une goute)
+337;301;Tranxilium;;1;0;1;0;
+338;301;MetoZerok;25;1;0;0;0;
+339;2146189582;Propanalol;5ml;env vers 8 h;env vers 13 h;env vers 17h;;Dans la sonde
+340;2146189582;Nexium 1 sachet dans 20 ml eau;;env vers 8h;;;;Mélanger et mettre dans la sonde
+341;2146189582;Mucofluid 1 capsule dans eau;;envers vers 8h;env vers 12h30;env vers 19h;;Mélanger et mettre dans la sonde
+342;2146189582;Vitamine C;;env vers 8h;;;;ouvrir capsule et mélanger avec même eau que mucofluid
+343;2146189582;Vitamine B5;;env vers 8h;env vers 12h30;env vers 19h;;Idem Vitamine C
+344;2146189582;Lait;;9h;13h;16h30;20h- 7h du mati;
+345;1100158231;Rennie;;;;;;En réserve
+346;1115645303;Nozinan Gttes;4%;6;6;0;8;
+347;2554;Metfin 500;;1;;1;;
+348;-479406894;Cimanex  Shampoing;;;;;;2 à 3  fois par semaine
+349;-479406894;Blephagel;;1;;;;Nettoyer les yeux
+350;-479406894;Lioresal;25 mg;;1;1;;Myorelaxant
+351;-479406894;Lioresal;10 mg;1;;;;Myorelaxant
+352;1855965489;Dafalgan;1gr;;;;;3 fois 1 gr en réserve
+353;1540756715;Norflocin;400mg;0;0;1/4;0;
+354;2146189623;depakine chrono;300 mg;2;;2;;
+355;2146189623;lamotrogine;25 mg;3;;3;;
+356;2146189623;;;;;;;
+357;2541;Lanzoprazol Mépha;;0;0;0;1;1 jour sur 2
+358;2541;RESRVE;;;;;;
+359;2541;Diazepan;5mg;;;;;EN CAS DE CRISE D'EPILEPSIE et spasticité
+360;2541;Dafalgan Suppositoire;300mg;;;;;En cas de douleurs
+361;2541;Clyssie;500mg;;;;;Tous les 3 jours.
+362;2541;Lansoprazole mepha;;;;;;Après le brossage des dents,ouvrir la capsule dans un cc d'eau
+363;2541;Lyrica;25mg;1;;1;;
+364;-568750303;Practo;;;;;;Si 5 jours sans selle.
+365;1228835384;Citalopram;20mg;1/2;0;0;0;
+366;1195664924;Psychopax;;;2 gttes;;;
+367;2146189512;Keppra;500mg;1/2;;1/2;;Avec le repas dans la nourriture
+368;2146189512;Tegretol;400mg;1/2;;1/2;;Avec le repas dans la nourriture
+369;2146189512;Movicol Sachet;;;1;;;Après le repas avec du sirop
+370;1985796047;Algifor;15 ml;;;;;en réserve en cas de douleur au nerf trijumeau.
+371;2146189642;Risperidon;0.3 ml;;;;1;
+372;-953224796;Relaxane;;1;1;1;;Pendant les repas
+373;-953224796;Temesta exp.;1mg;;;;;1/2 en Réserve
+374;2146189463;;;;;;;Contrôle de la pression artérielle tous les soirs + Fiche de contrôle
+375;1264433332;Crème solaire;;;;;;toute les demi-heures.
+376;-959706217;Immodium;;;;;;Réserve si Diahrée
+377;2653;Temesta;1mg;;;1;;
+378;1349252291;Relaxane;;1;1;1;;
+379;1349252291;Temesta exp;1 mg;;;;;1/2 en réserve
+380;297;Temesta expidet;1 mg;0.5;;;;en plus en réserve max 2x/jour
+381;2146189118;Vésicare;10mg;;;1;;antispasmodiques
+382;2146189118;Macrogol;;1/2;;;;laxatif
+383;2146189118;ressource;1 bout;1;;1;;8h + 16h  compl. Prot.
+384;2146189118;Lur Shampooing;;x;;;;MA - VE  dermatologie
+385;2146189337;Elmex gelée;;;;1;;Lundi, mercredi, vendredi
+386;2146189463;Crommites;;;;;;Avant le petit-déjeuner
+387;2146189691;Diazepam;1mg/5ml;1 gélule;;1 gélule;;Poudre d'une gélule blanche dispersée dans une cuillère
+388;2146189691;Mélatonine;5mg;;;1 gélules;;Poudre d'une gélule rouge sang dispersée dans une cuillère
+389;2146189691;Microlax;5ml;1 dose;;;;Solution rectale (occasionnelement)
+390;2146189682;Neurotin;400 mg;1;1;;;Anti-épileptique douleurs neurogènes.
+391;2146189682;Neurotin;600 mg;;;1;;Anti-épileptique douleurs neurogènes
+392;2146189682;Aspirine cardio;100mg;1;;;;Inhibition de l'agrégation plaquettaire
+393;2146189682;Cipralex;20 mg;1;;;;AD IRS
+394;2146189682;Zyprexa;10 mg;1;1;1;;Anti psychotique
+395;2146189682;Zyprexa;5mg;;;1;;Anti-psychotique.
+396;2146189682;Bilol;5mg;1;;;;HTA, prévention angine de poitrine
+397;2146189682;Fluanxol;200 mg;X;;;;Injection IM à 8h00 tous les 10 jours
+398;2146189682;Dafalgan;1g;1;1;1;;Antalgique
+399;2146189682;Symbicort;200/6;2;;2;;Corticostéroïde antiasthmatique
+400;2146189682;Spiriva caps + inhalateur;18 mcg;1;;;;Bronchospasmolytique
+401;2146189682;Atrovastatin;10mg;X;;;;Mar-Jeu-Sam à 8h00 / Anti-cholestérole
+402;2146189682;Keto-Med shampoing;;X;;;;Lu-Ve à 8h00 TTT eczéma séborrhéique (chvx)
+403;2146189682;Keto-Med Shampoing;;X;;;;Lu-Mer-Ve à 8h torse, dos laisser agir 3-5 min
+404;2146189682;Exipial huile d'amande + gants;;;;;X;Sécheresse peau
+405;2146189682;decoderm bivalent;;X;;;;TTT eczéma séborrhéique
+406;2146189679;Dépakine;300mg;1 1/2;;1 1/2;;Donner avec boisson au repas
+407;2146189679;Clopine éco;25mg;1;;1;;"""       """
+408;2146189679;Nozinan;;;;;1/2;"""      """
+409;2146189679;Dafalgan;600 mg;;;;;en R si fièvre ou douleur.
+410;2146189679;Huile de Paraffine;10 ml;1;;1;;avec la boisson
+411;2146189679;Pruneau mixé le matin;;1;;;;
+412;2146189701;calcort;30 mg;1;;;;
+413;2146189701;perindopril;4 mg;;;1;;
+414;2146189701;calcium D;;;;1;;
+415;2146189701;Ataluren sachet;;3 roses;3 roses;1 bleu;;sachet à diluer dans un peu de lait ou de cacao. A donner chaque 6h environ
+416;2146189701;Ataluren sachet;;;;+ 1 rose;;
+417;2146189179;Calcimagon D3;500mg;1;0;1;0;
+418;2146189179;Rivotril;2mg;0;0;1;0;Anti-épileptique
+419;2146189179;Lamotrigin;25mg;1;0;1;0;Anti-épileptique
+420;2146189179;Lamotrogin;100mg;1;0;1;0;Anti-épileptique
+421;1087386639;Broncho-Vaxom;;1;0;0;0;Prendre avec les repas - périodiquement
+422;1087386639;Cetalerg;;0;0;1;0;Prendre avec les repas - périodiquement
+423;2146189599;nexum;;;1;;;9ml dans le biberon
+424;2146189599;oxygène;;;;;;
+425;2611;Lioresal;;1;0;1;0;
+426;2611;Omezol;20 mg;1;0;0;0;ouvrir la capsule et intégrer la poudre dans une cuillère avec repas
+427;2611;Levetiracetam;;1;0;1;0;Bien écrasé
+428;2611;Dafalgan effer;500 mg;0;0;1;0;dans du sirop ou de l'eau
+429;674040117;Apydan;600;1;0;0;2;
+430;674040117;Apydan;300;0;0.5;0;0;
+431;674040117;Inovelon;400;1;0;1;0;
+432;674040117;Topiramate;100;0;0;0;1;
+433;674040117;Topiramate;50;1;0;0;0;
+434;674040117;Rivotril;0.5;1;1.5;1;2;
+435;674040117;Quetiapan;25;1;0;0;1;
+436;674040117;Quetiapan;100;0;0;0;1;
+437;674040117;Lyrica;150;1;0;0;0;
+438;674040117;Lyrica;300;0;0;0;1;
+439;674040117;Valverde Sommeil;Forte;0;0;0;2;
+440;674040117;Valverde Détente;;1;1;1;1;
+441;1100016670;Risperdon;0.5 mg;;;;1/2;
+442;2146189741;Topamax;100 mg;1 à 8h;0;0;2 à 20h;
+443;2146189741;Topamax;50mg;1 à 8h;0;0;à 20h;
+444;2146189741;Urbanyl;;1/2 à 8h;0;0;0;
+445;2146189741;Risperdol;0.5;1 à 8h;0;0;0;
+446;2146189741;Levetiracetam;500 mg;1 à 8h;0;0;0;
+447;2146189741;Risperdol;1 mg;0;0;1 à 17h30;;
+448;2146189741;Choléodéron;gtte;0;0;0;20 gttes à 20h;
+449;2146189746;Nexium;20 mg;1;;;;pansement gastrique
+450;2146189746;Lyrica;50 mg;1;;1;;Douleur Neurogène
+451;2146189746;Amlodipine;5 mg;1;;;;Tension Arterielle
+452;2146189746;Cipralex;10mg;;1;;;Anti-dépresseur
+453;2146189746;Toviaz;4 mg;;;1;;Vessie
+454;2146189746;Sintron;selon do;;;1;;Anticoagulant
+455;2146189746;Pravastatine;20 mg;;;1;;Cholestérole
+456;2146189746;zaditen;1mg;;;1;;Allergie
+457;2146189746;Xanax retard;0.5 mg;;;1;2;Anxiété
+458;2146189746;Dafalgan;1g;;;;;en réserve
+459;2146189746;Nitroglycérine;0.2 %;;;;;à mettre très peu sur le supp
+460;2146189746;Forlax sachet;10 g;2;;1;;Aide pour aller à selles
+461;2146189746;Eductyl supp;;;;;;enduit de crème
+462;2146189691;Movicol;;2 sachets;;;;en poudre mélangée avec de l'eau ou dans céréales du matin
+463;1138806721;Montelukast;10mg;;;1;;
+464;1138806721;;;;;;;
+465;1138806721;Important;;;;;;Il faut mettre les médics sur une cuillère à café, lui donner un verre d'eau et s'éloigner
+466;1855965489;Laxobéron;;;;;;Réserve 15-20 gouttes
+467;1855965489;Cellufluid;;;;;;4 x/jour
+468;1855965489;Livostin;;;;;;15' après Cellufluid 4x/jour
+469;2146189226;Adalat retard;30 mg;1;;;;Anti-hypertenseur
+470;2146189226;Circadin;2 mg;;;;1;Somnifère
+471;2146189226;Curcuma-Poivre;;1;;1;;Anti-Cancer
+472;1298294561;Nexium;40 mg;1;;;;Inhib.P.protons
+473;1298294561;Liorésal;10 mg;1/2;;1/2;;Anti-spamolitique
+474;1298294561;Rhinomer;Pulv;;;;;2x/semaine
+475;1540756715;Diclofenac gel;;;;;;3-4x/jour en Réserve anti-inflammatoire
+476;1540756715;Omezol MT;20 mg;;;;;en Réserve si maux d'estomac
+477;1175782861;Lévétiracetam;1000 mg;1;;1;;
+478;-959706217;Dafalgan;1 gr;1;1;;1;
+479;2554;Redormin;500 mg;;;;1;1 h avant le coucher
+480;2146189118;Decoderm;;x;;;;MA- VE  dermatologie
+481;297;Dafalgan;500 mg;;;;;en réserve si douleur
+482;2146189323;Movicol;sachet;1;;;;
+483;2146189323;sirop de figues;10 ml;1;;;;
+484;2146189337;dexeryl crème;;x;;x;;vaseline parrafine
+485;2146189337;vidé 3;4500 U/ml;x;;;;1 flacon de 10 ml le lundi Vitamine D
+486;2146189337;Midazolam;5 mg/ml;;;;;en cas de crise d'épilepsie
+487;2146189783;Risperidone;0.5 mg;1/2;;;;
+488;2146189783;Risperidone;1 mg;1;;1/2;;
+489;2146189783;Lévétiracetam;500 mg;1;;1;;
+490;2146189783;Omézole;20;1;;;;
+491;2146189783;Midazolam;5 mg;;;;;En réserve en cas de crise d'éplilepsie de plus de 3 min
+492;2146189788;médikimet;20 mg;1;;;;
+493;2146189788;Rispéridone;1 mg;1;;1;;vers 17h00
+494;2146189810;Zelboraf;;X à 8h00;;X à 20h30;;Antinéoplasique
+495;2146189810;Neurontin;;X à 7h30;;X à 19h30;;Antiépileptique
+496;2146189810;Euthyrox;;X à 7h30;;;;Hormone thyroïdienne
+497;2146189810;Nopil;;X;;X;;Antibiotique 3 jours/semaine
+498;2146189743;Magnésiocard;5mg;X;;;;dissoudre la poudre dans 2dl d'eau
+499;2146189743;Dafalgan;;;;;;mettre du sirop jusqu'à 15kg
+500;2146189743;Algifor enfant;5 ml;;;;;à la seringue enfant par la bouche
+501;-22390883;Lorasifar;;1;1;;;Donner la demi 30 min avant le repas de midi.
+502;292;Omezol;40 mg;1;;;;
+503;1228835384;Cetallerg;;;;1;;
+504;2653;Midazolam;;;;;;spray nasal en cas d'épilepsie.
+505;1195664924;Sertralin;;1;;;;
+506;2146189819;Risperidon;0.5mg;1;;1;;1 pastille de 0.5 mg
+507;2146189750;Thyroxine;8gtes;;x;;;Dans une cuillère
+508;292;Transipeg;10 ml;X;;;;Di - Lu - Ma - Me
+509;2548;Graine de lin;;1 cc;;1cc;;dans un yogurt ou de l'eau
+510;2548;Grapex;;10 gttes;;10 gttes;;dans su sirop
+511;2548;Vaseline;;;;;;si rougeur et cors, furoncle désinfecté
+512;2146189218;Paroxétine;20 mg;1/2;;;;anti-dépresseur
+513;2146189218;Motilium;10 mg;;;;;1x/jour
+514;2146189218;Serophy;;;;;;NaCl 0.9%
+515;2146189218;Adalat retard;20 mg;;;;;si HTA symptomatique
+516;2146189218;Dafalgan;1 gr;;;;;en R 4 x 1cp/24h si céphalés sans HTA
+517;2146189337;Seresta;15 mg;;;;1;
+518;2146189337;lamictal;;250 mg;;200 mg;;anti-épileptique
+519;2146189337;topiramate;100 mg;1;;1;;anti-épileptique
+520;2146189852;Furadantin Retard;;1;;;;
+521;2146189852;Escitalopram;20 mg;12 gouttes;;;;
+522;2146189852;Aspirine Cardio;100 mg;;1;;;
+523;2146189852;Conversum;5 mg;;1/2;;;
+524;2146189852;Olanzapine;2.5 mg;;;1;;à 16h00 environ
+525;2146189852;Temesta;1 mg;;;1;;à 16h00 environ
+526;2146189869;Motilium lingual;10 mg;;;1;;mettre contre la joue 30 min avant le repas
+527;2146189869;Omeprazol poudre;;1;;;;ouvrir la capsule et mettre la poudre dans une cuillère avec repas
+528;2146189869;Movicol poudre;;1;;1;;mélanger avec la boison très sucrée
+529;2088593679;Préparation Neuleptil;5 mg;2;1;1;;
+530;2088593679;Dulcolax suppositoires;;;;;;1 suppositoire chaque 2 matins
+531;2088593679;Sirop de figues;1 mesurette;;;1;;1 mesurette
+532;2088593679;Ludiomil;25 mg;2;;2;;
+533;2554;Midazolan Mad Nazal;10 mg;;;;;voir remarques pour Stesolid
+534;-479406894;Alfuzosin = Xatral;;;;1;;
+535;-479406894;Sirdalus;2mg;1;1;;;
+536;-479406894;Cetallerg;10 mg;;;;1;de mars à octobre
+537;-479406894;Temesta;1 mg;;;;;en réserve si spasmes
+538;-479406894;Dafalgan;500mg;;;;;en réserve si douleurs jusqu'à 3x/jours
+539;1087391122;Valium;5 mg;1/2;;1/2;;
+540;1087391122;Omesol - Mepha;;1;;;;
+541;1087391122;Transipeg - sachet;;1;;;;Donner beaucoup à boire avec
+542;1087391122;Halcion;0.25 mg;;;;1;en cas de peine à l'endormissement et durant la nuit (pleurs et agitation) -  médicament de réserve
+543;1195664924;Crème Trixo-lind;;;;;;pour le visage lors de la toilette
+544;1228835384;Lioresal;10 mg;2;2;2;;
+545;1228835384;Valium;5 mg;1/2;;1/2;;
+546;1228835384;Felden;;;;1;;
+547;302;Levetiracetam;1000mg;1;;1/2;;
+548;302;Dafalgan - suppositoire;600mg;;;;;en cas de douleurs à la hanche
+549;302;Midozolam;10 mg;;;;;1 dose avec la seringue - en cas de crise d'epilépsie
+550;1228924570;Transipeg;;1;;;;pour faciliter le transit, ne le prend pas toujours. S'il doit le prendre, le transipeg est dans les pages de son carnet de santé dans la trousse de toilette
+551;-22390883;Montélukast;10 mg;1;;;;action pulmolnaire
+552;-22390883;Cetallerg;10 mg;;;1;;Seulement le printemps
+553;-22390883;;;;;;;
+554;1115645303;Depakine;300 mg;1;0;0;0;
+555;1115645303;Lioresal;10 mg;1;1;1;0;
+556;1115645303;Levetiracetam;500 mg;2;0;1;0;
+557;1115645303;Omezol;20 mg;;;1;;
+558;1115645303;Lavement;;;;;;chaque 3 jours et attendre env. 30 à 45 minutes
+559;1540756715;Gavison Scht;;0;0;0;0;si besoin 1h après le repas
+560;1540756715;Tranxilium;10 mg;0;0;0;0;en cas de tachycardie - calme
+561;1540756715;Isoptin;80 mg;0;0;0;0;si le tranxilium est sans effet après 30 min
+562;1540756715;Dafalgan effer;500mg;0;0;0;0;si douleurs
+563;1540756715;Travocort pommade;;0;0;0;0;Pendant 1 jours si besoin entre les épaules
+564;1855965489;Demetrin;10 mg;1/2;;;1;Au coucher
+565;1855965489;Lioresal;10 mg;1/2;;1/2;;
+566;1855965489;Omerazol;40 mg;;;1;;
+567;1855965489;Rebalance;;;;1;;
+568;1855965489;Métamucile scht orange;;1;;;;
+569;1855965489;Dospir;0.5;;;;;Réserve * aéro/j à sa demande. Allergie saison
+570;1228834647;;;1/2 - 7h30;1 - 20h00;;;
+571;1578;Depakine sirop;60 ml;5ml;;;;
+572;2746;ANTRA;10mg;;;1;;
+573;2746;LIORESAL;10mg;1;1;;;
+574;2746;Sirop de figue;;1;;1;;
+575;2746;PRACTO;;;;;;
+576;2746;;;;;;;
+577;1045738360;DEPAKINE;300mg;2;1;1;;
+578;1045738360;LIORESAL;10mg;1;1;1;;
+579;1045738360;APRANAX;menstruation;1;;;;
+580;1045738360;SENEZETTE;;;1;;;
+581;2204;;;;;;;
+582;2204;LIORESAL;10mg;2;2;2;;
+583;2204;DANTAMACRIN;25mg;1;1;1;;
+584;2204;VALIUM;2mg;1;;1;;
+585;2204;PRACTO;;;;;;
+586;2204;BRONCO VAXUN;;1;;;;
+587;788283754;VALIUM;5mg;1;;;;
+588;788283754;BROCHO VAXUM;;1;;;;
+589;2548;DEPAKINE Chrono 300;300mg;1.5 à 08h00;;1.5  à 20h00;;Médicaments le tout dans la cuillère avec un peu d'eau à boire
+590;2548;LAMOTRIGINE;25 mg;1 à 08h00;;1 à 20h00;;Tous les médicaments du matin sont à donner à 08h00 et le soir à 20h00
+591;2548;LAMOTRIGINE;50mg;1 à 08h00;;1 à 20h00;;Tous les médicaments du matin sont à donner à 08h00 et le soir à 20h00
+592;2548;URBANYL;;;;1/2 à 20h00;;
+593;118;VALIUM;2 mg;1;1;1;;
+594;118;LIORESAL;10mg;1;1;1;;
+595;184;DULCOLAX suppositoire;;;;;;
+596;2657;LIORESAL;10mg;1;1;;;
+597;2657;LUDIOMIL;25mg;1;1;1;;
+598;2657;DAFALGAN;500mg;;;;;
+599;2657;PRACTOLYSS;;;;;;
+600;1452;Duspatalin ret.;200 mg;1;;;;
+601;1452;Ciproxine 250;;;;1/2;;
+602;1452;Tranxilium;1 comprimé;;;;;
+603;1452;Isoptin;1 comprimé;;;;;
+604;283;Lansoyl;1 cuillère à café rase;1;;1;;
+605;129;Seresta;;;;;;
+606;182;Ditropan;5mg;1;;;;
+607;280;---;;;;;;
+608;281;Abilify;5mg;1/2cp;;;;
+609;2309;Lioresol;;2;1;1;;
+610;2309;Tégrétol;;1;;1;;
+611;2309;Valium;;1/2;;1;;
+612;2309;Stésolid;10 mg;;;;;
+613;2309;;;;;;;
+614;2792;Depakine;300 mg;2;1;1;;
+615;2792;Lioresal;10 mg;1;1;1;;
+616;2792;Apranax;;1;;1;;
+617;2792;Senezette;;;1;;;
+618;-1562333216;Topamax 100;;2;1;1;;
+619;-1562333216;Topamax 50;;;1;1;;
+620;-1562333216;Tégrétol 400;;1;1;1 1/2;;
+621;119;------;;;;;;
+622;1630;--------;;;;;;
+623;286;----------;;;;;;
+624;287;Depakine;;;;1;;Préventif épilepsie
+625;2554;Vimpat;100 mg;1;;;1;Anti épileptique
+626;2554;Dépakine;500 mg;1,5;;;1,5;Anti épileptique
+627;2554;Stesolid;10 mg;;;;;ou Midazolan Mad nasal - si crise d'épilepsie
+628;2611;Tegretol;200 mg;1;0;1;0;Bien écrasé
+629;2611;Huile de paraffine;10 ml;1;0;1;0;
+630;2611;Midazolan;;;;;;en cas de crise d'épilepsie
+631;290;------------;;;;;;
+632;644630123;Ritaline retard;;1;;;;
+633;644630123;Ritaline;;1;;;;
+634;292;Antra mups;10 mg;1;;;;pour son estomac
+635;-587438322;Lioresol;10 mg;1;;1;;
+636;-587438322;Valium;2 mg;1/2;;1;;
+637;2291;Similasan n°2 Rhume des foins;10 gr;1;;1;;en été dissoudre dans sa boisson
+638;2653;Liorésal;10 mg;1;1/2;1;;
+639;2653;Sirdalud;2 mg;1;;1;;
+640;2653;Duplualac;20ml;X;;;;Sirop laxatif (avec la boisson)
+641;297;huile de paraffin;;;;2 cs;;
+642;184;;;;;;;
+643;167;Vioxx;25 mg;1;;;;
+644;167;Pantorol;20 mg;1;;;;
+645;-1690129297;------------------;;;;;;
+646;1035988716;Transipeg Forte;;;;1;;1 déci 1 1/2
+647;1511;------------;;;;;;
+648;-1756164214;---------;;;;;;
+649;302;Dépakine Chronosphère;500 mg;1;;1;;
+650;302;Liorésal;10 mg;1+1/2;1+1/2;1+1/2;;
+651;302;Paraffine;10 ml;1;;;;
+652;175;Tranxilium;5 mg;;;;;
+653;2811;Depakine;;10 ml;;10 ml;;
+654;2811;Lamictal;;5;;5;;
+655;2811;Urbauyl;10 mg;1/2;;1;;
+656;2215;Dépakine chrono;500;1;;1;;A donner pendant le repas
+657;177;Liorésal;10mg;1/2;1/2;;;
+658;1014636521;Dépakine chrono;;1;;1;;
+659;2659;-------------;;;;;;
+660;2734;------------;;;;;;
+661;1005056097;Liérosal;10 mg;1;;;;
+662;1061796863;-----------------;;;;;;
+663;1041958732;Tegretol CR 400;;1;;1;;
+664;1512;Truxal;15 mg;1 cp;1 cp;1 cp;;Sur une cuillère mélangé à des aliments ou du liquide En cas d’agitation  on peut donner 1 cp  supplémentaire
+665;1512;;;;;;;En cas d’agitation  on peut donner 1 cp  supplémentaire
+666;2655;Lamotrigine;100mg;1,5;;1,5;;Dans une cuillère avec des aliments
+667;2655;Risperidone;0.5 mg;1,5;;1;;
+668;2655;Rivortil 2.5 mg/ml;gouttes;1goutte;1goutte;2 gouttes;;Dans une cuillère
+669;2655;Melatonine;5 mg;;;;1;Au coucher, lors du brossage des dents
+670;1034322144;Stésolid;;;;;;
+671;2604;Benerva 200 mg;;1;1;1;;Ludovic avale le médic. Et puis il boit
+672;2604;Dépakine Chrono 500 mg;;1;;;1;
+673;2604;Sabril 500 mg;;1.5;;;1;
+674;2604;Redoxon 500 mg;;1;;1;;
+675;2604;Calcium phosphatbiender 500 mg;;0.5;;;;
+676;2578;--------------;;;;;;
+677;1061977115;---------------;;;;;;
+678;279;----------;;;;;;
+679;2584;Importal;1 comprimé;;;;;
+680;2584;Magnésium;comprimé;1;;;;
+681;2584;Sirdolud 4 mg;;0.5;0.5;;;
+682;2584;Nexium 40;;;;1;;
+683;2584;Hismanal;;;;;;
+684;2584;Tavegyl;;;;;;
+685;175;Detrusitol;;;;;;
+686;2215;Huile de paraffine;5 ml;1;;;;Dans le cacao du matin - arrêt en cas de diarrhée
+687;2604;Ditropan;;0.5;0.5;;;Pour la vessie
+688;179;Topomax;100;2;1;2;;
+689;179;Topomax;50;;1;;;
+690;179;Tégrétol;400;1;;1;;
+691;118;MICROGYNON;30;1;;;;
+692;-587438322;Centrum;;1;;;;
+693;1447;Ditropan;;0.5;0.5;0.5;;
+694;1447;Uvamine;;;;1gr;;
+695;1447;Maltofes;;1;;;;
+696;1447;Calcium. Carbonate;;1;1;1;;
+697;1447;AT 10 gouttes (eau chaude);;;;15 gouttes;;
+698;2210;Tanxilium;5 mg;1;;1;;si  anxiété ou agitation
+699;2210;Préparation Neuleptil;5 mg;2;1;1;;
+700;1087386639;Tegretol;200 mg;1 + 1/2;0;1;0;Prendre avec les repas
+701;1087386639;Valium;5 mg;0;0;1;0;Prendre avec les repas
+702;1087386639;Lioresal;10 mg;1 +1/2;1 +1/2;1;0;Prendre avec les repas
+703;1087391122;Nozinan;25 mg;1/2;1;1;;
+704;1195664924;Liorésal;10mg;1;1;1;;
+705;1195664924;Cerazette;;1;;;;
+706;1195664924;Valium;2mg;1/2;;1/2;;* si activité le soir prendre au coucher
+707;1195664924;Huile de Paraffine;;1 Cs;;1 Cs;;
+708;1138806721;Dépakine;500mg;2;;2;;matin : 7h30 / soir : 20h
+709;1138806721;Urbanyl;10mg;1/2;;1/2;;matin : 7h30 / soir : 17h
+710;1138806721;Levetiracetam;500mg;2;;;2;matin : 7h30 / soir : 20h
+711;1138806721;Midazolam nasal;10mg;;;;;2x 10mg si crise d'épilepsie dure + de 1min. Encore 10mg si crise dure + de 15min.
+712;1138806721;Risperdal/Rispéridone;1mg;1;1;;1;soir : 20h
+713;1138806721;Cetallerg;;1;;;;En printemps, rhume des foins / matin : 7h30
+714;2215;Calcium;1 tab.;;1;;;Dans un peu d'eau
+715;2215;Risperdal;1 mg;;;;1;Avant le coucher
+716;2215;Vi De 3;4 gttes;1;;;;Dans le cacao du matin
+717;2215;;;;;;;
+718;2088593679;Tranxilium;5 mg;1;;;;
+719;177;Lamotragine Sandoz;100mg;1;;;;
+720;177;Lamotragine Sandoz;50mg;;;1;;
+721;177;;;;;;;
+722;1175782861;Topiramat;200mg;1;;;1- 21h;
+723;1175782861;Trileptal;600mg;1 et 1/2;;1 - 18h;1/2 - 21h;des changements sont en cours
+724;1175782861;Topiramat;100 mg;1;;;;
+725;138;-;-;-;-;-;-;Pas de médicaments
+726;292;Motilium;10 mg;1;;1;;pour son estomac
+727;292;Nozinan;25 mg;;;1/2;;
+728;-587438322;Motilium;;1;1;1;;15 min. avant les repas
+729;-587438322;Omezol - Mepha 20;;;;1;;
+730;1844045075;Lioresal;10 mg;1;1;;;avec boisson
+731;2146189869;Ben u ron;230 mg;;;;;en réserve si douleur ou/et fièvre
+732;1228924570;Androcur;;;;1;;
+733;2146189890;Fibre Optifibre;;;2;2;;à mélanger à la boisson
+734;2146189890;Movicol junior;;;;1/2;;
+735;2146189919;Lioresal;3x;x;x;x;;1 poillule 3x/jour
+736;2146189919;Detrusitol;1x;x;;;;1 pillule
+737;2146189919;Alfuzosine;1x;;;x;;
+738;2146189919;Pantoprazol;;;;;;si brûlure estomac 1x
+739;2146189919;Ibuprofene;max 3x/j;;;;;+ fort que dafalgan, si douleur
+740;2146189919;Voltarene;1-2x/j;;;;;crème si douleur
+741;2146189919;Molaxole;1x/j;;;;;si constipation
+742;2146189919;Magnesiocard;1x/j;;;;;si crampes
+743;2146189919;Loceryl;tous les mardis 1x/j;;;;;ongles des pieds + appliquer sur ongle crème
+744;2146189856;Propranolol;7ml;vers 8h/9h;vers 13h;vers 17h;;
+745;2146189856;Nexium;1 sachet;x;;;;diluer dans l'eau à la seringue
+746;2146189856;Vit.C;1capsule;x;;;;1 capsule même eau que  mucofluid
+747;2146189856;Mucofluid;1 comprimé;x;x;vers 19h;;mélanger un comprimé avec eau
+748;2146189856;Vit.B5;1 capsule;x;x;vers 18h30;;1 capsule à mettre dans même eau que Mucofluid
+749;2146189856;Vit.E;1 gelule;x;;;;Percer gelule et mettre avec lait de 9h et donner à la seringue
+750;2146189856;Movicol;1/2 sachet;x;;;;1/2 sachet à mélanger dans biberon du matin
+751;-22390883;;;;;;;SE REF. AU CARNET DE SANTE/SEMAINIER
+752;2146189547;Spiradol;;X;;X;;nuit si besoin pour dormir 1-2x/semaine, sa maman donne
+753;1191311576;VOIR SA FICHE;;MEDICAMENT;;VOIR;FICHE;MEDICAMENT
+754;2146189948;Acimethin/Méthionin;500mg;1;1;1/20h;;Acidifiant urine
+755;2146189948;Arixtra;2,5mg;;;1/20h;;Anti-thrombotique
+756;1116339152;Levetiracetam;1000mg;1;;1/2;;
+757;1116339152;Dafalgan-suppo;600mg;;;;;en cas de douleurs à la hanche
+758;1116339152;Midozolam;10mg;;;;;1 dose avec la seringue-en cas de crise d'épilepsie
+759;1116339152;Dépakine chrono;500mg;1;;1;;
+760;1116339152;Liorésal;10mg;1+1/2;1+1/2;1+1/2;;
+761;1116339152;Paraffine;10ml;1;;;;
+762;2554;Euthyrox;;1;;;;1/2 heures avant petit-déj.
+763;1512;imodium;;;;;;Si selles liquides jusqu'à 6cp par jour
+764;1844045075;Dulcolax suppo.;10mg;;;;;1x au 5ème jours sans selles
+765;1844045075;Temesta;50mg;;;;;1cp si excès d'anxitété
+766;1306411305;MST Continus;10mg;1;;1;;Morphine antalgique
+767;1306411305;Laxiped;;1;;;1 à 22h;laxatif
+768;1306411305;Esomeprazol;40mg;1;;;;Antiulcéreux, IPP
+769;1306411305;Seretide inh avec aerochambre;250;1;;1;;Anti-asthmatique
+770;1306411305;Xanax;0.5mg;;;;1 à 22h;
+771;1306411305;Huile pour assouplir tendon;gttes;3;3;3;;
+772;1306411305;Temesta;1mg 1cp;;;;;en cas de crise jusqu'à 4x/j
+773;1306411305;Primpéran;10mg;;;;;3x1cp si naussées, vomissements
+774;1306411305;Buscopan;;;;;;1 à 3cp/24h si dlrs menstruelles
+775;1306411305;Spedifen;400mg;;;;;1 à 3x/24h contre douleurs résistantes au Dafalgan
+776;1270805862;Isotrétinoïne;;;;1;;Contre l'acné
+777;1270805862;Cetallerg;;;;;;Si besoin, contre rhume des foins yeux
+778;1220344826;Olanzapin;15mg;;;1;;
+779;1220344826;Nozinan;25mg;;;;;1/4-3x/J   (reserve si agitation)
+780;1220344826;Temesta expidet;1mg;;;;;1/2 2x/J (reserve si angoisse, tensions intérieures)
+781;2146189691;Pompe à Baclofène;;;;;;fonctionne toute seule.
+782;2146189676;Tranxilium;5mg;1;;1;;
+783;2146189676;Sertraline;50mg;1,5;;;;
+784;2146189676;Quetiapin;25mg;2;;2;;
+785;2146189676;Tranxilium;5mg;;;;;1x/J si angoisses
+786;2146189948;Efligel pommade;;1;1;1;1/20h;douleurs neuropathiques périphériques
+787;2146189948;Dafalgan cp;1g;1;1;1/18h;1/0h;Antalgique
+788;2146189948;Exipial hydrolotion;;1;;1/20h;;Crème hydratante
+789;2146189948;Fentanyl;75mcg/h;X;;;;Analgésique à changer chauqe 72h
+790;2146189948;Gabapentin-Mepha;400mg;1;1;1/20h;;Anti-épileptique
+791;2146189948;Gabapentin-Mepha;800mg;1;1;1/20h;;Anti-épileptique
+792;2146189948;Lecicarbon supp.;;1;;;;Laxatif
+793;2146189948;Liorésal;10mg;3;3;1/18h;1/20h;Anti-spatique
+794;2146189948;Remeron;30mg;;;;1/0h;Antidépresseur
+795;2146189948;Macrogol sachet;;;;1/20h;;Laxatif
+796;2146189948;Temesta expidet;1mg;1/2;;1/2 à 20h;;Anxiolytique
+797;2146189948;Acidium folicum;5mg;1;1;1;;Acide folique
+798;2146189948;Euthyrox;50mcg;2;;;;A jeun 1h avant les autres médic. Du matin
+799;2146189948;Nexium;20mg;2;;;;Protection gastrique
+800;2146189541;Nozinan 4%;gttes;;;;;3à5 gttes en réserve si agitation, tranquillisant
+801;2146189541;Zolpidem;10mg;;;;;1 cp (avant 03h)  en réserve si insomnie
+802;1540756715;Nebilet;5mg;0.5 cp;;;;
+803;1175783172;Lactibiane;caps;1;;20h;;
+804;1175783172;Magnésium diasporal;300mg;;;;;
+805;1175783172;Maltofer;gttes;;20;;;
+806;1175783172;Vitasprint;Flacon;1;;;;MA-JE-SA
+807;1175783172;Dafalgan eff.;1gr;;;;;2x/jour en RESERVE
+808;1175783172;Quetiapin-Mepha;25mg;;;;;1 cp donner 1/4 à la fois en RESERVE
+809;1175783172;Rivotril en R;0.5 mg;;;;;1/2cp/J en RESERVE
+810;1175783172;Bulboid supp R;;;;;;1x/J - Jusqu'à 2x/jour en RESERVE
+811;1175783172;Stesolid rectal microclisma;5 mg;;;;;en RESERVE en cas de crise spatique qui l'empêche d'avaler le cp
+812;1175783172;Motilium SL;10mg;;;;;1X/J en RESERVE
+813;1298294561;Torasemide;5mg;1;;;;LU-ME-VE
+814;1298294561;Solmucol efferv;600mg;;;;1;
+815;1298294561;Cellufluide DDC;gttes;X;;X;;Sécheresse oculaire
+816;1298294561;Atarax;2,5mg;;;;1;Anti-histaminique
+817;1298294561;Dospir ihnalation amp.;;1/2;;1/2;;bronchodilatateur
+818;1298294561;Fluimucil;200mg;;;;;3X/J EN RESERVE si encombrement
+819;1298294561;Mefenacid;500mg;;;;;Max 3X/J EN RESERVE si douleur
+820;1298294561;Cettalerg;10mg;;;1;;EN RESERVE si allergie
+821;1298294561;Résyl;;;;;;EN RESERVE
+822;1298294561;Ecofenac;gel;X;;;X;EN RESERVE anti-inflamm. Sur biceps gauche
+823;1298294561;Sinupret;sirop;;;;;3x5ml EN RESERVE si toux
+824;-486550603;Seroquel = Quetiapin-mepha;;;;;1/2;neuroleptique
+825;-486550603;Cimifemin forte;;;;2;;
+826;-486550603;Furadantin retard;100mg;1;1;1;;
+827;2625;;;;;;;médication en cours d'adaptation
+828;1228835384;duphalac;15ml;1;;1;;
+829;1228835384;laxoberon;15 gouttes;;;1;;
+830;1228835384;movicol;1 sachet;1;;1;;
+831;1228835384;amilodipine;cp;1;;;;
+832;1228835384;pantoprazole;cp;1;;;;
+833;2146189936;Mélatonine;30mg;;;X;;
+834;2146189936;Médikinet;;X;X;;;
+835;2347;Sertralin;50mg;1/2;;;;

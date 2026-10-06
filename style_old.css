@@ -1,0 +1,389 @@
+
+/* parametres des balsie simple */
+
+
+/* Mise en page pour Smartphones */
+ @media screen and (max-width: 767px) 
+ { 
+body {
+	background-color: #4B86C1 ;
+padding-top:10px;
+
+	}
+	#contenu{
+
+	margin-top:15px;
+	width: 1000px;
+	min-height: 600px;	
+	position: relative;
+	background-color:#FFF;
+	margin:auto;
+	border-radius: 20px;
+	padding:2%;
+}
+nav {
+	
+	margin-bottom:10px;
+	background-color:#FFD700;
+	height: 50px;
+	border-radius:10px;
+	}	
+ }
+
+/* Mise en page pour une tablette */
+@media screen and (min-width: 768px) and (max-width: 1200px) 
+{ 
+body {
+background-color: #4B86C1 ;
+padding-top:10px;
+border-radius: 20px;
+
+	}
+nav {
+	
+	margin-bottom:10px;
+	background-color:#FFD700;
+	height: 50px;
+	border-radius:10px;
+	}	
+ }
+
+
+/* Mise en page pour les grands écrans */
+@media screen and (min-width: 1200px) 
+{
+body {
+	background-color: #4B86C1 ;
+padding-top:10px;}
+#contenu{
+
+	margin-top:15px;
+	width: 1000px;
+	min-height: 600px;	
+	position: relative;
+	border-radius: 20px;
+	background-color:#FFF;
+	margin:auto;
+	padding:2%;
+}
+nav {	
+	background-color:#FFD700;
+	height: 50px;
+	border-radius:10px;
+	text-align: left;
+	}	
+}
+
+th{
+
+	text-align: left;
+	text-decoration: none;
+	font-weight:normal;
+	background-color: #70adff;
+	color: #fff;
+	padding-left: 5px;
+}
+td{
+	padding-left: 5px;
+}
+
+
+
+*{
+
+font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 13px;
+
+
+}
+a{text-decoration:none;}
+
+h1{
+margin-top: 20px;
+margin-bottom: 30px;
+text-align: center;
+background-color:#FFD700;
+color: #000;
+font-size: 17px;
+padding:5px;
+}
+
+div{
+	padding: 5px;
+}
+h2{
+
+font-size: 17px;
+	margin-left: 2px;
+
+
+}
+
+table {
+	margin-bottom: 30px;
+	padding-bottom: 60px;
+}
+
+p
+{ padding: 0;
+	margin: 0;}
+.affichage table{
+text-align: left;
+width: 100%;
+}
+
+
+.affichage th{
+size: 17px;
+text-align: left;
+background-color: #70adff;
+padding:5px;
+color: #FFF;
+}
+/*Toutes les lignes impaires : la 1e, la 3e, la 5e, etc.*/
+.affichage tr:nth-child(odd) {
+background-color: #FFF;
+
+
+}
+/*Toutes les lignes paires : la 2e, la 4e, la 6e, etc.*/
+.affichage tr:nth-child(even) {
+background-color: #BDBFC1;
+padding: 5px;
+
+}
+
+.reservation td {
+
+	border: dotted 1px #a6c9ff;}
+
+.formulaire tr 
+{
+	size: 17px;
+text-align: left;
+background-color: #BDBFC1;
+}
+.formulaire td 
+{
+	size: 17px;
+text-align: left;
+background-color: #BDBFC1;
+}
+
+	
+nav ul{ 
+	list-style:none;
+	padding-top:15px;
+	
+	}
+nav ul li {
+	display:inline;
+	margin:10px;
+	}
+nav ul li a{
+	text-decoration:none;
+	size: 17px;
+	color: #000;
+}
+
+nav ul li a:hover{
+	
+	size: 17px;
+	color:#4B86C1;
+	}
+
+
+/* parametres id */
+
+
+#logo{
+width:  50%;
+height: 10%;
+float:left;
+
+}
+
+#connexion{
+
+width:  50%;
+height: 10%;
+margin-left:50%;
+text-align: right;
+
+}
+
+#footer{
+
+  height: 100px;
+  position: absolute;
+  width: 70%;
+  bottom: -3px;
+ 
+}
+#droit{
+	width: 50%;
+    height: 10%;
+   	margin-left: 107%;
+
+    margin-top: 33.5%;
+}
+
+#gauche{
+	width: 50%;
+    height: 10%;
+    float: left;
+}
+#menu2{
+margin-top: 20px;
+}
+
+#menu{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#zoneGauche
+{
+	float:left;
+	width:40%;
+}
+#zoneDroite table
+{ margin-bottom: 10px;
+	padding-bottom: 0;}
+
+#intervention h1{
+	text-align: left;
+}
+#cordonee td{
+
+	background-color: rgb(235, 235, 228);}
+#infoDroit td{
+	background-color: rgb(235, 235, 228);
+}
+
+/* parametres des class */
+
+.imgDroit{
+	text-align: right;
+	margin-left: 32%;
+	width: 19%;
+	margin-top: -50%;
+}
+
+.imgGauche{
+
+text-align: left;
+	margin-left: 0;
+	width: 26%;
+	margin-bottom: -2px;
+	
+}
+
+
+.valider{
+ width: 150px;
+ height:25px;
+ background-color:#98FB98;
+ margin-top:24px;
+ border-radius: 15px;
+ margin-bottom: 30px;
+ }
+.ValiderPetit{
+width: 100px;
+ height:20px;
+ background-color:#98FB98;
+ margin:10px;
+ border-radius: 15px;
+}	
+.AnnulerPetit{
+width: 100px;
+ height:20px;
+background-color:#FF5E4D;
+ margin:10px;
+ border-radius: 15px;
+}		
+.SuprimerrPetit{
+	width: 100px;
+ height:20px;
+ background-color:#F00;
+ margin:10px;
+ border-radius: 15px;
+
+
+
+}
+.Annuler{
+ width: 150px;
+ height:25px;
+ background-color:#FF5E4D;
+	margin-top:24px;
+ border-radius: 15px;
+ margin-bottom: 30px;
+		
+}
+
+.rouge{
+	background-color:#F00;
+	
+}
+.Modifier{
+	width: 150px;
+ height:25px;
+ background-color:#BDBFC1;
+ margin:10px;
+ border-radius: 15px;
+}
+.cacher{
+	color: #FFF;
+}
+.input1{
+	width: 40px;
+}
+.input90{
+	width: 90px;
+}
+.input500{
+	width: 500px;
+
+}
+.input200{
+	width: 200px;
+}
+.input350{
+	width: 357px;
+}
+.input100{
+	width: 114px;
+}
+.input150{
+	width: 150px;
+}
+.modif{
+	color: #000;
+ padding-left:15px;
+ padding-right: 15px;
+ height:20px;
+ background-color:#98FB98;
+ margin:10px;
+ border-radius: 15px;
+}
+.sup{
+	padding-left:15px;
+ padding-right: 15px;
+	color: #000;
+ height:20px;
+ background-color:#F00;
+ margin:10px;
+ border-radius: 15px;
+}
+.noMargin{
+
+	margin-bottom: 15px;
+	padding-bottom: 0;
+	width: 100%
+}
+.zoneTexte1{
+	border: solid 1px;
+	padding: 5px;
+	min-height: 60px
+}

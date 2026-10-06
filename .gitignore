@@ -1,0 +1,25 @@
+.idea/
+.vscode/launch.json
+pdf/
+imgParticipant/
+vendor/
+tfpdf/
+composer.lock
+test.php
+teste2.php
+doc/
+Liberty/location_contracts/
+Liberty/bus_Parenthese_contracts/
+Liberty/logement_Parenthese_contracts/ 
+# -- contient fichiers -- #
+pdfContrats/
+Activite/img/
+Adresse/accompagnant_contractsFiles/*
+Adresse/intervenant_contractsFiles/*
+!Adresse/accompagnant_contractsFiles/
+!Adresse/intervenant_contractsFiles/
+#--- contient identifiants db & URL à changer manuellement --------#
+inc/config.php
+inc/config-db.php
+inc/config-mrp.php
+.vscode/launch.json

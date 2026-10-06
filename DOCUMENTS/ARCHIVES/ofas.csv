@@ -1,0 +1,37 @@
+0;-;>
+1;KGA 1 a;Bref conseil activité
+2;KGA 1 p;Bref conseil préparation
+3;KGA 2 a;Conseil Social proche activité
+4;KGA 2 p;Conseil Social proche préparation
+5;KGA 3 a;Conseils groupes activité
+6;KGA 3 p;Conseils groupes prépration
+7;KGA 4 a;Aide lieux d'accueil activité
+8;KGA 4 p;Aide lieux d'accueil préparation
+9;KGA 5 a;Conseil en matière de construction individuel activité
+10;KGA 5 p;Conseil en matière de construction individuel préparation
+11;KGA 6 a;Conseil en matière de construction activité
+12;KGA 6 p;Conseil en matière de construction préparation
+13;KGA 7 a;Bref conseil juridique individuel activité
+14;KGA 7 p;Bref conseil juridique individuel préparation
+15;KGA 8 a;Conseil juridique individuel activité
+16;KGA 8 p;Conseil juridique individuel préparation
+17;KGA 9 a;Mise en relation avec des services d'aide ou d'interprete activité
+18;KGA 9 p;Mise en relation avec des services d'aide ou d'interprete préparation
+19;KGA 10 a;Accompagnement à domicile de personnes handicapées activité
+20;KGA 10 b;Accompagnement à domicile de personnes handicapées préparation
+21;KGA 11 a;Cours en bloc animation
+22;KGA 11 b;Cours en bloc préparation
+23;KGA 12 a;Cours d'un jour animation 
+24;KGA 12 b;Cours d'un jour préparation 
+25;KGC31;Médias et publications de l'organisation accessibles au public
+26;KGC32;Centre d'information et de documentation
+27;KGC33;Développement élaboration et diffusion matériel d'information pour les personnes en situation de handicap
+28;KGC34;Travail de fond ou projets spécifiques
+29;KGC35;Prestation de base pour l'encouragement de l'entraide
+101;-;>
+102;DIRADMIN;Direction, administration, gestion
+103;GRPTRAV;Groupe de travail
+104;REPINT;Représentation des intérêts
+105;RELPUB;Relations publiques
+106;EXPLOC;"Exploitation des locaux 
+et infrastructures"
