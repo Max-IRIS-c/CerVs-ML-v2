@@ -36,9 +36,15 @@ if(isset($_POST['valider'])) // Si le formulaire a été validé
 	$type = $_POST['type'];
 	$commentaire = $_POST['commentaire'];
 	$valeur = $_POST['valeur'];
-	// Date de remerciement facultative : NULL si vide
-	if (!empty($_POST['remercier'])) $dateRemerciemnt = $_POST['remercier'];
-	else $dateRemerciemnt = null;
+	if (!empty($_POST['remercier']) )
+	{
+		$dateRemerciemnt = ($_POST['remercier']);
+		
+	}
+	else
+	{
+		$dateRemerciemnt = "";
+	}
 	$contact = $id;
 	$insert = $bdd->prepare("UPDATE tblCotisation SET 
 		tblGenreCot_GenCotId =:genre,
@@ -50,14 +56,21 @@ if(isset($_POST['valider'])) // Si le formulaire a été validé
 		 tblContact_conId =:contact
 		 WHERE cotiId = '$don'");
 
-	$insert->bindValue(':genre', $genre);
-	$insert->bindValue(':type', $type);
-	$insert->bindValue(':commentaire', $commentaire);
-	$insert->bindValue(':dateDon', $date);
-	$insert->bindValue(':valeur', $valeur);
-	$insert->bindValue(':remerciement', $dateRemerciemnt, $dateRemerciemnt === null ? PDO::PARAM_NULL : PDO::PARAM_STR);
-	$insert->bindValue(':contact', $contact);
-	$insert->execute();
+
+	$insert->execute(array(
+
+		'genre' => $genre,
+		'type' => $type,            
+		'commentaire' => $commentaire,
+		'dateDon' => $date,
+		'valeur' => $valeur,
+		'remerciement' => $dateRemerciemnt,  
+		'contact' => $contact,
+
+
+		));
+
+
 
 header("location: cotisation.php?Id=".$id);
 
@@ -86,7 +99,7 @@ header("location: cotisation.php?Id=".$id);
 		<td><? echo $row['tCotCode'].' - ' .$row['tCotNom']; ?></td>
 		<td><? echo $row['cotiCommentaire']; ?></td>
 		<td><? echo $row['cotiValeur']; ?></td>
-		<td><? if (!empty($row['cotiRemercier']) && $row['cotiRemercier'] != '0000-00-00') echo DateToUser($row['cotiRemercier']); ?></td>
+		<td><? echo DateToUser($row['cotiRemercier'])?></td>
 		<td> <?php echo '<a href="modifCotisation.php?Id='.$row['cotiId'].'"> Modifier </a>';?>
 			<?php echo '<a href="supCotisation.php?Id='.$row['cotiId'].'"> Supprimer </a>';?>
 		</td>
@@ -135,7 +148,7 @@ header("location: cotisation.php?Id=".$id);
 		</td>
 		<td><input type="text" name="commentaire" value="<?php echo $coti['cotiCommentaire'];?>"></td>
 		<td><input class="input100" type="text" name="valeur" value="<?php echo $coti['cotiValeur'];?>"></td>
-		<td><input class="input100" type="date" name="remercier" value="<?php if (!empty($coti['cotiRemercier']) && $coti['cotiRemercier'] != '0000-00-00') echo $coti['cotiRemercier']; ?>"></td>
+		<td><input class="input100" type="date" name="remercier" value="<?php echo ($coti['cotiRemercier']);?>"></td>
 		<td><input type="submit" name="valider" value="valider" class="ValiderPetit">
 			<input type="submit" name="annuler" value="annuler" class="AnnulerPetit">
 		</td>
