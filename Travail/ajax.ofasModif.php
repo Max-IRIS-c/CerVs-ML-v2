@@ -20,7 +20,7 @@ $ofas2 = $bdd->query("SELECT * FROM tblTraCat1 WHERE catActiv =1");
 
 if (!empty($_GET['statu']) AND ($_GET['statu']==2) OR ($_GET['statu']==3)  ){ ?>
     <select name="ofas" style="width:150px">
-        <?php ListeModif2($ofas, $travail['traCat1'], cat1Id, cat1Code, cat1Nom) ?>
+        <?php ListeModif2($ofas, $travail['traCat1'], 'cat1Id', 'cat1Code', 'cat1Nom') ?>
     </select>
 
 <?php
@@ -28,7 +28,7 @@ if (!empty($_GET['statu']) AND ($_GET['statu']==2) OR ($_GET['statu']==3)  ){ ?>
 else {
     if ($travail['traCat3'] == 1 OR $travail['traCat3'] == 2 OR  $travail['traCat3'] == 3  ) { ?>
         <select name="ofas" style="width: 150px">
-            <?php ListeModif2($ofas2, $travail['traCat1'], cat1Id, cat1Code, cat1Nom) ?>
+            <?php ListeModif2($ofas2, $travail['traCat1'], 'cat1Id', 'cat1Code', 'cat1Nom') ?>
         </select>
     <?php }
 

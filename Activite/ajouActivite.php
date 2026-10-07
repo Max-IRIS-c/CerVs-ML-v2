@@ -2,6 +2,7 @@
 include('../variables.php');
 include_once "../src/class/Db.class.php";
 include_once "../src/class/Mrp.class.php";
+include_once "../src/fonctionsSql.php";
 
 $mrp = new Mrp();
 
@@ -19,11 +20,7 @@ $infirmier = $bdd->query("SELECT conId,conNom,conPrenom FROM tblContact WHERE co
 $codeOfas = $bdd->query("SELECT * FROM tblTraCat1 WHERE cat1Id BETWEEN 21 AND 24");
 $codeTypeOfas = $bdd->query("SELECT * FROM tblOfasType ");
 $codeCatOfas = $bdd->query("SELECT * FROM tblOfasCategorie ");
-if (isset($_POST['Valider']) OR $_POST['Ajout']) {
-    $actId = $bdd->query("SELECT MAX(actId)FROM tblActivites");
-    $actId = $actId->fetch();
-    $IdAct = $actId[0] + 1;
-
+if (isset($_POST['Valider']) OR isset($_POST['Ajout'])) {
     $insert = $bdd->prepare("INSERT INTO tblActivites (actNom, actDebut,actFin,actDec,actType,actResponsable,
         actCoResponsable, actLieu, actTheme, actCodeOfas,actCuisiniere,actInfirmier,actOfaCat,actOfasType )
         VALUES(:actNom,:actDebut,:actFin,:actDec,:actType,:actResponsable, :actCoresponsable, :actLieu, :actTheme, :Ofas,
@@ -33,21 +30,22 @@ if (isset($_POST['Valider']) OR $_POST['Ajout']) {
 
     $insert->execute(array(
         'actNom' => $_POST['Nom'],
-        'actDebut' => $_POST['Debut'],
-        'actFin' => $_POST['Fin'],
+        'actDebut' => dateOuNull($_POST['Debut']),
+        'actFin' => dateOuNull($_POST['Fin']),
         'actDec' => $_POST['editeur'],
-        'actType' => $_POST['TActivite'],
-        'actResponsable' => $_POST['Responsable'],
-        'actCoresponsable' => $_POST['CoResponsable'],
-        'actCuisinier' => $_POST['Cuisinier'],
-        'actInfirmier' => $_POST['Infirmier'],
+        'actType' => intOuZero($_POST['TActivite']),
+        'actResponsable' => intOuNull($_POST['Responsable']),
+        'actCoresponsable' => intOuNull($_POST['CoResponsable']),
+        'actCuisinier' => intOuNull($_POST['Cuisinier']),
+        'actInfirmier' => intOuZero($_POST['Infirmier']),
         'actLieu' => $_POST['Lien'],
         'actTheme' => $_POST['Theme'],
-        'Ofas' => $_POST['CodeOfas'],
-        'catOfas' => $_POST['codeCatOfas'],
-        'typOfas' => $_POST['codeTypeOfas'],
+        'Ofas' => intOuNull($_POST['CodeOfas']),
+        'catOfas' => intOuNull($_POST['codeCatOfas']),
+        'typOfas' => intOuNull($_POST['codeTypeOfas']),
 
         ));
+    $IdAct = $bdd->lastInsertId();
     if (isset($_POST['Ajout'])) {
         header("location: modifParticipant.php?id=" . $IdAct);
     } else {

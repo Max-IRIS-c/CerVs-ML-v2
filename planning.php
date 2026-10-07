@@ -1,4 +1,4 @@
-<?php
+<?php include_once __DIR__ . '/src/dateFr.php'; ?><?php
 $pageNum = 32;
 include('../variables.php');
 include('../heade.php');
@@ -70,7 +70,7 @@ $req = $bdd->query("SELECT datediff(locDateDep,locDateEnt), locStatu, locPavId, 
         $jour = date('N', $date); // indique le jour ( 1 = Dimanche )
         $dateJour = date('d', $date);
         $semaine = date('W', $date);
-        $mois = strftime('%B', $date);
+        $mois = strftimeFr('%B', $date);
         $colspan = $nbrLog;
 
         if ($jour == 1) {
@@ -94,7 +94,7 @@ $req = $bdd->query("SELECT datediff(locDateDep,locDateEnt), locStatu, locPavId, 
 
         ?>
         <tr>
-            <td style="text-align: right"><? echo(strftime(" %a %d.%m.%G", $date)) ?></td>
+            <td style="text-align: right"><? echo(strftimeFr(" %a %d.%m.%G", $date)) ?></td>
             <? for ($l = 1; $l < $nbrLog; $l++) {
 
                 $logement = logement($date, $l);// apelle de fonction qui ce trouve dans fonctionReservation.php

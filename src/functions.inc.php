@@ -1,4 +1,4 @@
-<?php
+<?php include_once __DIR__ . '/../src/dateFr.php'; ?><?php
 
 // Démarrage ou restauration de la session
 session_start();
@@ -66,7 +66,7 @@ if (isset($dateSql))
     $annee = substr($dateSql, 0, 4);
     $date = $jour . '.' . $Mois . '.' . $annee;
 
-    return(strftime("%a %d.%m.%y",strtotime($dateSql)));
+    return(strftimeFr("%a %d.%m.%y",strtotime($dateSql)));
 }
 
 
@@ -194,7 +194,7 @@ function JourOuvrable($datedeb, $datefin)
 function HeureHhMm($heure)
 {
 
-    $heureHM = substr($heure, 0, 5);
+    $heureHM = substr((string)$heure, 0, 5);
     return $heureHM;
 
 }

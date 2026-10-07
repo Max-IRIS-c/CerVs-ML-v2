@@ -26,51 +26,51 @@ if(isset($_POST['retour'])) // Si le formulaire a été validé
 
 	<tr>
 		<td> Titre  </td>		
-		<td><input type="text" name="TITRE" value="<?php echo($donnees[TITRE ]) ;?>"></td>
+		<td><input type="text" name="TITRE" value="<?php echo($donnees['TITRE' ]) ;?>"></td>
 	</tr>
 	<tr>
 		<td> Nom  </td>		
-		<td><input type="text" name="NOM" value="<?php echo($donnees[NOM ]) ;?>"></td>
+		<td><input type="text" name="NOM" value="<?php echo($donnees['NOM' ]) ;?>"></td>
 	</tr>
 	<tr>
 		<td>Prénom </td>
-		<td><input type="text" name="PRENOM" value="<?php echo($donnees[PRENOM ]) ;?>"></td>
+		<td><input type="text" name="PRENOM" value="<?php echo($donnees['PRENOM' ]) ;?>"></td>
 	</tr>
 	<tr>
 		<td>Complément </td>
-		<td><input type="text" name="Complément" value="<?php echo($donnees[Complément ]) ;?>"></td>
+		<td><input type="text" name="Complément" value="<?php echo($donnees['Complément' ]) ;?>"></td>
 	</tr>
 	<tr>
 		<td>ADRESSE  </td>
-		<td><input type="text" name="ADRESSE" value="<?php echo($donnees[ADRESSE ]) ;?>"></td>
+		<td><input type="text" name="ADRESSE" value="<?php echo($donnees['ADRESSE' ]) ;?>"></td>
 	</tr>
 	<tr>
 		<td>NPA   </td>
-		<td><input type="text"  name="NPA" value="<?php echo($donnees[NPA]) ;?>"></td>
+		<td><input type="text"  name="NPA" value="<?php echo($donnees['NPA']) ;?>"></td>
 	</tr>
 	<tr>
 		<td>LOCALITE   </td>
-		<td><input type="text" name="LOCALITE" value="<?php echo($donnees[LOCALITE]) ;?>"></td>
+		<td><input type="text" name="LOCALITE" value="<?php echo($donnees['LOCALITE']) ;?>"></td>
 	</tr>
 	<tr>
 		<td>TELPRIVE   </td>
-		<td><input type="tel" name="TELPRIVE" value="<?php echo($donnees[TELPRIVE]) ;?>"></td>
+		<td><input type="tel" name="TELPRIVE" value="<?php echo($donnees['TELPRIVE']) ;?>"></td>
 	</tr>
 	<tr>
 		<td>TELPROF   </td>
-		<td><input type="tel" name="TELPROF" value="<?php echo($donnees[TELPROF]) ;?>"></td>
+		<td><input type="tel" name="TELPROF" value="<?php echo($donnees['TELPROF']) ;?>"></td>
 	</tr>
 	<tr>
 		<td>Natel   </td>
-		<td><input type="tel" name="Natel" value="<?php echo($donnees[Natel]) ;?>"></td>
+		<td><input type="tel" name="Natel" value="<?php echo($donnees['Natel']) ;?>"></td>
 	</tr>
 	<tr>
 		<td>FAX   </td>
-		<td><input type="tel" name="FAX" value="<?php echo($donnees[FAX]) ;?>"></td>
+		<td><input type="tel" name="FAX" value="<?php echo($donnees['FAX']) ;?>"></td>
 	</tr>
 	<tr>
 		<td>e-mail   </td>
-		<td><input id="Mail" type="text" name="Email" value="<?php echo($donnees[Email]) ;?>"></td>
+		<td><input id="Mail" type="text" name="Email" value="<?php echo($donnees['Email']) ;?>"></td>
 	</tr>
 	<tr>
 		<td>Contact inactif   </td>
@@ -90,11 +90,11 @@ if(isset($_POST['retour'])) // Si le formulaire a été validé
 	<table>
 		<tr>
 		<td> Membre  </td>		
-		<td><input type="text" name="Membre" value="<?php echo($donnees[Membre ]) ;?>"></td>
+		<td><input type="text" name="Membre" value="<?php echo($donnees['Membre' ]) ;?>"></td>
 	</tr>
 	<tr>
 		<td> Type  </td>		
-		<td><input type="text" name="TypeMembre" value="<?php echo($donnees[TypeMembre ]) ;?>"></td>
+		<td><input type="text" name="TypeMembre" value="<?php echo($donnees['TypeMembre' ]) ;?>"></td>
 	</tr>
 	<tr>
 		<td>Donnateur </td>
@@ -114,23 +114,23 @@ if(isset($_POST['retour'])) // Si le formulaire a été validé
 	<table>
 	<tr>
 		<td> Langue  </td>		
-		<td><input type="text" size="1" name="Langue" value="<?php echo($donnees[Langue ]);?>"></td>
+		<td><input type="text" size="1" name="Langue" value="<?php echo($donnees['Langue' ]);?>"></td>
 	</tr>
 	<tr>
 		<td> Région  </td>		
-		<td><input type="text" name="Région" value="<?php echo($donnees[Région]) ;?>"></td>
+		<td><input type="text" name="Région" value="<?php echo($donnees['Région']) ;?>"></td>
 	</tr>
 	<tr>
 		<td> ENTREE  </td>		
-		<td><input type="text"  size="7" name="ENTREE" value="<?php echo($donnees[ENTREE]) ;?>"></td>
+		<td><input type="text"  size="7" name="ENTREE" value="<?php echo($donnees['ENTREE']) ;?>"></td>
 	</tr>
 	<tr>
 		<td> NAISSANCE  </td>		
-		<td><input type="text" size="7" name="NAISSANCE" value="<?php echo($donnees[NAISSANCE]) ;?>"></td>
+		<td><input type="text" size="7" name="NAISSANCE" value="<?php echo($donnees['NAISSANCE']) ;?>"></td>
 	</tr>
 	<tr>
 		<td> noAVS  </td>		
-		<td><input type="text" name="noAVS" value="<?php echo($donnees[noAVS]) ;?>"></td>
+		<td><input type="text" name="noAVS" value="<?php echo($donnees['noAVS']) ;?>"></td>
 	</tr>
 		
 	</table>
@@ -457,7 +457,7 @@ if(isset($_POST['retour'])) // Si le formulaire a été validé
 	<div id="commentaire">
 	<h2> commentaire </h2>
 	<textarea rows="6" cols="47">
-		<?php echo($donnees[COMMENTAIRES]) ;?>
+		<?php echo($donnees['COMMENTAIRES']) ;?>
 		</textarea>
 		
 	</div>
@@ -496,29 +496,29 @@ if(isset($_POST['retour'])) // Si le formulaire a été validé
 	</tr>
 	<tr>
 		<td> Etat civil  </td>		
-		<td><input type="text" name="etatcivil" value="<?php echo($donnees[etatcivil ]) ;?>"></td>
+		<td><input type="text" name="etatcivil" value="<?php echo($donnees['etatcivil' ]) ;?>"></td>
 	</tr>
 	<tr>
 		<td> Nationalité  </td>		
-		<td><input type="text" name="nationalite" value="<?php echo($donnees[nationalite ]) ;?>"></td>
+		<td><input type="text" name="nationalite" value="<?php echo($donnees['nationalite' ]) ;?>"></td>
 		<td> Permis de séjour  </td>		
-		<td><input type="text"  name="permisejour" value="<?php echo($donnees[permisejour ]) ;?>"></td>
+		<td><input type="text"  name="permisejour" value="<?php echo($donnees['permisejour' ]) ;?>"></td>
 		<td> Validité  </td>		
-		<td><input type="text"   name="validpermsejour" value="<?php echo($donnees[validpermsejour ]) ;?>"></td>
+		<td><input type="text"   name="validpermsejour" value="<?php echo($donnees['validpermsejour' ]) ;?>"></td>
 	</tr>
 	<tr>
 		<td> Banque  </td>		
-		<td><input type="text" name="banque" value="<?php echo($donnees[banque ]) ;?>"></td>
+		<td><input type="text" name="banque" value="<?php echo($donnees['banque' ]) ;?>"></td>
 	</tr>
 	<tr>
 		<td> Agence de </td>		
-		<td><input type="text" name="agence" value="<?php echo($donnees[agence ]) ;?>"></td>
+		<td><input type="text" name="agence" value="<?php echo($donnees['agence' ]) ;?>"></td>
 		<td>
 		</td>
 		<td>
 		</td>
 		<td> IBAN/cpte: </td>		
-		<td><input type="text" size="26" name="banque" value="<?php echo($donnees[IBAN ]) ;?>"></td>
+		<td><input type="text" size="26" name="banque" value="<?php echo($donnees['IBAN' ]) ;?>"></td>
 	</tr>
 
 
@@ -533,7 +533,7 @@ if(isset($_POST['retour'])) // Si le formulaire a été validé
 		
 		?><table>
 				<tr> marqueur</tr>
-				<tr> <input type="text" size="26" name="banque" value="<?php echo($donnees[Marquage ]) ;?>"></tr>
+				<tr> <input type="text" size="26" name="banque" value="<?php echo($donnees['Marquage' ]) ;?>"></tr>
 		</table>
 		 
 		 <?php

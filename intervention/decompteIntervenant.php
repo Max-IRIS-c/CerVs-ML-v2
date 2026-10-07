@@ -2,7 +2,7 @@
 $bdd = new PDO($dsn, $user, $password);
 $debut = $_POST['debut'];
 $fin = $_POST['fin'];
-$id = $_SESSION[Id];
+$id = $_SESSION['Id'];
 $debutSql = dateToSql($debut);
 $finSql = dateToSql($fin);
 

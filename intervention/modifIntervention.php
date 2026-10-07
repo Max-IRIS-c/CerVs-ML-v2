@@ -1,10 +1,10 @@
 <?php include('../header.php');
 
 
-$intervenant  = $_SESSION[intervenant];
+$intervenant  = $_SESSION['intervenant'];
 
 
-$id = $_GET[Id];
+$id = $_GET['Id'];
 
 $bdd = new PDO($dsn,$user,$password); 
 // intervention a modifier 
@@ -122,10 +122,10 @@ if(isset($_POST['valider'])) // Si le formulaire a été validé
 					?>
 				</select>
 			</td>
-			<td><input style="width:130px" type="date" name="date" value="<?php echo ($intModif[intDate]);?>"></td>
-			<td><input class="input1" type="text" name="debut" value="<?php echo HeureHhMm($intModif[intDebut]);?>"></td>
-			<td><input class="input1" type="text" name="fin" value="<?php echo HeureHhMm($intModif[intFin]);?>"></td>
-			<td><input class="input1" type="text" name="facture" value="<?php echo $intModif[intFacturable];?>"></td>
+			<td><input style="width:130px" type="date" name="date" value="<?php echo ($intModif['intDate']);?>"></td>
+			<td><input class="input1" type="text" name="debut" value="<?php echo HeureHhMm($intModif['intDebut']);?>"></td>
+			<td><input class="input1" type="text" name="fin" value="<?php echo HeureHhMm($intModif['intFin']);?>"></td>
+			<td><input class="input1" type="text" name="facture" value="<?php echo $intModif['intFacturable'];?>"></td>
 			<td>
 				<select name="type">
 					<?php 
@@ -187,7 +187,7 @@ if(isset($_POST['valider'])) // Si le formulaire a été validé
 			{echo '<INPUT disabled type="checkbox" name="Parent" value="0" >';}
 		?></td>
 		<td><? echo $row['intCommentaire']; ?> </td>
-		<td><?php echo '<a href="modifIntervention.php?Id='.$row[intId].'"> Modifier </a>';?></td>
+		<td><?php echo '<a href="modifIntervention.php?Id='.$row['intId'].'"> Modifier </a>';?></td>
 	</tr>
 	<?php } ?>
 </table>

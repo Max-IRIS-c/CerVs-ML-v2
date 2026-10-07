@@ -1,7 +1,7 @@
 <?php include('../header.php');
 $id = $_GET['Id'];
 $_SESSION['intervenant'] = $id;
-$searchedParam= $_GET['searchedParam'];
+$searchedParam= $_GET['searchedParam'] ?? '';
 
 $bdd = new PDO($dsn,$user,$password);
 $interventionOuverte = $bdd->query("SELECT * FROM tblIntervention
@@ -48,7 +48,7 @@ $contact = $contact->fetch();
 
     <?php while($row = $interventionOuverte->fetch()) { ?>
         <tr>
-            <td><a href="<?php echo '../Releve/releve.php?Id='.$row[conId].'&searchedParam='.$searchedParam; ?>"><?php echo $row['conNom'].' '.$row['conPrenom'];?></a></td>
+            <td><a href="<?php echo '../Releve/releve.php?Id='.$row['conId'].'&searchedParam='.$searchedParam; ?>"><?php echo $row['conNom'].' '.$row['conPrenom'];?></a></td>
             <td><? echo DateToUser($row['intDate']); ?> </td>
             <td><? echo HeureHhMm($row['intDebut']); ?></td>
             <td><? echo HeureHhMm($row['intFin']); ?> </td>
@@ -62,8 +62,8 @@ $contact = $contact->fetch();
                 {echo '<INPUT class="input0" disabled type="checkbox" name="Parent" value="0" >';}
                 ?></td>
             <td><? echo $row['intCommentaire']; ?> </td>
-            <td><?php echo '<a href="modifIntervention.php?Id='.$row[intId].'&searchedParam='.$searchedParam.'">'.$mrp->getText("Modifier").'</a>';?></td>
-            <td><?php echo '<a href="../Releve/print.php?Id='.$row[intId].'" target="_blank">'.$mrp->getText("Imprimer").'</a>';?></td>
+            <td><?php echo '<a href="modifIntervention.php?Id='.$row['intId'].'&searchedParam='.$searchedParam.'">'.$mrp->getText("Modifier").'</a>';?></td>
+            <td><?php echo '<a href="../Releve/print.php?Id='.$row['intId'].'" target="_blank">'.$mrp->getText("Imprimer").'</a>';?></td>
 
     <?php } ?>
 </table>
@@ -87,7 +87,7 @@ $contact = $contact->fetch();
 	<?php while($row = $intervention->fetch()) { ?>
 
 	<tr>
-        <td><a href="<?php echo '../Releve/releve.php?Id='.$row[conId].'&searchedParam='.$searchedParam; ?>"><?php echo $row['conNom'].' '.$row['conPrenom'];?></a></td>
+        <td><a href="<?php echo '../Releve/releve.php?Id='.$row['conId'].'&searchedParam='.$searchedParam; ?>"><?php echo $row['conNom'].' '.$row['conPrenom'];?></a></td>
         <td><? echo DateToUser($row['intDate']); ?> </td>
 
 
@@ -103,7 +103,7 @@ $contact = $contact->fetch();
                             {echo '<INPUT class="input0" disabled type="checkbox" name="Parent" value="0" >';}
                ?></td>
 		<td><? echo $row['intCommentaire']; ?> </td>
-		<td><?php echo '<a href="modifIntervention.php?Id='.$row[intId].'&searchedParam='.$searchedParam.'"> Modifier </a>';?></td>
+		<td><?php echo '<a href="modifIntervention.php?Id='.$row['intId'].'&searchedParam='.$searchedParam.'"> Modifier </a>';?></td>
 	</tr>
 	<?php } ?>
 </table>

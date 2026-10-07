@@ -17,7 +17,7 @@ if ($_GET['action'] == "Modifier" AND isset($_GET['action'])) {
     $dossier = $bdd->query("SELECT * FROM tblCodeCompta");
 }
 // Ajout d'un nouveau dossier
-if (isset ($_POST[valider]) AND !isset($_GET['action'])) {
+if (isset ($_POST['valider']) AND !isset($_GET['action'])) {
 
     $nom = $_POST['Nom'];
     $code = $_POST['Code'];

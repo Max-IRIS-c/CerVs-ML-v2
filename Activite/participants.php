@@ -1,4 +1,4 @@
-<?php
+<?php include_once __DIR__ . '/../src/dateFr.php'; ?><?php
 include ('../header.php');
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 
@@ -74,9 +74,9 @@ LEFT JOIN tblContact as doublure on tblParticipants.conIdD = doublure.conId
 
             if ($Date1 != $Date2) {
 
-                echo  (strftime($format1, $Date1)) . ' au ' . (strftime($format2, $Date2));
+                echo  (strftimeFr($format1, $Date1)) . ' au ' . (strftimeFr($format2, $Date2));
             } else {
-                echo (strftime($format2, $Date1));
+                echo (strftimeFr($format2, $Date1));
 
             } ?> </td> */ ?>
     </tr>

@@ -1,7 +1,7 @@
 <?php 
     include('../header.php');
 
-    $id = $_GET[Id];
+    $id = $_GET['Id'];
     $searchedParam = $_GET['searchedParam'];
     $bdd = new PDO($dsn, $user, $password);
     $contact = $_SESSION['contact'];

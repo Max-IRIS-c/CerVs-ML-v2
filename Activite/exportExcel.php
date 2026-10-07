@@ -1,4 +1,4 @@
-<?php
+<?php include_once __DIR__ . '/../src/dateFr.php'; ?><?php
 include ("../variables.php");
 
 try{
@@ -42,12 +42,12 @@ function displayActiviteInfos($givenData, $output){
     $coResp = ['title' => 'Co-résp.', 'data' => $data['coResponsableN']. ' ' .$data['coResponsableP']];    
     $soinsResp = ['title' => 'Résp. des soins', 'data' => $data['InfirmierN']. ' ' .$data['InfirmierP']];
     $cuisinier = ['title' => 'Cuisinier', 'data' => $data['cuisinierN']. ' ' .$data['cuisinierP']];
-    fputcsv($output, $date, ';');
-    fputcsv($output, $lieu, ';');
-    fputcsv($output, $resp, ';');
-    fputcsv($output, $coResp, ';');
-    fputcsv($output, $soinsResp, ';');
-    fputcsv($output, $cuisinier, ';');
+    fputcsv($output, $date, ';', '"', '\\');
+    fputcsv($output, $lieu, ';', '"', '\\');
+    fputcsv($output, $resp, ';', '"', '\\');
+    fputcsv($output, $coResp, ';', '"', '\\');
+    fputcsv($output, $soinsResp, ';', '"', '\\');
+    fputcsv($output, $cuisinier, ';', '"', '\\');
 }
 
 function displayDataOnCsv($givenData, $output, $sectionTitle = null, $isFirst = false){
@@ -55,12 +55,12 @@ function displayDataOnCsv($givenData, $output, $sectionTitle = null, $isFirst = 
     // ligne vide avant le titre (sauf pour le premier bloc)
     if (!$isFirst) fwrite($output, "\n"); 
     // title => accompagnant etc.
-    if ($sectionTitle) fputcsv($output, ["*** $sectionTitle ***"], ';');
+    if ($sectionTitle) fputcsv($output, ["*** $sectionTitle ***"], ';', '"', '\\');
     // entete
-    fputcsv($output, array_keys($givenData[0]), ';');
+    fputcsv($output, array_keys($givenData[0]), ';', '"', '\\');
     //data
     foreach ($givenData as $row) {
-        fputcsv($output, $row, ';');
+        fputcsv($output, $row, ';', '"', '\\');
     }
 }
 
@@ -70,8 +70,8 @@ function setDate($start, $end){
     $format1 = ("%d");
     $format2 = ("%d %B %G");
 
-    if ($Date1 != $Date2) return (strftime($format1, $Date1)) . ' au ' . (strftime($format2, $Date2));
-    else return (strftime($format2, $Date1));
+    if ($Date1 != $Date2) return (strftimeFr($format1, $Date1)) . ' au ' . (strftimeFr($format2, $Date2));
+    else return (strftimeFr($format2, $Date1));
 }
 // date, lieu, responsable, co-resp., resp. cuisine
 function getActiviteInfos($bdd, $idActivite){

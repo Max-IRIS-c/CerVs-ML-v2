@@ -92,7 +92,7 @@ include '../heade.php';
         </ul>
     </nav>
 
-    <h1>Décompte d'heures pour <? echo $contact[empNom] . ' ' . $contact[empPrenom] ?> </h1>
+    <h1>Décompte d'heures pour <? echo $contact['empNom'] . ' ' . $contact['empPrenom'] ?> </h1>
     
 
     <table>
@@ -150,7 +150,7 @@ include '../heade.php';
 
 
     </table>
-    <p style="margin-top: -80px; margin-left: 2px: "> La différence d'heures de l'année précédent (soit :<?php echo $droit[droDiffe]?> heures) est reportée au 1er janvier </p>
+    <p style="margin-top: -80px; margin-left: 2px: "> La différence d'heures de l'année précédent (soit :<?php echo $droit['droDiffe']?> heures) est reportée au 1er janvier </p>
 
     <h1>Décompte des absences - année <?php echo $annee; ?>  </h1>
 

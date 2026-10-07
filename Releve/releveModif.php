@@ -1,41 +1,42 @@
 <?php include('../header.php');
 include('verifi.php');
+include_once('../src/fonctionsSql.php');
 
-$id = $_SESSION['contact'];
-$searchedParam = $_GET['searchedParam'];
+$id = $_SESSION['contact'] ?? '';
+$searchedParam = $_GET['searchedParam'] ?? '';
 $bdd = new PDO($dsn, $user, $password);
 // détail de l'intervention a modifier
 $modif = $bdd->query("SELECT * FROM tblIntervention WHERE intId = '$_GET[Id]'");
-$modif = $modif->fetch();
+$modif = $modif->fetch() ?: [];
 // intervenant de l'intervention
-$interInit = $bdd->query("SELECT conId, conNom, conPrenom FROM tblContact WHERE conId = $modif[intIntervenant]");
-$interInit = $interInit->fetch();
-$intervenant = $interInit[0];
+$interInit = $bdd->query("SELECT conId, conNom, conPrenom FROM tblContact WHERE conId = " . intOuZero($modif['intIntervenant'] ?? 0));
+$interInit = $interInit->fetch() ?: [0 => '', 'conId' => '', 'conNom' => '', 'conPrenom' => ''];
+$intervenant = intOuZero($interInit[0] ?? 0);
 // intervenant Habituelle
 $inter1 = $bdd->query("SELECT conId,conNom, conPrenom FROM tblAlocIntervenant
 LEFT JOIN tblContact  on aloIntA = conId
  WHERE aloIntBenefic = '$id'");
-$inter1 = $inter1->fetch();
+$inter1 = $inter1->fetch() ?: [0 => '', 'conId' => '', 'conNom' => '', 'conPrenom' => ''];
 // intervenant occasionnelle
 $inter2 = $bdd->query("SELECT conId,conNom, conPrenom FROM tblAlocIntervenant
 LEFT JOIN tblContact  on aloIntB = conId
  WHERE aloIntBenefic = '$id'");
-$inter2 = $inter2->fetch();
+$inter2 = $inter2->fetch() ?: [0 => '', 'conId' => '', 'conNom' => '', 'conPrenom' => ''];
 // intervenant Dépannage
 $inter3 = $bdd->query("SELECT conId, conNom, conPrenom FROM tblAlocIntervenant
 LEFT JOIN tblContact  on aloIntC = conId
  WHERE aloIntBenefic = '$id'");
-$inter3 = $inter3->fetch();
+$inter3 = $inter3->fetch() ?: [0 => '', 'conId' => '', 'conNom' => '', 'conPrenom' => ''];
 // intervenant Reserve
 $inter4 = $bdd->query("SELECT conId, conNom, conPrenom, conIntervenant FROM tblAlocIntervenant
 LEFT JOIN tblContact  on aloIntD = conId
  WHERE aloIntBenefic = '$id'");
-$inter4 = $inter4->fetch();
+$inter4 = $inter4->fetch() ?: [0 => '', 'conId' => '', 'conNom' => '', 'conPrenom' => ''];
 
-$idInter1 = $inter1[0];
-$idInter2 = $inter2[0];
-$idInter3 = $inter3[0];
-$idInter4 = $inter4[0];
+$idInter1 = $inter1[0] ?? '';
+$idInter2 = $inter2[0] ?? '';
+$idInter3 = $inter3[0] ?? '';
+$idInter4 = $inter4[0] ?? '';
 
 // Liste de tous les intervenant qui ne sont pas déja afficher
 $interTot = $bdd->query("SELECT conId, conNom, conPrenom FROM tblContact 
@@ -59,7 +60,7 @@ if (isset($_POST['Valider'])) {
     $fin = $_POST['fin'];
     $type = $_POST['typeServices'];
     $genre = $_POST['typeAide'];
-    $subventioner = $_POST['subventioner'];
+    $subventioner = $_POST['subventioner'] ?? 0;
     $commentaire = $_POST['commentaire'];
     $intervenant = $_POST['intervenant'];
 
@@ -80,14 +81,14 @@ if (isset($_POST['Valider'])) {
     $insert->execute(array(
 
         'beneficiaire' => $beneficiaire,
-        'intervenant' => $intervenant,
-        'dateInt' => $dateInt,
-        'debut' => $debut,
-        'fin' => $fin,
-        'type' => $type,
-        'genre' => $genre,
+        'intervenant' => intOuZero($intervenant),
+        'dateInt' => dateOuNull($dateInt),
+        'debut' => dateOuNull($debut),
+        'fin' => dateOuNull($fin),
+        'type' => intOuNull($type),
+        'genre' => intOuNull($genre),
         'commentaire' => $commentaire,
-        'subventioner' => $subventioner,
+        'subventioner' => intOuZero($subventioner),
 
     ));
 
@@ -95,7 +96,7 @@ if (isset($_POST['Valider'])) {
 
 }
 if (isset($_POST['Supprimer'])) {
-    header("location: supReleve.php?Id=" . $_GET[Id].'&searchedParam='.$searchedParam);
+    header("location: supReleve.php?Id=" . $_GET['Id'].'&searchedParam='.$searchedParam);
 }
 ?>
 
@@ -150,7 +151,7 @@ if (isset($_POST['Supprimer'])) {
                         <?php if ($interInit[0] == $inter4[0]) {
                             echo "";} else { ?>
                             <option value="<?php echo $inter4[0] ?>"><?php echo $inter4['conNom'] . ' ' . $inter4['conPrenom'] ?></option>" <?php } ?>
-                        <? ListeModif2($interTot, $modif['intIntervenan'], 'conId', 'conNom','conPrenom') ?>
+                        <? ListeModif2($interTot, $modif['intIntervenant'] ?? null, 'conId', 'conNom','conPrenom') ?>
 
                         <?php
                         $interTot->closeCursor(); ?>
@@ -168,7 +169,7 @@ if (isset($_POST['Supprimer'])) {
                             name="typeAide"><? ListeModif($typeAide, $modif['intGenre'], 'genSerId', 'genSerNom') ?></select>
                 </td>
                 <td><textarea name="commentaire" cols="25"><?php echo $modif['intCommentaire']; ?></textarea></td>
-                <td><?php echo CheckBoxModif($modif['intSubventioner'], subventioner); ?></td>
+                <td><?php echo CheckBoxModif($modif['intSubventioner'], 'subventioner'); ?></td>
                 <td><input id="submit" type="submit" name="Valider" class="ValiderPetit" value="Valider"> </br>
                     <input type="submit" name="Supprimer" class="SuprimerrPetit" value="Supprimer"></td>
             </tr>

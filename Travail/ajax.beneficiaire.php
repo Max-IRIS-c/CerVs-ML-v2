@@ -9,7 +9,7 @@ $contact = $bdd->query("SELECT conNom,conPrenom,conId FROM tblContact WHERE conH
 
 if (!empty($_GET['statu']) AND ($_GET['statu']==2) ){ ?>
     <select name="beneficiare" class="input150">
-        <?php ListeDeroulante2($contact, conId, conNom, conPrenom) ?>
+        <?php ListeDeroulante2($contact, 'conId', 'conNom', 'conPrenom') ?>
     </select>
 
 <?php

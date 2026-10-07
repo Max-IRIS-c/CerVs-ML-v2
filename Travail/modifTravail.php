@@ -1,6 +1,7 @@
 <?php
 //include ('verifi.php');
 include('../header.php');
+include_once('../src/fonctionsSql.php');
 
 /* =======================
    INITIALISATION
@@ -119,16 +120,16 @@ if (isset($_POST['valider'])) {
         ");
 
         $update->execute([
-            'date'          => $dateDebut,
+            'date'          => dateOuNull($dateDebut),
             'total'         => $total,
-            'statu'         => $statu,
-            'dossier'       => $dossier,
+            'statu'         => intOuNull($statu),
+            'dossier'       => intOuNull($dossier),
             'ofas'          => $ofasVal,
             'debut'         => $debut,
             'fin'           => $fin,
             'commentaire'   => $commentaire,
             'benevole'      => $benevol,
-            'beneficiaire'  => $client,
+            'beneficiaire'  => intOuNull($client),
             'honorefique'   => $honorefique,
             'id'            => $id
         ]);

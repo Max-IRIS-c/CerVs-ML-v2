@@ -1,4 +1,4 @@
-<?php
+<?php include_once __DIR__ . '/../src/dateFr.php'; ?><?php
     include('./class/locationObject.php');
     $pdfValid = true;
     $idLocation = intval($_GET['Id']) > 0 ? intval($_GET['Id']) : null;
@@ -13,7 +13,7 @@
     function formatDateFr($date) {
         setlocale(LC_TIME, 'fr_FR.UTF-8', 'fra', 'fr_FR'); 
         $timestamp = strtotime($date);
-        return strftime("%e %B %Y", $timestamp);
+        return strftimeFr("%e %B %Y", $timestamp);
     }
     ?>
 <style>
@@ -252,7 +252,7 @@
         </table>
         <p>Les dispositions générales du contrat ci-dessus, avec inclusion de la clause attributive de juridiction sont partie intégrante du contrat de location automobile.</p>
        <div class="dates">
-            <p>Fait à <input style="width: 50px; vertical-align: middle;" class="dates-input" type="text" value="Sion" />, le <input class="dates-input" type="text" value="<?php echo strftime('%d %B %Y'); ?>" /></p>       
+            <p>Fait à <input style="width: 50px; vertical-align: middle;" class="dates-input" type="text" value="Sion" />, le <input class="dates-input" type="text" value="<?php echo strftimeFr('%d %B %Y'); ?>" /></p>       
         </div>
         <table style="width:100%; margin-top:10mm;">
             <tr>
@@ -261,7 +261,7 @@
             </tr>
             <tr style="margin-bottom: 25px;">
                 <td style="width: 50%;"></td>
-                <td style="text-align:center; width: 50%; font-size: 10px;"><input style="width: 50px; vertical-align: middle;" class="dates-input" type="text" value="Sion" />, le <input class="dates-input" type="text" value="<?php echo strftime('%d %B %Y'); ?>" /></td>
+                <td style="text-align:center; width: 50%; font-size: 10px;"><input style="width: 50px; vertical-align: middle;" class="dates-input" type="text" value="Sion" />, le <input class="dates-input" type="text" value="<?php echo strftimeFr('%d %B %Y'); ?>" /></td>
             </tr>
             <tr>
                 <td style="width: 50%;"></td>

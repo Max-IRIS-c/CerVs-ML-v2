@@ -272,17 +272,17 @@ if (isset($_POST['validerDisp'])) {
             <tr>
                 <td style="display: flex; align-items: top; width: 100%; margin: 0; padding: 0;"><select name="region1" style="width: 100%; height: 25px;">
                         <?php
-                        ListeModif($region1, $diponibiliter1[1], regId, regNom)
+                        ListeModif($region1, $diponibiliter1[1], 'regId', 'regNom')
                         ?>
                     </select></td>
                 <td hidden><select name="region2">
                         <?php
-                        ListeModif($region2, $diponibiliter2[1], regId, regNom)
+                        ListeModif($region2, $diponibiliter2[1], 'regId', 'regNom')
                         ?>
                     </select></td>
                 <td hidden><select name="region3">
                         <?php
-                        ListeModif($region3, $diponibiliter3[1], regId, regNom)
+                        ListeModif($region3, $diponibiliter3[1], 'regId', 'regNom')
                         ?>
                     </select></td>
                 <td colspan="7" style="margin: 0; padding: 0;"><textarea name="Experiences" style="width: 100%; height: 200px;"><?php echo $infoGeneral['dispExperiance']; ?></textarea></td>

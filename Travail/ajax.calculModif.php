@@ -1,6 +1,6 @@
 <?php
 include('../variables.php');
-$id = $_SESSION[traId];
+$id = $_SESSION['traId'];
 $bdd = new PDO($dsn, $user, $password);
 $periode = $bdd->query("SELECT traHeureTot FROM tblTravail WHERE traId = '$id'");
 $periode = $periode->fetch();

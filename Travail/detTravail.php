@@ -113,22 +113,22 @@ WHERE traId = '$id'");
         $Largeur = "150px"// Largeur des liste déroulante?>
         <tr>
             <td><select disabled id="statu" name="statu" style="width: <?php echo $Largeur ?>">
-                    <?php ListeModif2($stat, $travail['traCat3'],cat3Id, cat3Code,cat3Nom) ?>
+                    <?php ListeModif2($stat, $travail['traCat3'],'cat3Id', 'cat3Code','cat3Nom') ?>
                 </select></td>
             <td colspan="2">
                 <?php //echo '$travail[traCat1] : '.$travail['traCat1']; ?>
                 <?php if($travail['traCat1']){ ?>
                     <select disabled name="ofas" style="width: <?php echo $Largeur ?>">
-                        <?php ListeModif2($ofas, $travail['traCat1'], cat1Id, cat1Code, cat1Nom) ?>
+                        <?php ListeModif2($ofas, $travail['traCat1'], 'cat1Id', 'cat1Code', 'cat1Nom') ?>
                     </select></td>
                 <?php } ?>
             <td>
                 <select disabled name="beneficiare" style="width: <?php echo $Largeur ?>">
-                    <?php ListeModif2($contact,$travail['tblContact_conId'], conId, conNom, conPrenom) ?>
+                    <?php ListeModif2($contact,$travail['tblContact_conId'], 'conId', 'conNom', 'conPrenom') ?>
                 </select></td>
 
             <td><select disabled name="dossier" style="width: <?php echo $Largeur ?>">
-                    <?php ListeModif2($dossier, $travail['traCat4'],cat4Id, cat4Code, cat4Nom) ?>
+                    <?php ListeModif2($dossier, $travail['traCat4'],'cat4Id', 'cat4Code', 'cat4Nom') ?>
                 </select></td>
         </tr>
     </table>

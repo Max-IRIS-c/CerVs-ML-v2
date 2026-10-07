@@ -3,13 +3,14 @@
 $pageNum = 34;
 
 include ("../header.php");
+include_once("../src/fonctionsSql.php");
 
 $bdd = new PDO($dsn, $user, $password, [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // ⚡ Exceptions activées
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     PDO::ATTR_EMULATE_PREPARES => false
 ]);
-$id = $_GET['Id'];
+$id = $_GET['Id'] ?? '';
 
 $pavillon = $bdd->query("SELECT * FROM tblLogement WHERE logId = '$id'");
 $pavillon = $pavillon->fetch();
@@ -38,22 +39,22 @@ if (isset($_POST['Valider'])){
 
 
             $insert->execute(array(
-                'locConId' => $_POST['Client'],
+                'locConId' => intOuNull($_POST['Client']),
                 'locRespNomPrenom' => $_POST['responsableNomAdmin'],
                 'locRespTel' => $_POST['responsableTelAdmin'],
                 'locRespMail' => $_POST['responsableMailAdmin'],
                 'locCoRespNomPrenom' => $_POST['responsableNom'],
                 'locCoRespTel' => $_POST['responsableTel'],
                 'locCoRespMail' => $_POST['responsableMail'],
-                'locPavId' => $id,
-                'locNbrPers' => $_POST['nbr'],
-                'locNbrPersAcc' => $_POST['nbrAcc'],
-                'locDateEnt' => $_POST['debut'],
-                'locDateDep' => $_POST['fin'],
+                'locPavId' => intOuNull($id),
+                'locNbrPers' => intOuNull($_POST['nbr']),
+                'locNbrPersAcc' => intOuNull($_POST['nbrAcc']),
+                'locDateEnt' => dateOuNull($_POST['debut']),
+                'locDateDep' => dateOuNull($_POST['fin']),
                 'locRemarque' => $_POST['remarque'],
-                'locArrivee' => $_POST['arrivee'],
-                'locDepart' => $_POST['depart'],
-                'locStatu' => $_POST['Statu']
+                'locArrivee' => dateOuNull($_POST['arrivee']),
+                'locDepart' => dateOuNull($_POST['depart']),
+                'locStatu' => intOuNull($_POST['Statu']) ?? 1
             ));
             header("location:Location.php");
     }catch(Exception $e){
@@ -62,7 +63,7 @@ if (isset($_POST['Valider'])){
 }
 
 ?>
-    <h1><?= $mrp->getText("Nouvelle location") ?><?echo $pavillon['logNom']?></h1>
+    <h1><?= $mrp->getText("Nouvelle location") ?><?php echo $pavillon['logNom'] ?? '' ?></h1>
     <form method="post">
         <table>
             <tr>

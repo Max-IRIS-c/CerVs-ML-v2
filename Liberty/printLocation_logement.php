@@ -1,4 +1,4 @@
-<?php
+<?php include_once __DIR__ . '/../src/dateFr.php'; ?><?php
 include('../variables.php');
 setlocale (LC_TIME, 'fr_FR.utf8','fra');
 $bdd = new PDO($dsn, $user, $password);
@@ -93,7 +93,7 @@ ob_start();
                     <td style="text-align: center; margin-left: 20mm; border-bottom: solid 1px;">Logement de vacances adapté - Vétroz Valais</td>
                 </tr>
                 <tr>
-                    <td style="text-align: center; margin-left: 20mm;">Sion, le <? echo strftime("%d %B %Y",strtotime(date('d-m-Y')))?>  </td>
+                    <td style="text-align: center; margin-left: 20mm;">Sion, le <? echo strftimeFr("%d %B %Y",strtotime(date('d-m-Y')))?>  </td>
                 </tr>
             </table>
         </page_header>
@@ -143,7 +143,7 @@ ob_start();
             </tr>
             <tr>
                 <td style="vertical-align: top" rowspan="2"><Strong>Date de la location </Strong></td>
-                <td><?php echo 'du <strong> '.strftime("%d %B %Y",strtotime($location['locDateEnt'])).' </strong> au  <strong>'.strftime("%d %B %Y",strtotime($location['locDateDep'])).'</strong>'?></td>
+                <td><?php echo 'du <strong> '.strftimeFr("%d %B %Y",strtotime($location['locDateEnt'])).' </strong> au  <strong>'.strftimeFr("%d %B %Y",strtotime($location['locDateDep'])).'</strong>'?></td>
             </tr>
             <tr><td>Arrivée à <?php echo '<strong>' .HeureHhMm($location['locArrivee']).' </strong> Départ à  <strong>'.HeureHhMm($location['locDepart'])?></strong></td></tr>
         </table>

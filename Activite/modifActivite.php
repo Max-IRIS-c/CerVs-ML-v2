@@ -1,5 +1,6 @@
 <?php
 include('../variables.php');
+include_once('../src/fonctionsSql.php');
 $bdd = new PDO($dsn, $user, $password);
 $id = $_GET['Id'];
 
@@ -46,18 +47,18 @@ if (isset($_POST['Valider'])) {
     $insert->execute(array(
         'actNom' => $_POST['Nom'],
         'actTheme' => $_POST['Theme'],
-        'actFin' => $_POST['Fin'],
-        'actDebut' => $_POST['Debut'],
+        'actFin' => dateOuNull($_POST['Fin']),
+        'actDebut' => dateOuNull($_POST['Debut']),
         'actDec' => $_POST['editeur'],
-        'actType' => $_POST['Type'],
+        'actType' => intOuZero($_POST['Type']),
         'actLieu' => $_POST['Lieu'],
-        'responsable' => $_POST['Responsable'],
-        'coresponsable' => $_POST['CoResponsable'],
-        'actCuisiniere' => $_POST['Cuissinier'],
-        'actinfirmier' => $_POST['Infirmier'],
-        'Ofas' => $_POST['CodeOfas'],
-        'catOfas' => $_POST['codeCatOfas'],
-        'typeOfas' => $_POST['codeTypeOfas']
+        'responsable' => intOuNull($_POST['Responsable']),
+        'coresponsable' => intOuNull($_POST['CoResponsable']),
+        'actCuisiniere' => intOuNull($_POST['Cuissinier']),
+        'actinfirmier' => intOuZero($_POST['Infirmier']),
+        'Ofas' => intOuNull($_POST['CodeOfas']),
+        'catOfas' => intOuNull($_POST['codeCatOfas']),
+        'typeOfas' => intOuNull($_POST['codeTypeOfas'])
 
     ));
 

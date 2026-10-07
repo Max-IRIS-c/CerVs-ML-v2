@@ -20,13 +20,13 @@ if (isset($_POST['Valider']) OR $_POST['Ajout']) {
 		VALUES (:langCode,:actNom,:actDebut,:actFin,:actDec,:actType,:actLieu,:actTheme,:actResponsable,:actCoResponsable,
 		:actCuisiniere,:actCodeOfas,:actInfirmier,:actOfasType,:actOfaCat)';
     $db->bindTxt('langCode', $_POST['langCode']);
-    $db->bindTxt('actNom', $_POST['actNom'],yes);
+    $db->bindTxt('actNom', $_POST['actNom'],'yes');
     $db->bindDate('actDebut', $_POST['actDebut']);
     $db->bindDate('actFin', $_POST['actFin']);
-    $db->bindTxt('actDec', $_POST['actDec'],yes);
+    $db->bindTxt('actDec', $_POST['actDec'],'yes');
     $db->bindInt('actType', $_POST['actType']);
-    $db->bindTxt('actLieu', $_POST['actLieu'],yes);
-    $db->bindTxt('actTheme', $_POST['actTheme'],yes);
+    $db->bindTxt('actLieu', $_POST['actLieu'],'yes');
+    $db->bindTxt('actTheme', $_POST['actTheme'],'yes');
     $db->bindInt('actResponsable', $_POST['actResponsable'],true);
     $db->bindInt('actCoResponsable', $_POST['actCoResponsable'],true);
     $db->bindInt('actCuisiniere', $_POST['actCuisiniere'],true);

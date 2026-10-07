@@ -190,7 +190,7 @@ if (isset($_POST['submit'])) // Si le formulaire a ? valid?
                 <td>
                     <select name="contact" >
                         <option>-></option>
-                        <?php ListeModif2($lstEmployer,$donnees['conId'],conId,conNom,conPrenom)
+                        <?php ListeModif2($lstEmployer,$donnees['conId'],'conId','conNom','conPrenom')
                         ?></select>
                 </td>
             </tr>

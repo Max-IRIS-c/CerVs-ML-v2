@@ -1,9 +1,10 @@
 <?php include('../header.php');
 include ('verifi.php');
+include_once('../src/fonctionsSql.php');
 
 $id = $_GET['Id'];
 $_SESSION['contact'] = $id;
-$searchedParam = $_GET['searchedParam'];
+$searchedParam = $_GET['searchedParam'] ?? '';
 $bdd = new PDO($dsn, $user, $password);
 
 $contact = $bdd->query("SELECT conNom, conPrenom, conLocaliter FROM tblContact WHERE conId = $id");
@@ -59,10 +60,9 @@ if(isset($_POST['Valider'])){
     $fin = $_POST['fin'];
     $type = $_POST['typeServices'];
     $genre = $_POST['typeAide'];
-    $subventioner = $_POST['subventioner'];
+    $subventioner = $_POST['subventioner'] ?? 0;
     $commentaire = $_POST['commentaire'];
     $intervenant = $_POST['intervenant'];
-   echo $dateInt;
 
     $insert= $bdd->prepare(" INSERT INTO tblIntervention
  (intBeneficiaire,intDate,intDebut,intFin,intType,intGenre,intSubventioner,intCommentaire,intIntervenant)
@@ -71,14 +71,14 @@ if(isset($_POST['Valider'])){
 
     $insert->execute(array(
         'beneficiaire' => $beneficiaire ,
-        'dateInt' => $dateInt,
-        'debut' =>$debut,
-        'fin' => $fin,
-        'type' =>$type ,
-        'genre' =>$genre ,
-        'subv' =>$subventioner ,
+        'dateInt' => dateOuNull($dateInt),
+        'debut' => dateOuNull($debut),
+        'fin' => dateOuNull($fin),
+        'type' => intOuNull($type),
+        'genre' => intOuNull($genre),
+        'subv' => intOuZero($subventioner),
         'commentaire' =>$commentaire ,
-        'intervenant' => $intervenant,
+        'intervenant' => intOuZero($intervenant),
     ));
     header("location: releve.php?Id=".$id.'&searchedParam='.$searchedParam);
 
@@ -161,7 +161,7 @@ if(isset($_POST['Valider'])){
             <?php 
             while ($a = $historique->fetch()){?>
             <tr>
-                <td><a href="<?php echo '../intervention/intervention.php?Id='.$a[conId]?>"><?php echo $a['conNom'].' '.$a['conPrenom'];?></a></td>
+                <td><a href="<?php echo '../intervention/intervention.php?Id='.$a['conId']?>"><?php echo $a['conNom'].' '.$a['conPrenom'];?></a></td>
                 <td><?php echo dateToUserJour($a['intDate']);?></td>
                 <td><?php echo HeureHhMm($a['intDebut']);?></td>
                 <td><?php echo HeureHhMm($a['intFin']);?></td>
@@ -199,7 +199,7 @@ if(isset($_POST['Valider'])){
             </tr>
 <?php while ($b = $historiqueFac->fetch()){?>
             <tr>
-                <td><a href="<?php echo '../intervention/intervention.php?Id='.$b[conId]?>"><?php echo $b['conNom'].' '.$b['conPrenom'];?></a></td>
+                <td><a href="<?php echo '../intervention/intervention.php?Id='.$b['conId']?>"><?php echo $b['conNom'].' '.$b['conPrenom'];?></a></td>
                 <td><?php echo dateToUserJour($b['intDate']);?></td>
                 <td><?php echo HeureHhMm($b['intDebut']);?></td>
                 <td><?php echo HeureHhMm($b['intFin']);?></td>

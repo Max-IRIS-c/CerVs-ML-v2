@@ -1,4 +1,4 @@
-<?php
+<?php include_once __DIR__ . '/../src/dateFr.php'; ?><?php
 include('../variables.php');
 
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
@@ -175,15 +175,15 @@ ob_start();
 
                     if ($Date1 != $Date2) {
 
-                        echo '<strong>'.$desActivite['tActNom'] .' '.$desActivite['actNom']. ' du ' . (strftime($format1, $Date1)) . ' au ' . (strftime($format2, $Date2)).'</strong>';
+                        echo '<strong>'.$desActivite['tActNom'] .' '.$desActivite['actNom']. ' du ' . (strftimeFr($format1, $Date1)) . ' au ' . (strftimeFr($format2, $Date2)).'</strong>';
                     } else {
-                        echo '<strong>'.$desActivite['tActNom'] .' '.$desActivite['actNom']. ' du ' . (strftime($format2, $Date1)).'</strong>';
+                        echo '<strong>'.$desActivite['tActNom'] .' '.$desActivite['actNom']. ' du ' . (strftimeFr($format2, $Date1)).'</strong>';
 
                     } ?> </td>
             </tr>
             <tr>
                 <td style="border-top:solid 1px; text-align: right; vertical-align: middle ">
-                    Sion, le <?php echo(strftime("%d %B %G"));; ?>
+                    Sion, le <?php echo(strftimeFr("%d %B %G"));; ?>
                 </td>
 
             </tr>
@@ -245,7 +245,7 @@ ob_start();
                 Merci à tous de votre compréhension. </strong></p>
 
 
-        <h1 style="font-size: 19px; margin-top: 5mm">Aller - <?php echo strftime("%d %B %G", $Date1) ?></h1>
+        <h1 style="font-size: 19px; margin-top: 5mm">Aller - <?php echo strftimeFr("%d %B %G", $Date1) ?></h1>
 
         <table>
             <tr>
@@ -351,7 +351,7 @@ ob_start();
             </tr>
         <? } ?>
         </table>
-        <h1 style="font-size: 19px; margin-top: 1mm">Retour - <?php echo strftime("%d %B %G", $Date2) ?></h1>
+        <h1 style="font-size: 19px; margin-top: 1mm">Retour - <?php echo strftimeFr("%d %B %G", $Date2) ?></h1>
         <table>
 
             <tr>

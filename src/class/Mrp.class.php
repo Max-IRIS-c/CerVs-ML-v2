@@ -71,7 +71,7 @@ class Mrp extends Db
 		
 		$nameofthefileoflanguage="de.csv";
 		$loadFile=strtolower(file_get_contents($this->langPath.$nameofthefileoflanguage));
-		$array_csv=str_getcsv($loadFile);
+		$array_csv=str_getcsv($loadFile, ",", "\"", "\\");
 		$this->traduction=$array_csv;
 		
 		}

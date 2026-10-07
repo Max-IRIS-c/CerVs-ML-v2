@@ -161,14 +161,14 @@ socPiscineGilet, socMarcheseul, socPossitionJour, socMarchaide, socdrapspec, soc
                 <td>Enfant de</td>
                 <td><select name="pere"class="input200">
 
-                        <?php echo ListeDeroulante2($parent, conId, conNom, conPrenom) ?>
+                        <?php echo ListeDeroulante2($parent, 'conId', 'conNom', 'conPrenom') ?>
                     </select></td>
             </tr>
             <tr>
                 <td>et de ( si séparé)</td>
                 <td><select name="mere"class="input200">
 
-                        <?php echo ListeDeroulante2($mere, conId, conNom, conPrenom) ?>
+                        <?php echo ListeDeroulante2($mere, 'conId', 'conNom', 'conPrenom') ?>
                     </select>
                 </td>
             </tr>
@@ -176,21 +176,21 @@ socPiscineGilet, socMarcheseul, socPossitionJour, socMarchaide, socdrapspec, soc
                 <td>Sous tutelle de</td>
                 <td><select name="tuteur"class="input200">
 
-                        <?php echo ListeDeroulante2($tuteur, conId, conNom, conPrenom) ?>
+                        <?php echo ListeDeroulante2($tuteur, 'conId', 'conNom', 'conPrenom') ?>
                     </select></td>
             </tr>
             <tr>
                 <td>Dans l'institutuion</td>
                 <td><select name="institution"class="input200">
 
-                        <?php echo ListeDeroulante2($institution, conId, conNom, conPrenom) ?>
+                        <?php echo ListeDeroulante2($institution, 'conId', 'conNom', 'conPrenom') ?>
                     </select></td>
             </tr>
             <tr>
                 <td style="color: #9a0000;">en cas d'urgence</td>
                 <td><select name="Urgence"class="input200">
 
-                        <?php echo ListeDeroulante2($urgence, conId, conNom, conPrenom) ?>
+                        <?php echo ListeDeroulante2($urgence, 'conId', 'conNom', 'conPrenom') ?>
                     </select></td>
             </tr>
             <tr>

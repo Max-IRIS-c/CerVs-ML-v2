@@ -62,7 +62,7 @@
 
 <?php
 $bdd = new PDO($dsn, $user, $password);
-$_SESSION[traId] = $_GET['Id'];
+$_SESSION['traId'] = $_GET['Id'];
 $id = $_GET['Id'];
 //liste déroulante
 $stat = $bdd->query("SELECT * FROM tblTraCat3 WHERE cat3Id >=10 ");
@@ -127,7 +127,7 @@ traCat3=:statu
             <td><div  disabled id="total"></div> <!--div ajax.calculDateModif.php--> </td>
 
             <td><select disabled name="statu" style="width: <?php echo $Largeur ?>">
-                    <?php ListeModif($stat, $periode['traCat3'], cat3Id, cat3Code) ?>
+                    <?php ListeModif($stat, $periode['traCat3'], 'cat3Id', 'cat3Code') ?>
                 </select></td>
 
         </tr>

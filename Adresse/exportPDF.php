@@ -1,4 +1,4 @@
-<?php
+<?php include_once __DIR__ . '/../src/dateFr.php'; ?><?php
 include("../variables.php");
 setlocale (LC_TIME, 'fr_FR.utf8','fra');
 header('Content-Type: text/pdf');
@@ -96,7 +96,7 @@ ob_start();
                 </tr>
             </table>
             <h2 style="text-align: right; margin-top: -15mm">Liste d'adresses selon marquage manuel : <?php echo $marqueur?></h2>
-            <h2 style="text-align: right; margin-top: -2mm "> <?php echo (strftime("%A, %d %B %G")); ;?></h2>
+            <h2 style="text-align: right; margin-top: -2mm "> <?php echo (strftimeFr("%A, %d %B %G")); ;?></h2>
         </page_header>
 
 

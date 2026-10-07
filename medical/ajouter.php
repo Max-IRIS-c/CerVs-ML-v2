@@ -97,28 +97,28 @@ echo "<h1> Modifier les infos médicales pour" . ' ' . $contact['conNom'] . ' ' 
                     <td>Médecin 1</td>
                     <td>
                         <select name="medecin1"
-                                style="width: 200px"><?php ListeModif2($lstMedecin1, $infoMedical['medMedecin1'], conId, conNom, conPrenom) ?> </select>
+                                style="width: 200px"><?php ListeModif2($lstMedecin1, $infoMedical['medMedecin1'], 'conId', 'conNom', 'conPrenom') ?> </select>
 
                 </tr>
                 <tr>
                     <td>Médecin 2</td>
                     <td>
                         <select name="medecin2"
-                                style="width: 200px"><?php ListeModif2($lstMedecin2, $infoMedical['medMedecin2'], conId, conNom, conPrenom) ?> </select>
+                                style="width: 200px"><?php ListeModif2($lstMedecin2, $infoMedical['medMedecin2'], 'conId', 'conNom', 'conPrenom') ?> </select>
                     </td>
                 </tr>
                 <tr>
                     <td>Médecin 3</td>
                     <td>
                         <select name="medecin3"
-                                style="width: 200px"><?php ListeModif2($lstMedecin3, $infoMedical['medMedecin3'], conId, conNom, conPrenom) ?> </select>
+                                style="width: 200px"><?php ListeModif2($lstMedecin3, $infoMedical['medMedecin3'], 'conId', 'conNom', 'conPrenom') ?> </select>
                     </td>
                 </tr>
                 <tr>
                     <td>Caissse maladie</td>
                     <td>
                         <select name="caMaladie"
-                                style="width: 200px"><?php ListeModif2($lstCaMaladie, $infoMedical['medCaisseMaladie'], conId, conNom, conPrenom) ?> </select>
+                                style="width: 200px"><?php ListeModif2($lstCaMaladie, $infoMedical['medCaisseMaladie'], 'conId', 'conNom', 'conPrenom') ?> </select>
                     </td>
                 </tr>
                 <tr>
@@ -129,7 +129,7 @@ echo "<h1> Modifier les infos médicales pour" . ' ' . $contact['conNom'] . ' ' 
                     <td>Assurance accident</td>
                     <td>
                         <select name="caAccident"
-                                style="width: 200px"><?php ListeModif2($lstCaAccident, $infoMedical['medAccident'], conId, conNom, conPrenom) ?> </select>
+                                style="width: 200px"><?php ListeModif2($lstCaAccident, $infoMedical['medAccident'], 'conId', 'conNom', 'conPrenom') ?> </select>
                     </td>
                 </tr>
             </table>
@@ -174,7 +174,7 @@ echo "<h1> Modifier les infos médicales pour" . ' ' . $contact['conNom'] . ' ' 
                 <tr>
                     <td><input style="width: 100%;" name="medTypeHandicap"
                                value="<?php echo $infoMedical['medTypeHandicap']; ?>"></td>
-                    <td><select name="medDegre" id=""><?php ListeDeroulante($lstImpotence,impId,impNom)?></select>
+                    <td><select name="medDegre" id=""><?php ListeDeroulante($lstImpotence,'impId','impNom')?></select>
                         </td>
                 </tr>
                 <tr>

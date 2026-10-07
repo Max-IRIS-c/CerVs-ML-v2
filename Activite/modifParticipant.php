@@ -1,5 +1,6 @@
 <?php 
 include('../variables.php');
+include_once('../src/fonctionsSql.php');
 
 // $mrp = new Mrp();
 $bdd = new PDO($dsn, $user, $password);
@@ -54,9 +55,9 @@ if (isset($_POST['ajoutP'])) {
                 VALUES(:activite, :Participant,:Accompagnat,:Doublure)");
     $insert->execute(array(
         'activite' => $id,
-        'Participant' => $_POST['Participants'],
-        'Accompagnat' => $_POST['Accompagnant'],
-        'Doublure' => $_POST['Doublure'],
+        'Participant' => intOuNull($_POST['Participants']),
+        'Accompagnat' => intOuZero($_POST['Accompagnant']),
+        'Doublure' => intOuNull($_POST['Doublure']),
     ));
     header("location: modifParticipant.php?id=" . $id);
 }
@@ -71,9 +72,9 @@ if (isset($_POST['Modifier'])) {
         WHERE parId =  '$parId'");
 
     $insert->execute(array(
-        'accompagnant' => $_POST['Accompagnant'],
-        'participant' => $_POST['Participants'],
-        'doublure' => $_POST['Doublure'],
+        'accompagnant' => intOuZero($_POST['Accompagnant']),
+        'participant' => intOuNull($_POST['Participants']),
+        'doublure' => intOuNull($_POST['Doublure']),
 
     ));
     header("location: modifParticipant.php?id=" . $id);
@@ -112,7 +113,7 @@ include('../heade.php');
             <th><?= $mrp->getText("Responsable") ?></th>
             <td><?php echo $activite['responsableN'] . ' ' . $activite['responsableP'] ?></td>
             <th><?= $mrp->getText("Cuisinier") ?></th>
-            <td><<?php echo $activite['cuisinierN'] . ' ' . $activite['cuisinierP'] ?></td>
+            <td><?php echo $activite['cuisinierN'] . ' ' . $activite['cuisinierP'] ?></td>
         </tr>
         <tr>
             <th><?= $mrp->getText("Co-responsable") ?></th>

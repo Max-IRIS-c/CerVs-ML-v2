@@ -1,6 +1,7 @@
 <?php
 $pageNum = 25;
 include '../header.php';
+include_once('../src/fonctionsSql.php');
 $bdd = new PDO($dsn, $user, $password);
 
 $type = $_GET['type'];
@@ -15,8 +16,8 @@ if ($_GET['type'] == 'chauffeur') {
     $actid = $bdd->query("SELECT actId,feuId,feuAller, feuOrdre FROM tblAloFeuilleRout WHERE feuId = $id ");
     $actid = $actid->fetch();
     $trajet = $actid[2];
-    $actid = $actid[0];
 	$ordre = $actid[3];
+    $actid = $actid[0];
 
 }
 
@@ -61,7 +62,7 @@ WHERE chauId =  '$chauId'");
         $insert->execute(array(
             'chauffeur' => $Chauffeur,
             'aideChauffeur' => $Aidechauffeur,
-            'bus' => $_POST['BusNom'],
+            'bus' => intOuNull($_POST['BusNom']),
 
         ));
 
@@ -86,7 +87,7 @@ WHERE feuId =  '$parId'");
             'accompagnant' => $accompagnant,
             'participant' => $participants,
             'lieu' => $lieu,
-	        'ordre' => $ordre
+	        'ordre' => intOuNull($ordre)
 
         ));
 
@@ -154,7 +155,7 @@ if ($type == "chauffeur") {// Affichage Modification pour le chauffeur
                 <td><input name="Lieu" value="<?php echo $data['feuLieu'] ?>"></td>
                 <td><input name="Participant" value="<?php echo $data['feuPart'] ?>"></td>
                 <td><input name="Accompagnant" value="<?php echo $data['feuAcc'] ?>"></td>
-	            <td><input name="ordre" value="<?php echo $data['feuOrdre'] ?>"></td>
+	            <td><input name="ordre" type="number" min="0" step="1" title="Nombre entier uniquement" value="<?php echo $data['feuOrdre'] ?>"></td>
                 <td><input type="submit" VALUE="Valider" name="valider" class="ValiderPetit"></td>
                 <input type="hidden" value="participants" name="typeModif">
                 <input type="hidden" value="<?php echo $data['feuId'] ?>" name="ID">

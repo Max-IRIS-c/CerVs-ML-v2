@@ -1,4 +1,4 @@
-<?php
+<?php include_once __DIR__ . '/../../src/dateFr.php'; ?><?php
     require_once(__DIR__.'/../../src/class/Db.class.php');
     require(__DIR__.'/locationReservation.php');
 
@@ -398,7 +398,7 @@
                 $dateStatus = [];
                 if ($monthCheck === 1) {
                     setlocale(LC_TIME, 'fr_FR.UTF-8', 'fra');
-                    $monthName = strftime('%B', $givenDate->getTimestamp()); // Nom complet du mois en français
+                    $monthName = strftimeFr('%B', $givenDate->getTimestamp()); // Nom complet du mois en français
                     $monthData= ['firstDayOfMonth' => true, 'monthName' => $monthName];
                     $dateStatus = array_merge($dateStatus, $monthData);
                 }

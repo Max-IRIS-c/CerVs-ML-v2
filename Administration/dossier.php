@@ -20,7 +20,7 @@ LEFT JOIN tblCodeCompta on cat4Compta = codeId WHERE cat4Statu = 1 AND cat4Id !=
  LEFT JOIN tblCodeCompta on cat4Compta = codeId WHERE cat4Statu = 1 ORDER BY cat4Code");
 }
 // Ajout d'un nouveau dossier
-if (isset ($_POST[valider]) AND !isset($_GET['action'])) {
+if (isset ($_POST['valider']) AND !isset($_GET['action'])) {
 
     $nom = $_POST['Nom'];
     $code = $_POST['Code'];
@@ -105,7 +105,7 @@ if(isset ($_POST['annuler'])){
         <tr style="border-bottom: solid 1px">
             <td><input name="Code" value="<?php echo $modifDossier['cat4Code']; ?>"</td>
             <td><input name="Nom" value="<?php echo $modifDossier['cat4Nom']; ?>"></td>
-            <td><select name="Compta" ><?php ListeModif2($lstCompta,$modifDossier['codeId'],codeId,codeNo,codeNom) ?></select></td>
+            <td><select name="Compta" ><?php ListeModif2($lstCompta,$modifDossier['codeId'],'codeId','codeNo','codeNom') ?></select></td>
             <td><input type="submit" name="valider" value="Valider" class="ValiderPetit">
                 <input type="submit" name="Supprimer" value="Supprimer" class="AnnulerPetit"></td>
         </tr>
@@ -134,7 +134,7 @@ if(isset ($_POST['annuler'])){
                 <td><input name="Code"></td>
                 <td><input name="Nom"></td>
                 <td><select name="Compta"> <option>-></option>
-  <?php ListeDeroulante2($lstCompta,codeId,codeNo, codeNom) ?> </select></td>
+  <?php ListeDeroulante2($lstCompta,'codeId','codeNo', 'codeNom') ?> </select></td>
                 <td><input type="submit" name="valider" value="Valider" class="ValiderPetit">
                     <input type="submit" name="annuler" value="Annuler" class="AnnulerPetit"></td>
             </tr>

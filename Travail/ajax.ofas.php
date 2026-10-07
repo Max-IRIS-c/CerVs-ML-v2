@@ -19,7 +19,7 @@
     if ($statu === 2) {
         echo '<select id="ofasList" class="required" name="ofas" style="width:150px">';
         echo '<option value="">--</option>';
-        ListeDeroulante2($ofas, cat1Id, cat1Code, cat1Nom);
+        ListeDeroulante2($ofas, 'cat1Id', 'cat1Code', 'cat1Nom');
         echo '</select>';
     }
 

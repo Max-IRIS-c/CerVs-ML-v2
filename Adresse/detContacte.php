@@ -208,9 +208,9 @@ if (isset($_POST['Valider'])) // Si le formulaire a été validé
         </tr>
         <tr> 
             <th><?php echo $mrp->getText("Cerebral") ?></th>
-            <td><?php echo $accompagnantStatus; ?></td>
+            <td><?php echo $accompagnantStatus ?? ''; ?></td>
             <th><?php echo $mrp->getText("Relève") ?></th>
-            <td><?php echo $intervenantStatus; ?></td>                  
+            <td><?php echo $intervenantStatus ?? ''; ?></td>                  
         </tr>
         <tr>
             <th>Parenthèse</th>

@@ -1,6 +1,7 @@
 <?php
 $pageNum = 25;
 include('../header.php');
+include_once('../src/fonctionsSql.php');
 setlocale (LC_TIME, 'fr_FR.utf8','fra');
 $bdd = new PDO($dsn, $user, $password);
 $actId = $_GET['Id'];
@@ -18,13 +19,13 @@ $dateAct = $dateAct->fetch();
 
 
 $Chauffeur1 = $bdd->query("SELECT * FROM tblchauffeur where actId = $id and busId = 1 and feuAller = $voyage");
-$Chauffeur1 = $Chauffeur1->fetch();
+$Chauffeur1 = $Chauffeur1->fetch() ?: [];
 $Chauffeur2 = $bdd->query("SELECT * FROM tblchauffeur where actId = $id and busId = 2 and feuAller = $voyage  ");
-$Chauffeur2 = $Chauffeur2->fetch();
+$Chauffeur2 = $Chauffeur2->fetch() ?: [];
 $Chauffeur3 = $bdd->query("SELECT * FROM tblchauffeur where  actId = $id and busId = 3 and feuAller = $voyage ");
-$Chauffeur3 = $Chauffeur3->fetch();
+$Chauffeur3 = $Chauffeur3->fetch() ?: [];
 $Chauffeur4 = $bdd->query("SELECT * FROM tblchauffeur where  actId = $id and busId = 4 and feuAller = $voyage ");
-$Chauffeur4 = $Chauffeur4->fetch();
+$Chauffeur4 = $Chauffeur4->fetch() ?: [];
 
 $Date1 = strtotime($dateAct['actDebut']);
 $Date2 = strtotime($dateAct['actFin']);
@@ -33,13 +34,13 @@ $Date2 = strtotime($dateAct['actFin']);
  if (isset($_POST['NouveauChauffeur'])) //  forumlaire pour l'ajout des chauffeurs
  {
      $activiter = $id;
-     $bus = $_POST['Bus'];
+     $busNum = $_POST['Bus'];
      $trajet = $voyage;
      $chauffeur = $_POST['chauffeur'];
      $aideChauffeur = $_POST['AideChauffeur'];
      $NomBus = $_POST['BusNom'];
 	 
-     $transport = $bdd->query("SELECT * FROM tblchauffeur WHERE actId = '$activiter' and busId = '$bus' and feuAller = '$trajet'");
+     $transport = $bdd->query("SELECT * FROM tblchauffeur WHERE actId = '$activiter' and busId = '$busNum' and feuAller = '$trajet'");
      $transport = $transport->fetch();
 
  if(isset($transport[0]))
@@ -61,20 +62,21 @@ VALUES(:activiter, :bus, :chauffeur, :aide, :trajet,:NomBus)");
 
     $insert->execute(array(
         'activiter' => $activiter,
-        'bus' => $bus,
+        'bus' => intOuNull($busNum),
         'chauffeur' => $chauffeur,
         'aide' => $aideChauffeur,
-        'trajet' => $trajet,
-        'NomBus' => $NomBus
+        'trajet' => intOuNull($trajet),
+        'NomBus' => intOuNull($NomBus)
     ));
 }
      header("location: feuilleRouteEdition.php?Id=$id&trajet=$trajet");
+    exit;
 
  }
 if (isset($_POST['participants'])) //  forumlaire pour l'ajout des Participants
 {
     $activiter = $id;
-    $bus = $_POST['Bus'];
+    $busNum = $_POST['Bus'];
     $trajet = $voyage;
     $lieu = $_POST['lieu'];
 	$ordre = $_POST['ordre'];
@@ -86,15 +88,16 @@ VALUES(:activiter, :bus, :lieu, :participants, :accompagnant, :trajet, :ordre)")
 
     $insert->execute(array(
         'activiter' => $activiter,
-        'bus' => $bus,
+        'bus' => intOuNull($busNum),
         'lieu' => $lieu,
         'participants' => $participants,
         'accompagnant' => $accompagnant,
-        'trajet' => $trajet,
-	    'ordre' => $ordre
+        'trajet' => intOuNull($trajet),
+	    'ordre' => intOuNull($ordre)
 
     ));
     header("location: feuilleRouteEdition.php?Id=$id&trajet=$trajet");
+    exit;
 }
 ?>
 <nav>
@@ -111,10 +114,10 @@ if ($_GET['trajet'] == 0){?>
 </nav>
 <?
     if ($_GET['trajet'] == 0){
-         echo '<h1>Aller - '.formaterDateFr($Date1).'</h1>';
+         echo '<h1>Aller - '.formaterDateFr($dateAct['actDebut']).'</h1>';
         }
         else
-            {echo '<h1>Retour - '.strftime("%d %B %G",$Date2 ).'</h1>';
+            {echo '<h1>Retour - '.formaterDateFr($dateAct['actFin']).'</h1>';
                 }
                 ?>
 
@@ -139,7 +142,7 @@ if ($_GET['trajet'] == 0){?>
                 <td> <input type="hidden" name="Bus" value="1">
                 <select name="BusNom" style="font-size: 15px; font-weight: bold"> <?
                     foreach($bus as $id=>$nom) {
-                        if ($Chauffeur1['busIdNom'] == $id)
+                        if (($Chauffeur1['busIdNom'] ?? null) == $id)
                             {
                               echo '<option selected value="' . $id . '">' . $nom . '</option>';
                             }
@@ -157,7 +160,7 @@ if ($_GET['trajet'] == 0){?>
              </tr>
                 </form>
             <? } else {?>
-             <h2><?=$bus[$Chauffeur1['busIdNom']] ?></h2>
+             <h2><?=($bus[$Chauffeur1['busIdNom'] ?? ''] ?? '') ?></h2>
                 <tr>
                     <td>Conducteur</td>
                     <td><?php echo $Chauffeur1['chauPrinc'] ?></td>
@@ -186,7 +189,7 @@ if ($_GET['trajet'] == 0){?>
                 <td> <input name="lieu"></td>
                 <td> <input name="participant"></td>
                 <td> <input name="accompagnant"></td>
-	            <td> <input name="ordre"></td>
+	            <td> <input name="ordre" type="number" min="0" step="1" title="Nombre entier uniquement"></td>
                 <input type="hidden" value="1" name="Bus">
                 <td><input type="submit" value="Valider" name="participants" class="ValiderPetit"> </td>
             </form>
@@ -200,7 +203,7 @@ if ($_GET['trajet'] == 0){?>
                     <td> <input type="hidden" name="Bus" value="2">
                         <select name="BusNom" style="font-size: 15px; font-weight: bold"> <?
                             foreach($bus as $id=>$nom) {
-                                if ($Chauffeur2['busIdNom'] == $id)
+                                if (($Chauffeur2['busIdNom'] ?? null) == $id)
                                 {
                                     echo '<option selected value="' . $id . '">' . $nom . '</option>';
                                 }
@@ -218,7 +221,7 @@ if ($_GET['trajet'] == 0){?>
                 </tr>
             </form>
         <? } else {?>
-            <h2><?=$bus[$Chauffeur2['busIdNom']] ?></h2>
+            <h2><?=($bus[$Chauffeur2['busIdNom'] ?? ''] ?? '') ?></h2>
             <tr>
                 <td>Conducteur</td>
                 <td><?php echo $Chauffeur2['chauPrinc'] ?></td>
@@ -246,7 +249,7 @@ if ($_GET['trajet'] == 0){?>
             <td> <input name="lieu"></td>
             <td> <input name="participant"></td>
             <td> <input name="accompagnant"></td>
-	        <td> <input name="ordre"></td>
+	        <td> <input name="ordre" type="number" min="0" step="1" title="Nombre entier uniquement"></td>
             <input type="hidden" value="2" name="Bus">
             <td><input type="submit" value="Valider" name="participants" class="ValiderPetit"> </td>
         </form>
@@ -260,7 +263,7 @@ if ($_GET['trajet'] == 0){?>
                     <td> <input type="hidden" name="Bus" value="3">
                         <select name="BusNom" style="font-size: 15px; font-weight: bold"> <?
                             foreach($bus as $id=>$nom) {
-                                if ($Chauffeur3['busIdNom'] == $id)
+                                if (($Chauffeur3['busIdNom'] ?? null) == $id)
                                 {
                                     echo '<option selected value="' . $id . '">' . $nom . '</option>';
                                 }
@@ -278,7 +281,7 @@ if ($_GET['trajet'] == 0){?>
                 </tr>
             </form>
         <? } else {?>
-            <h2><?=$bus[$Chauffeur3['busIdNom']] ?></h2>
+            <h2><?=($bus[$Chauffeur3['busIdNom'] ?? ''] ?? '') ?></h2>
             <tr>
                 <td>Conducteur</td>
                 <td><?php echo $Chauffeur3['chauPrinc'] ?></td>
@@ -307,7 +310,7 @@ if ($_GET['trajet'] == 0){?>
             <td> <input name="lieu"></td>
             <td> <input name="participant"></td>
             <td> <input name="accompagnant"></td>
-	        <td> <input name="ordre"></td>
+	        <td> <input name="ordre" type="number" min="0" step="1" title="Nombre entier uniquement"></td>
             <input type="hidden" value="3" name="Bus">
             <td><input type="submit" value="Valider" name="participants" class="ValiderPetit"> </td>
         </form>
@@ -321,7 +324,7 @@ if ($_GET['trajet'] == 0){?>
                     <td> <input type="hidden" name="Bus" value="4">
                         <select name="BusNom" style="font-size: 15px; font-weight: bold"> <?
                             foreach($bus as $id=>$nom) {
-                                if ($Chauffeur4['busIdNom'] == $id)
+                                if (($Chauffeur4['busIdNom'] ?? null) == $id)
                                 {
                                     echo '<option selected value="' . $id . '">' . $nom . '</option>';
                                 }
@@ -339,7 +342,7 @@ if ($_GET['trajet'] == 0){?>
                 </tr>
             </form>
         <? } else {?>
-            <h2><?=$bus[$Chauffeur4['busIdNom']] ?></h2>
+            <h2><?=($bus[$Chauffeur4['busIdNom'] ?? ''] ?? '') ?></h2>
             <tr>
                 <td>Conducteur</td>
                 <td><?php echo $Chauffeur4['chauPrinc'] ?></td>
@@ -367,7 +370,7 @@ if ($_GET['trajet'] == 0){?>
             <td> <input name="lieu"></td>
             <td> <input name="participant"></td>
             <td> <input name="accompagnant"></td>
-	        <td> <input name="ordre"></td>
+	        <td> <input name="ordre" type="number" min="0" step="1" title="Nombre entier uniquement"></td>
             <input type="hidden" value="4" name="Bus">
             <td><input type="submit" value="Valider" name="participants" class="ValiderPetit"> </td>
         </form>

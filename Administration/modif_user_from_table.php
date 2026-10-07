@@ -25,7 +25,7 @@ $_DE=$_POST['DE'];
 	$nameofthefileoflanguage="de.csv";
 	$testPath = $langPath.$nameofthefileoflanguage;
 	$loadFile=strtolower(file_get_contents($langPath.$nameofthefileoflanguage));
-	$array_csv=str_getcsv($loadFile);
+	$array_csv=str_getcsv($loadFile, ",", "\"", "\\");
 
 // Who was modified ?
 

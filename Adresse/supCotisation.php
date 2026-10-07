@@ -3,7 +3,7 @@ $formulaireNew =1;
 include('../header.php'); ?>
 
 <?php
-$contact = $_SESSION[contact];
+$contact = $_SESSION['contact'];
 $id  = $_GET["Id"] ;
 $bdd = new PDO($dsn,$user,$password); 
 $Donnee = $bdd ->query("SELECT * FROM tblCotisation  WHERE cotiId ='$id'");

@@ -1,7 +1,9 @@
 <?php
 include "../variables.php";
 
-$searchedParam = $_GET['searchedParam'];
+$searchedParam = $_GET['searchedParam'] ?? '';
+$contact = [];
+$intervenant = null;
 $bdd = new PDO($dsn, $user, $password);
 $bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,7 +23,7 @@ if (isset($_GET['statu'])) {
 // si le statu est égale à "Recherche" les informations sont caché et une liste déroutante est affichée
 // la nouvelle liste déroulante avec le nom des intervenant ce trouve dans ajax.interFiltre
 
-if ($_GET['statu'] != 'autres') {
+if (($_GET['statu'] ?? '') != 'autres') {
     try{
         $status = $_GET['statu'];
         $benef = $_GET['Id'];
@@ -29,15 +31,15 @@ if ($_GET['statu'] != 'autres') {
         $intervenantReq->execute(array(
                 'beneficiaire' => $benef));
         $intervenantReq = $intervenantReq->fetch();
-        $intervenant = $intervenantReq[$status];
+        $intervenant = $intervenantReq[$status] ?? null;
         if (!$intervenant){
             $textItervenant = "L'intervenant $compatibilite n'a pas encore été défini";
         }
         else
         {
             $contact = $bdd->query("SELECT * FROM tblContact WHERE conId='$intervenant'");
-            $contact = $contact->fetch();
-            $textItervenant= 'Info concernant l\'intervenant'.' '.$compatibilite.' '. $contact['conNom'] . ' ' . $contact['conPrenom'];
+            $contact = $contact->fetch() ?: [];
+            $textItervenant= 'Info concernant l\'intervenant'.' '.$compatibilite.' '. ($contact['conNom'] ?? '') . ' ' . ($contact['conPrenom'] ?? '');
         }
     }catch(Exception $e){
         $textItervenant = '...';
@@ -46,20 +48,23 @@ if ($_GET['statu'] != 'autres') {
 
 
 
-    $diponibiliter1 = $bdd->query("SELECT regNom FROM tblDiponibiliter
-LEFT JOIN tblRegionInter on dispRegion1 = regId WHERE tblContact_conId = '$intervenant'");
-    $diponibiliter1 = $diponibiliter1->fetch();
+    $diponibiliter1 = $diponibiliter2 = $diponibiliter3 = $infoGeneral = [];
+    if ($intervenant) {
+        $diponibiliter1 = $bdd->query("SELECT regNom FROM tblDiponibiliter
+    LEFT JOIN tblRegionInter on dispRegion1 = regId WHERE tblContact_conId = '$intervenant'");
+        $diponibiliter1 = $diponibiliter1->fetch() ?: [];
 
-    $diponibiliter2 = $bdd->query("SELECT regNom FROM tblDiponibiliter
-LEFT JOIN tblRegionInter on dispRegion2 = regId WHERE tblContact_conId = '$intervenant'");
-    $diponibiliter2 = $diponibiliter2->fetch();
+        $diponibiliter2 = $bdd->query("SELECT regNom FROM tblDiponibiliter
+    LEFT JOIN tblRegionInter on dispRegion2 = regId WHERE tblContact_conId = '$intervenant'");
+        $diponibiliter2 = $diponibiliter2->fetch() ?: [];
 
-    $diponibiliter3 = $bdd->query("SELECT regNom FROM tblDiponibiliter
-LEFT JOIN tblRegionInter on dispRegion3 = regId WHERE tblContact_conId = '$intervenant'");
-    $diponibiliter3 = $diponibiliter3->fetch();
+        $diponibiliter3 = $bdd->query("SELECT regNom FROM tblDiponibiliter
+    LEFT JOIN tblRegionInter on dispRegion3 = regId WHERE tblContact_conId = '$intervenant'");
+        $diponibiliter3 = $diponibiliter3->fetch() ?: [];
 
-    $infoGeneral = $bdd->query("SELECT * FROM tblDiponibiliter WHERE tblContact_conId ='$intervenant'");
-    $infoGeneral = $infoGeneral->fetch(PDO::FETCH_ASSOC);
+        $infoGeneral = $bdd->query("SELECT * FROM tblDiponibiliter WHERE tblContact_conId ='$intervenant'");
+        $infoGeneral = $infoGeneral->fetch(PDO::FETCH_ASSOC) ?: [];
+    }
 
     ?>
     <div style="margin-top:-47px;margin-left:200px;" id="infoIntervenant2">
@@ -73,19 +78,19 @@ LEFT JOIN tblRegionInter on dispRegion3 = regId WHERE tblContact_conId = '$inter
             </tr>
             <tr>
                 <td>e-mail:</td>
-                <td><?php echo $contact['conMail']; ?></td>
+                <td><?php echo $contact['conMail'] ?? ''; ?></td>
             </tr>
             <tr>
                 <td>Tel. mobile</td>
-                <td><?php echo $contact['conNathl']; ?></td>
+                <td><?php echo $contact['conNathl'] ?? ''; ?></td>
             </tr>
             <tr>
                 <td>Tel. privé</td>
-                <td><?php echo $contact['conTelPriver']; ?></td>
+                <td><?php echo $contact['conTelPriver'] ?? ''; ?></td>
             </tr>
             <tr>
                 <td>Tel. professionnel</td>
-                <td><?php echo $contact['conTelProf']; ?></td>
+                <td><?php echo $contact['conTelProf'] ?? ''; ?></td>
             </tr>
 
         </table>
@@ -97,16 +102,16 @@ LEFT JOIN tblRegionInter on dispRegion3 = regId WHERE tblContact_conId = '$inter
             </tr>
             <tr>
                 <!-- Région -->
-                <td style="width: 80px; vertical-align: top;"><?php echo $diponibiliter1[0]; ?></td>
+                <td style="width: 80px; vertical-align: top;"><?php echo $diponibiliter1[0] ?? ''; ?></td>
                 <!-- profil, experiences et compétences -->
-                <td style="vertical-align: top;"><?php if ($infoGeneral['dispExperiance'] == "NULL") {
+                <td style="vertical-align: top;"><?php if (($infoGeneral['dispExperiance'] ?? 'NULL') == "NULL") {
                         echo "";
                     } else {
                         echo $infoGeneral['dispExperiance'];
                     } ?>
                 </td>
                     <!-- commentaires -->
-                <td  style="vertical-align: top; width: 200px;"><?php if ($infoGeneral['dispReference'] == "NULL") {
+                <td  style="vertical-align: top; width: 200px;"><?php if (($infoGeneral['dispReference'] ?? 'NULL') == "NULL") {
                         echo "";
                     } else {
                         echo $infoGeneral['dispReference'];

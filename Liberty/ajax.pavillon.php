@@ -22,5 +22,5 @@ AND logId not in (SELECT locPavId FROM tblLocation where (locDateEnt <= '$DateFi
 ?>
 <select name="logId">
                             <option value="">-></option>
-                            <?php ListeDeroulante($LstPavillon,'logId','logNom')?>
+                            <?php if (isset($LstPavillon)) ListeDeroulante($LstPavillon,'logId','logNom')?>
                         </select>

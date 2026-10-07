@@ -1,8 +1,8 @@
 <?php
     include "./../src/class/Db.class.php";
-    $updateEnabled = $_GET['update'];
-    $idContact = intval($_GET['fkContact']) ? intval($_GET['fkContact']) : (intval($_POST['fkContact']) ? intval($_POST['fkContact']) : null);
-    $searchedParam = $_GET['searchedParam'] ? $_GET['searchedParam'] : ($_POST['searchedParam'] ? $_POST['searchedParam'] : null); 
+    $updateEnabled = $_GET['update'] ?? null;
+    $idContact = intval($_GET['fkContact'] ?? 0) ? intval($_GET['fkContact']) : (intval($_POST['fkContact'] ?? 0) ? intval($_POST['fkContact']) : null);
+    $searchedParam = ($_GET['searchedParam'] ?? null) ?: (($_POST['searchedParam'] ?? null) ?: null); 
     $updateError = null;
 
     // validation update

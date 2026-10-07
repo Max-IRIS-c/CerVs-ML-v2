@@ -2,6 +2,7 @@
 include('../variables.php');
 include_once "../src/class/Db.class.php";
 include_once "../src/class/Mrp.class.php";
+include_once "../src/fonctionsSql.php";
 
 $mrp = new Mrp();
 $erreurCode = false;
@@ -45,12 +46,12 @@ if (isset($_POST['valider'])) {
         $fin = $_POST['fin'];
         $total = heureDiffDecimal($_POST['debut'], $_POST['fin']);
         $ofasVal = !empty($_POST['ofas']) ? intval($_POST['ofas']) : null;
-        $client = $_POST['beneficiare'];
-        $statu = $_POST['statu'];
-        $dossierVal = $_POST['dossier'];
+        $client = intOuNull($_POST['beneficiare'] ?? null);
+        $statu = $_POST['statu'] ?? '';
+        $dossierVal = intOuNull($_POST['dossier'] ?? null);
         $benevol = isset($_POST['benevole']) ? 1 : 0;
         $employer = $idUtilisateur;
-        $commentaire = $_POST['commentaire'];
+        $commentaire = $_POST['commentaire'] ?? '';
         $honorefique = isset($_POST['honorefique']) ? 1 : 0;
 
         if(!$debut || !$fin) throw new Exception('time');
@@ -69,7 +70,7 @@ if (isset($_POST['valider'])) {
 
         $insert->execute(array(
             'traCat1' => $ofasVal,
-            'traCat3' => $statu,
+            'traCat3' => intOuNull($statu),
             'traCat4' => $dossierVal,
             'traDebut' => $debut,
             'traFin' => $fin,
@@ -78,7 +79,7 @@ if (isset($_POST['valider'])) {
             'tblEmployer_empId' => $employer,
             'traCommentaire' => $commentaire,
             'traBenevole' => $benevol,
-            'traDate' => $dateDebut,
+            'traDate' => dateOuNull($dateDebut),
             'honorefique' => $honorefique,
         ));
         $newId = $bdd->lastInsertId();
