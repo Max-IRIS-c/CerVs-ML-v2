@@ -319,7 +319,7 @@ doub.conNom as doubN, doub.conPrenom as doubP FROM tblParticipants
 			</tr>
 
 			<tr>
-				<td><strong style="font-size: 4mm;"><?= isset($Chauffeuraller2['busIdNom']) && isset($bus[$Chauffeuraller2['busIdNom']]) ?></strong></td>
+				<td><strong style="font-size: 4mm;"><?= isset($Chauffeuraller2['busIdNom']) && isset($bus[$Chauffeuraller2['busIdNom']]) ? $bus[$Chauffeuraller2['busIdNom']] : '' ?></strong></td>
 				<td colspan="2"><strong>Conducteur
 						: <?php echo $Chauffeuraller2['chauPrinc'] ?? '' ?>  </strong>
 				</td>
