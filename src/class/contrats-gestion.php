@@ -57,7 +57,7 @@
             }
         }
         // https://stackoverflow.com/questions/1653771/how-do-i-remove-a-directory-that-is-not-empty
-        private function deleteDirectory($dir) {
+        private static function deleteDirectory($dir) {
             if (!file_exists($dir)) {
                 return true;
             }
@@ -75,7 +75,7 @@
             return rmdir($dir);
         }
         /** format filename with good extension then return final path */
-        private function formatURL($folder, $giventext){
+        private static function formatURL($folder, $giventext){
             $extension = strtolower(pathinfo($giventext, PATHINFO_EXTENSION));
             $basename = pathinfo($giventext, PATHINFO_FILENAME);
             $safeBase = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $basename);
