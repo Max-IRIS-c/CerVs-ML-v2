@@ -3,22 +3,20 @@ $pageNum = 25;
 include '../header.php';
 include_once('../src/fonctionsSql.php');
 $bdd = new PDO($dsn, $user, $password);
-
-$type = $_GET['type'];
+$type = isset($_GET['type']) ? $_GET['type'] : null;
 $id = $_GET['Id'];
-if ($_GET['type'] == 'chauffeur') {
+
+if (isset($_GET['type']) && $_GET['type'] == 'chauffeur') {
     $actid = $bdd->query("SELECT actId,chauId,feuAller FROM tblchauffeur WHERE chauId = $id ");
     $actid = $actid->fetch();
     $trajet = $actid[2];
     $actid = $actid[0];
-
 } else {
     $actid = $bdd->query("SELECT actId,feuId,feuAller, feuOrdre FROM tblAloFeuilleRout WHERE feuId = $id ");
     $actid = $actid->fetch();
     $trajet = $actid[2];
 	$ordre = $actid[3];
     $actid = $actid[0];
-
 }
 
 
@@ -37,11 +35,8 @@ if (isset($_POST['supprimer'])) // suppression de la lignes
         $sql = "DELETE FROM tblAloFeuilleRout WHERE feuId= " . $rowId;
         $stmt = $bdd->prepare($sql);
         $stmt->execute();
-
     }
-
     header("location: feuilleRouteEdition.php?Id=$actid&trajet=$trajet");
-
 }
 
 if (isset($_POST['valider'])) // modification de la ligne
@@ -52,20 +47,18 @@ if (isset($_POST['valider'])) // modification de la ligne
         $Chauffeur = $_POST['chauffeur'];
         $Aidechauffeur = $_POST['aideChauffeur'];
         $chauId = $_POST['ID'];
-
         $insert = $bdd->prepare("UPDATE tblchauffeur SET
-chauPrinc =:chauffeur, 
-chauAide =:aideChauffeur,
-busIdNom =:bus
-WHERE chauId =  '$chauId'");
-
+            chauPrinc =:chauffeur, 
+            chauAide =:aideChauffeur,
+            busIdNom =:bus
+            WHERE chauId =  '$chauId'"
+        );
         $insert->execute(array(
             'chauffeur' => $Chauffeur,
             'aideChauffeur' => $Aidechauffeur,
             'bus' => intOuNull($_POST['BusNom']),
 
         ));
-
     }
     else // pour les participants
     {
@@ -77,11 +70,11 @@ WHERE chauId =  '$chauId'");
 		
 
         $insert = $bdd->prepare("UPDATE tblAloFeuilleRout SET
-feuAcc =:accompagnant, 
-feuPart =:participant,
-feuLieu =:lieu,
-feuOrdre = :ordre
-WHERE feuId =  '$parId'");
+            feuAcc =:accompagnant, 
+            feuPart =:participant,
+            feuLieu =:lieu,
+            feuOrdre = :ordre
+            WHERE feuId =  '$parId'");
 
         $insert->execute(array(
             'accompagnant' => $accompagnant,
@@ -97,7 +90,7 @@ WHERE feuId =  '$parId'");
 
 
 
-if ($type == "chauffeur") {// Affichage Modification pour le chauffeur
+if ($type == "chauffeur") { // Affichage Modification pour le chauffeur
     $data = $bdd->query(" SELECT * FROM tblchauffeur where chauId = $id");
     $data = $data->fetch();
     ?>
