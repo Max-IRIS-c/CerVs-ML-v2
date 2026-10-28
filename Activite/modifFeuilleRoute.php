@@ -107,6 +107,7 @@ if ($type == "chauffeur") { // Affichage Modification pour le chauffeur
                 <select name="BusNom">
 	                <?
                     foreach($bus as $id=>$nom) {
+                        if (!isset($busActifs[$id]) && $data['busIdNom'] != $id) continue;
                         if ($data['busIdNom'] == $id)
                         {
                             echo '<option selected value="' . $id . '">' . $nom . '</option>';

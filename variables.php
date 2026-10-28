@@ -42,24 +42,28 @@ $bus = array (
 );
 */
 	
-	$bus = array (
-			0=> '->',
+	// Liste des bus construite depuis tblLogement (logtype = 2) via tblBusCorrespondance.
+	// L'index (busIdx) reste celui stocké dans tblchauffeur.busIdNom.
+	$bddBus = new PDO($dsn, $user, $password);
+	// Tout nouveau bus créé dans tblLogement reçoit automatiquement l'index suivant
+	$bddBus->exec("INSERT INTO tblBusCorrespondance (logId)
+		SELECT l.logId FROM tblLogement l
+		WHERE l.logtype = 2
+		AND NOT EXISTS (SELECT 1 FROM tblBusCorrespondance c WHERE c.logId = l.logId)");
 
-			1=>'BUS Désiré',
-			2=>'BUS Destiny',
-			3=>'BUS Pacifique II',
-
-		    4=>'Au Pavillon',
-			5=>"BUS Liberty II",
-			6=>'BUS (par)Peugeot',
-
-			7=>'BUS (par)Mercedes',
-			8=>'BUS Pénalty (*)',
-			9=>'BUS Spitex (*)',
-
-			10=>'BUS Colibri',
-            //11=>'Pavillon'
-	);
+	$bus = array(0 => '->');        // tous les bus (affichage de l'historique)
+	$busActifs = array(0 => '->');  // bus proposés dans les listes déroulantes
+	$reqBus = $bddBus->query("SELECT c.busIdx, COALESCE(c.libelle, TRIM(l.logNom)) AS nom,
+			IF(c.logId IS NULL, 1, l.actif) AS actif
+		FROM tblBusCorrespondance c
+		LEFT JOIN tblLogement l ON l.logId = c.logId
+		ORDER BY c.busIdx");
+	foreach ($reqBus as $b) {
+		$bus[$b['busIdx']] = $b['nom'];
+		if ($b['actif'] == 1) {
+			$busActifs[$b['busIdx']] = $b['nom'];
+		}
+	}
 
 function dateToUserJour($dateSql)
 {
