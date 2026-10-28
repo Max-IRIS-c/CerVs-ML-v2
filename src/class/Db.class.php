@@ -38,7 +38,7 @@ class Db
 			$this->DBUser = CONFIG_USR; 
 			$this->DBPassword = CONFIG_PASS; 
 		}
-		$this->DBPort = 3306;
+		$this->DBPort = defined('CONFIG_PORT') ? CONFIG_PORT : 3306;
 		$this->Connect();
 		$this->parameters = array();
 	}
