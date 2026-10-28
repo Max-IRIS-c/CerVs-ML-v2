@@ -10,10 +10,8 @@
                 $folder = Contract::determineFolder($type, intval($idContrat));
                 if(!is_dir($folder)) throw new Exception();
                 else{
-                    $allPDF = glob($folder . '/*.pdf');
-                    $filename = basename($allPDF[0]);
-                    $url = $idContrat.'/'.$filename;
-                    if (!empty($allPDF)) return [ 'exist' => true, 'url' => $url]; 
+                    $allPDF = glob($folder . '/*.[pP][dD][fF]');
+                    if (!empty($allPDF)) return [ 'exist' => true, 'url' => $idContrat.'/'.basename($allPDF[0])];
                 }
                 throw new Exception();
             }catch(Exception $e){
@@ -29,14 +27,13 @@
             try{	
                 if(!$idContrat || !$type) throw new Exception();	
                 $folder = Contract::determineFolder($type, intval($idContrat));	
-                if(!$folder) throw new Exception();			
-                if(!is_dir($folder)) mkdir($folder, 0777, true); /** folder creation */
-                else { /** delete all files in the folder before new record */
-                    $allFiles = glob($folder . '/*');
-                    if(count($allFiles) > 0) foreach($allFiles as $file) unlink($file);
-                }
-                /** file existance */	
-                if (!isset($file['tmp_name']) || !is_uploaded_file($file['tmp_name'])) throw new Exception(); 
+                if(!$folder) throw new Exception();
+                /** file existance, checked before touching the existing contract */
+                if (!isset($file['tmp_name'], $file['error']) || $file['error'] !== UPLOAD_ERR_OK || !is_uploaded_file($file['tmp_name'])) throw new Exception();
+                if (strtolower(pathinfo($file['name'], PATHINFO_EXTENSION)) !== 'pdf') throw new Exception();
+                if(!is_dir($folder) && !mkdir($folder, 0777, true)) throw new Exception(); /** folder creation */
+                /** delete previous files (not the Synology @eaDir folder) before new record */
+                foreach(glob($folder . '/*') as $oldFile) if(is_file($oldFile)) unlink($oldFile);
                 $targetFolder = self::formatURL($folder, $file['name']);
                 $creation = move_uploaded_file($file['tmp_name'], $targetFolder);
                 return $creation;
@@ -48,9 +45,11 @@
             try{
                 if(!$idContrat || !$type) throw new Exception();	
                 $folder = Contract::determineFolder($type, intval($idContrat));         	
-                //if(!$folder || !is_dir($folder)) throw new Exception();	
-                $delete = self::deleteDirectory($folder); //rmdir($folder);
-                if(!$delete) throw new Exception();
+                if(!$folder) throw new Exception();
+                if(!is_dir($folder)) return true;
+                /** only the pdf files : the Synology @eaDir folder may not be removable by the web server */
+                foreach(glob($folder . '/*.[pP][dD][fF]') as $pdf) if(!unlink($pdf)) throw new Exception();
+                @self::deleteDirectory($folder); /** folder cleanup, failure is not blocking */
                 return true;
             }catch(Exception $e){
                 return false;
