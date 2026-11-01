@@ -35,6 +35,18 @@ $formulaire = $formulaireNew;
 //$bus = LocationObject::getAllBus();
 
 $bus = array (
+        0=> '->',
+		1=>'BUS Armony',
+		2=>'BUS Destiny',
+		3=>'BUS Pacifique II',
+		4=>'Au Pavillon',
+		5=>"BUS Liberty II",
+		6=>'BUS(par)Peugeot',
+		7=>'BUS(par) Mercedes',
+		8=>'BUS Pénalty',
+		9=>'BUS Spitex',
+		10=>'BUS Colibri'
+        /*
 		0=> '->',
 		1=>'BUS Désiré',
 		2=>'BUS Destiny',
@@ -43,6 +55,7 @@ $bus = array (
 		4=>'Au Pavillon',
 		6=>'BUS(par)Peugeot',
 		7=>'BUS(par) Mercedes'
+        */
 );
 $busActifs = $bus;
 
