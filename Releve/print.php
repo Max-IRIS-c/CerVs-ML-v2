@@ -3,7 +3,7 @@ include('../variables.php');
 
 
 $bdd = new PDO($dsn, $user, $password);
-$id = $_GET['Id'];
+$id = isset($_GET['Id']) ? intval($_GET['Id']) : 0;
 $intervention = $bdd->query("SELECT * FROM tblIntervention 
 LEFT JOIN tblGenreServices on intGenre = genSerId 
 LEFT JOIN tblTypeServices on intType = tServicesId WHERE intId = '$id'");
@@ -133,7 +133,7 @@ ob_start();
             <tr>
                 <td colspan="4"><?php echo $infoBenefi['conNpa'].' '.$infoBenefi['conLocaliter'] ?></td>
 
-                <td><?php echo $infoInter['conNpa'].' '.$infoInter['conLocaliter'] ?></td>
+                <td colspan="4"><?php echo $infoInter['conNpa'].' '.$infoInter['conLocaliter'] ?></td>
 
             </tr>
             <tr>
@@ -150,7 +150,7 @@ ob_start();
                 <th><?php echo $infoBenefi['telTyp3'] ?></th>
                 <td colspan="3"><?php echo $infoBenefi['conTel3'] ?></td>
                 <th><?php echo $infoInter['telTyp3'] ?></th>
-                <td colspan=""><?php echo $infoInter['conTel3'] ?></td>
+                <td colspan="3"><?php echo $infoInter['conTel3'] ?></td>
             </tr>
             <tr>
                 <th>e-mail</th>
@@ -177,16 +177,16 @@ ob_start();
                 <th>Fin :</th>
                 <td> <strong><?php echo HeureHhMm($intervention['intFin']) ?></strong></td>
                 <td style="border-color: #aaaaaa" class="input"></td>
-
+                <td></td>
             </tr>
             <tr>
-                <th style="height=10mm">Temps effectif</th>
-                <td class="input"  style="border-color: #aaaaaa""></td>
-
+                <th style="height: 10mm">Temps effectif</th>
+                <td class="input" style="border-color: #aaaaaa"></td>
+                <td colspan="5"></td>
             </tr>
             <tr>
                 <th>Commentaire</th>
-                <td colspan="9" rowspan="2" style="border: solid 1px;border-color: #aaaaaa;width: 170mm; height: 15mm; vertical-align:top;"><?php echo $intervention['intCommentaire'] ?></td>
+                <td colspan="6" style="border: solid 1px;border-color: #aaaaaa;width: 170mm; height: 15mm; vertical-align:top;"><?php echo $intervention['intCommentaire'] ?></td>
             </tr>
         </table>
         <table>
@@ -255,7 +255,7 @@ ob_start();
 
 try {
     $content = ob_get_clean();
-    require _('../vendor/autoload.php');
+    require '../vendor/autoload.php';
     $family = 'coucou';
     $style = 'regular';
     $file = '../vendor/tecnickcom/tcpdf/fonts/helvetica.php';
