@@ -53,11 +53,11 @@
         <li><a href="planningParenthese.php?start=<?php echo $start; ?>&end=<?php echo $end; ?>">Parenthèse </a> </li>
         <li><a href="modifLocation.php?Id=<?php echo $id?>&start=<?php echo $start; ?>&end=<?php echo $end; ?>""> Modifier la réservation </a> </li>
         <!-- liens contrat bus -->
-        <?php if($location['logtype'] === '2') { ?>
+        <?php if($location['logtype'] === 2) { ?>
             <li><a href="printLocation.php?Id=<?=$id?>" target="_blank"> Contrat </a> </li>
         <?php } ?>
         <!-- liens contrat logement -->
-        <?php if($location['logtype'] === '1') { ?>
+        <?php if($location['logtype'] === 1) { ?>
             <li><a href="printLocation_logement.php?Id=<?=$id?>" target="_blank"> Contrat </a> </li>
         <?php } ?>
     </ul>

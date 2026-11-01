@@ -27,7 +27,8 @@ class Mrp extends Db
 			// Need to be changed !!!! warning		
 			$this->filedirectory = '/var/data/hosting/docs';
 			$this->directory = URL_CONFIG_DIRECTORY;
-			$this->langPath = URL_CONFIG_LANG_PATH;
+			// chemin disque absolu, indépendant de la config (URL_CONFIG_LANG_PATH contenait une URL en prod)
+			$this->langPath = dirname(__DIR__, 2).'/lang/';
 			$this->_db = new DB();
 						
 			if(isset($_SESSION["userSession"])){

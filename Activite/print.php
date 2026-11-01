@@ -227,11 +227,11 @@ doub.conNom as doubN, doub.conPrenom as doubP FROM tblParticipants
 			</p>
 			<p style="padding-top: 20px;">
 				<?php
-					if ((!empty($activite['infirmierN']) && ($activite['actType'] == 1)) || ($activite['actType'] == 3)) {
+					if (!empty($activite['infirmierN'])) {
 						echo '<strong>Responsable de soins ' . $activite['infirmierP'] . ' ' . $activite['infirmierN'] . '</strong>';
 					}
 					
-					if ((!empty($activite['cuisinierN']) && ($activite['actType'] == 1)) || ($activite['actType'] == 3)) {
+					if (!empty($activite['cuisinierN'])) {
 						echo "<br>";
 						echo '<strong>Responsable de cuisine ' . $activite['cuisinierP'] . ' ' . $activite['cuisinierN'] . '</strong>';
 					}
@@ -319,7 +319,7 @@ doub.conNom as doubN, doub.conPrenom as doubP FROM tblParticipants
 			</tr>
 
 			<tr>
-				<td><strong style="font-size: 4mm;"><?= isset($Chauffeuraller2['busIdNom']) && isset($bus[$Chauffeuraller2['busIdNom']]) ?></strong></td>
+				<td><strong style="font-size: 4mm;"><?= isset($Chauffeuraller2['busIdNom']) && isset($bus[$Chauffeuraller2['busIdNom']]) ? $bus[$Chauffeuraller2['busIdNom']] : '' ?></strong></td>
 				<td colspan="2"><strong>Conducteur
 						: <?php echo $Chauffeuraller2['chauPrinc'] ?? '' ?>  </strong>
 				</td>

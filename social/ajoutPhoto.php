@@ -14,17 +14,33 @@ if (isset($_POST['validerPhoto'])) {
         mkdir($dossier_dest, 0777, true);
     }
 
-    $extensions_valides = array('jpg', 'jpeg'); // Ajout de jpeg par sécurité
+    $extensions_valides = array('jpg', 'jpeg', 'png'); // Ajout de jpeg par sécurité
     $extension_upload = strtolower(substr(strrchr($_FILES['Portrait']['name'], '.'), 1));
-    
+
     if ($_FILES['Portrait']['error'] > 0) {
         $erreur = "Erreur lors du transfert : code " . $_FILES['Portrait']['error'];
         echo $erreur;
     }
     elseif (in_array($extension_upload, $extensions_valides)) {
         $photo = "$dossier_dest/$nom.jpg";
-        
-        if (move_uploaded_file($_FILES['Portrait']['tmp_name'], $photo)) {
+
+        if ($extension_upload == 'png') {
+            // conversion en JPG : les pages d'affichage et d'impression lisent toutes $nom.jpg
+            $png = @imagecreatefrompng($_FILES['Portrait']['tmp_name']);
+            if ($png) {
+                // fond blanc pour les zones transparentes
+                $jpg = imagecreatetruecolor(imagesx($png), imagesy($png));
+                imagefill($jpg, 0, 0, imagecolorallocate($jpg, 255, 255, 255));
+                imagecopy($jpg, $png, 0, 0, 0, 0, imagesx($png), imagesy($png));
+                $enregistre = imagejpeg($jpg, $photo, 90);
+            } else {
+                $enregistre = false;
+            }
+        } else {
+            $enregistre = move_uploaded_file($_FILES['Portrait']['tmp_name'], $photo);
+        }
+
+        if ($enregistre) {
             // Redirection
             /*if ($src == 'Modif') {
                 header("location: modifSocial.php?Id=" . $id);
@@ -38,7 +54,7 @@ if (isset($_POST['validerPhoto'])) {
         }
     }
     else {
-        echo "Extension incorrecte (.jpg attendu).";
+        echo "Extension incorrecte (.jpg ou .png attendu).";
     }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
@@ -84,7 +100,7 @@ if (isset($_POST['validerPhoto'])) {
     <input type="hidden" name="Id" value="<?php echo htmlspecialchars($id); ?>">
     <input type="hidden" name="src" value="<?php echo htmlspecialchars($src); ?>">
 
-    <label for="Portrait">Photo (JPG| max. 15 Ko) :</label><br/>
-    <input type="file" name="Portrait" id="Portrait" required/><br/>
+    <label for="Portrait">Photo (JPG ou PNG) :</label><br/>
+    <input type="file" name="Portrait" id="Portrait" accept=".jpg,.jpeg,.png" required/><br/>
     <input type="submit" name="validerPhoto" value="valider" class="valider"/>
 </form> 

@@ -142,6 +142,7 @@ if ($_GET['trajet'] == 0){?>
                 <td> <input type="hidden" name="Bus" value="1">
                 <select name="BusNom" style="font-size: 15px; font-weight: bold"> <?
                     foreach($bus as $id=>$nom) {
+                        if (!isset($busActifs[$id]) && ($Chauffeur1['busIdNom'] ?? null) != $id) continue;
                         if (($Chauffeur1['busIdNom'] ?? null) == $id)
                             {
                               echo '<option selected value="' . $id . '">' . $nom . '</option>';
@@ -203,6 +204,7 @@ if ($_GET['trajet'] == 0){?>
                     <td> <input type="hidden" name="Bus" value="2">
                         <select name="BusNom" style="font-size: 15px; font-weight: bold"> <?
                             foreach($bus as $id=>$nom) {
+                                if (!isset($busActifs[$id]) && ($Chauffeur2['busIdNom'] ?? null) != $id) continue;
                                 if (($Chauffeur2['busIdNom'] ?? null) == $id)
                                 {
                                     echo '<option selected value="' . $id . '">' . $nom . '</option>';
@@ -263,6 +265,7 @@ if ($_GET['trajet'] == 0){?>
                     <td> <input type="hidden" name="Bus" value="3">
                         <select name="BusNom" style="font-size: 15px; font-weight: bold"> <?
                             foreach($bus as $id=>$nom) {
+                                if (!isset($busActifs[$id]) && ($Chauffeur3['busIdNom'] ?? null) != $id) continue;
                                 if (($Chauffeur3['busIdNom'] ?? null) == $id)
                                 {
                                     echo '<option selected value="' . $id . '">' . $nom . '</option>';
@@ -324,6 +327,7 @@ if ($_GET['trajet'] == 0){?>
                     <td> <input type="hidden" name="Bus" value="4">
                         <select name="BusNom" style="font-size: 15px; font-weight: bold"> <?
                             foreach($bus as $id=>$nom) {
+                                if (!isset($busActifs[$id]) && ($Chauffeur4['busIdNom'] ?? null) != $id) continue;
                                 if (($Chauffeur4['busIdNom'] ?? null) == $id)
                                 {
                                     echo '<option selected value="' . $id . '">' . $nom . '</option>';

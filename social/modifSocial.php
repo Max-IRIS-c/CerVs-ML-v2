@@ -133,19 +133,21 @@ if (isset($_POST['Valider'])) {
 <?php echo " <h1>".$mrp->getText("Info sociale pour"). ' ' . $contact['conNom'] . ' ' . $contact['conPrenom'] . " </h1 > ";
 ?>
 <form method="post">
-    <div id="photo" style="float: right;width: 150px; height: 255px; border: solid 1px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <?php
-        $photo = " ../imgParticipant/$id/portrait.jpg";
-        $portrait = "../imgParticipant/$id/portrait.jpg";
+    <div style="float: right; width: 150px; text-align: center;">
+        <div id="photo" style="width: 150px; height: 255px; border: solid 1px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <?php
+            $photo = " ../imgParticipant/$id/portrait.jpg";
+            $portrait = "../imgParticipant/$id/portrait.jpg";
 
-        if (file_exists($portrait)) { /*?>
-            <img src="../imgParticipant/<?php echo $id; ?>/portrait.jpg" style="height: 250px; width: auto;"> <?php */
-            echo '<a style="text-align: center; vertical-align: middle;" class="valider" href="ajoutPhoto.php?Id=' . $id . '&genre=portrait&src=Modif&searchedParam='.$searchedParam.'"> Modifier la  photo </a>';
-        }
-        else
-        {
-            echo '<a class="valider" href="ajoutPhoto.php?Id=' . $id . '&genre=portrait&src=Modif&searchedParam='.$searchedParam.'"> Ajouter une photo </a>';
-        } ?>
+            if (file_exists($portrait)) { ?>
+                <img src="<?php echo $portrait . '?v=' . filemtime($portrait); ?>" style="max-width: 100%; max-height: 100%; object-fit: contain;"> <?php
+            } ?>
+        </div>
+        <?php
+        // bouton sous la case photo
+        $libelle = file_exists($portrait) ? ' Modifier la  photo ' : ' Ajouter une photo ';
+        echo '<a style="display: inline-block; margin-top: 8px;" class="valider" href="ajoutPhoto.php?Id=' . $id . '&genre=portrait&src=Modif&searchedParam='.$searchedParam.'">' . $libelle . '</a>';
+        ?>
     </div>
     <div id="jour"
          style="border-color: #0e84b5; border: solid 1px ; width: 46.5%; height: 255px; float: right; margin-right: 10px;">

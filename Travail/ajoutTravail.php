@@ -165,6 +165,7 @@ include('../heade.php');
             <td><div id="beneficiaire"></div></td>
             <td>
                 <select name="dossier" style="width: 120px">
+                    <option value="">-></option>
                     <?php
                     $dossier = $bdd->query("SELECT * FROM tblTraCat4 where cat4Statu = 1 ORDER BY cat4Code");
                     ListeDeroulante2($dossier, 'cat4Id', 'cat4Code', 'cat4Nom', old('dossier'));
