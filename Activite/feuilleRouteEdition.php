@@ -12,10 +12,10 @@ $voyage = $_GET['trajet'];
 $dateAct = $bdd->query("SELECT actId,actDebut,actFin FROM tblActivites WHERE actId = $actId");
 $dateAct = $dateAct->fetch();
 	
-	$trajet1 = $bdd->query("SELECT * FROM tblAloFeuilleRout where actId = $id and busId = 1 and feuAller = $voyage ORDER BY feuOrdre ASC");
-	$trajet2 = $bdd->query("SELECT * FROM tblAloFeuilleRout where actId = $id and busId = 2 and feuAller = $voyage ORDER BY feuOrdre ASC ");
-	$trajet3 = $bdd->query("SELECT * FROM tblAloFeuilleRout where  actId = $id and busId = 3 and feuAller = $voyage ORDER BY feuOrdre ASC");
-	$trajet4 = $bdd->query("SELECT * FROM tblAloFeuilleRout where  actId = $id and busId = 4 and feuAller = $voyage ORDER BY feuOrdre ASC");
+$trajet1 = $bdd->query("SELECT * FROM tblAloFeuilleRout where actId = $id and busId = 1 and feuAller = $voyage ORDER BY feuOrdre ASC");
+$trajet2 = $bdd->query("SELECT * FROM tblAloFeuilleRout where actId = $id and busId = 2 and feuAller = $voyage ORDER BY feuOrdre ASC ");
+$trajet3 = $bdd->query("SELECT * FROM tblAloFeuilleRout where  actId = $id and busId = 3 and feuAller = $voyage ORDER BY feuOrdre ASC");
+$trajet4 = $bdd->query("SELECT * FROM tblAloFeuilleRout where  actId = $id and busId = 4 and feuAller = $voyage ORDER BY feuOrdre ASC");
 
 
 $Chauffeur1 = $bdd->query("SELECT * FROM tblchauffeur where actId = $id and busId = 1 and feuAller = $voyage");

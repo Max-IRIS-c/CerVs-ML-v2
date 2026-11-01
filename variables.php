@@ -44,7 +44,7 @@ $bus = array (
 		6=>'BUS(par)Peugeot',
 		7=>'BUS(par) Mercedes'
 );
-
+$busActifs = $bus;
 
 function dateToUserJour($dateSql)
 {
