@@ -8,7 +8,7 @@
 $bdd = new PDO($dsn, $user, $password);
 
 $lstCompta = $bdd->query("SELECT * FROM tblCodeCompta ORDER BY codeNo");
-if ($_GET['action'] == "Modifier" AND isset($_GET['action'])) {
+if (isset($_GET['action']) && $_GET['action'] == "Modifier") {
     $id = $_GET['Id'];
     $dossier = $bdd->query("SELECT * FROM tblTraCat4 
 LEFT JOIN tblCodeCompta on cat4Compta = codeId WHERE cat4Statu = 1 AND cat4Id !='$id' ORDER BY cat4Code");
@@ -24,9 +24,8 @@ if (isset ($_POST['valider']) AND !isset($_GET['action'])) {
 
     $nom = $_POST['Nom'];
     $code = $_POST['Code'];
-    $compta = $_POST['Compta'];
-    $insert = $bdd->prepare("INSERT INTO tblTraCat4(cat4Nom, cat4Code,cat4Compta)
-VALUES(:nom,:code, :compta)");
+    $compta = !isset($_POST['Compta']) || $_POST['Compta'] === '->' ? 0 : $_POST['Compta'];
+    $insert = $bdd->prepare("INSERT INTO tblTraCat4(cat4Nom, cat4Code,cat4Compta) VALUES(:nom,:code, :compta)");
     $insert->execute(array(
         'nom' => $nom,
         'code' => $code,
