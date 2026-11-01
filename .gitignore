@@ -1,5 +1,5 @@
 .idea/
-.vscode/launch.json
+.vscode/
 pdf/
 imgParticipant/
 vendor/
@@ -23,3 +23,16 @@ inc/config.php
 inc/config-db.php
 inc/config-mrp.php
 .vscode/launch.json
+
+# Synology
+@eaDir/
+#recycle/
+#snapshot/
+*@SynoResource
+*@SynoEAStream
+.SynologyWorkingDirectory/
+
+# Windows / macOS
+Thumbs.db
+desktop.ini
+.DS_Store
