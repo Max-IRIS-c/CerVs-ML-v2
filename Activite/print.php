@@ -227,13 +227,19 @@ doub.conNom as doubN, doub.conPrenom as doubP FROM tblParticipants
 			</p>
 			<p style="padding-top: 20px;">
 				<?php
-					if (!empty($activite['infirmierN'])) {
-						echo '<strong>Responsable de soins ' . $activite['infirmierP'] . ' ' . $activite['infirmierN'] . '</strong>';
+					// Le contact factice "vide" sert de valeur "aucun" : on ne l'affiche pas
+					$infirmier = trim($activite['infirmierP'] . ' ' . $activite['infirmierN']);
+					$cuisinier = trim($activite['cuisinierP'] . ' ' . $activite['cuisinierN']);
+					if (strcasecmp($infirmier, 'vide') == 0) $infirmier = '';
+					if (strcasecmp($cuisinier, 'vide') == 0) $cuisinier = '';
+
+					if ($infirmier != '') {
+						echo '<strong>Responsable de soins ' . $infirmier . '</strong>';
 					}
-					
-					if (!empty($activite['cuisinierN'])) {
-						echo "<br>";
-						echo '<strong>Responsable de cuisine ' . $activite['cuisinierP'] . ' ' . $activite['cuisinierN'] . '</strong>';
+
+					if ($cuisinier != '') {
+						if ($infirmier != '') echo "<br>";
+						echo '<strong>Responsable de cuisine ' . $cuisinier . '</strong>';
 					}
 				?>
 
