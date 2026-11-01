@@ -168,6 +168,15 @@
                 return [];
             }
         }
+        
+        static function getAllBus(){
+            try{
+                $query = "SELECT logId, logNom FROM tblLogement WHERE actif = 1 AND logtype = 2";
+                return self::executeQuery($query);
+            }catch(Exception $e){
+                return [];
+            }
+        }
         static function getAllBusCerebral(){
             try{
                 $query = "SELECT logId FROM tblLogement WHERE actif = 1 AND propriety = 0 AND logtype = 2";

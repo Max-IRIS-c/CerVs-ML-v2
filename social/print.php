@@ -119,9 +119,25 @@ use Spipu\Html2Pdf\Html2Pdf;
 
 ob_start();
 ?>
+<?php
+/*
+ * Mise en forme : html2pdf ne coupe les lignes que sur les espaces.
+ * pdfTxt() découpe les mots plus longs que $maxChars (adresses mail, URL, numéros collés...)
+ * pour qu'aucun texte ne dépasse de sa case.
+ */
+if (!function_exists('pdfTxt')) {
+    function pdfTxt($value, $maxChars = 40, $nl2br = false)
+    {
+        $value = trim((string)$value);
+        $value = preg_replace_callback('/[^\s<>]{' . ($maxChars + 1) . ',}(?![^<]*>)/u', function ($m) use ($maxChars) {
+            return implode(' ', mb_str_split($m[0], $maxChars));
+        }, $value);
+        return $nl2br ? nl2br($value) : $value;
+    }
+}
+?>
     <style>
         * {
-
             margin: 0;
             padding: 0;
             color: #000;
@@ -129,465 +145,433 @@ ob_start();
         }
 
         table {
-
-            margin-top: 10px;
-            width: 100%;
-            color: #9A0000;
-
+            margin-top: 0;
+            color: #000;
         }
 
-        td {
-
-            padding-left: 1mm;
-            vertical-align: top;
-            text-align: left;
-            border: solid 1px;
-            font-size: 15px;
-            word-wrap: break-word;
-
-
-        }
-
+        /* libellé de champ */
         th {
+            padding: 1.6mm 1mm 0.6mm 1mm;
+            vertical-align: bottom;
+            text-align: left;
+            color: #00852B;
+            font-size: 9.5px;
+            font-weight: normal;
+            border: none;
+        }
 
-            padding-left: 1mm;
+        /* case de valeur */
+        td {
+            padding: 1mm 1mm;
             vertical-align: top;
             text-align: left;
-            color: #00AA33;
-            font-size: 15px;
-            font-style: normal;
-            font-weight: normal !important;
-            ;
+            border: solid 0.2mm #7A7A7A;
+            font-size: 10.5px;
+            line-height: 1.25;
         }
 
-        .infoPratique td{
-
+        td.nob {
             border: none;
         }
 
-
-        .footer td {
-            vertical-align: bottom;
-            border: none;
-        }
-
-        h2 {
+        /* bandeau de titre de section */
+        td.section {
             background-color: #00AA00;
-            color: #fff;
-            margin: 0;
-            width: 25mm;
-            font-size: 18px;
-        }
-
-        .paire {
-
-            background-color: #FFE4C4;
-        }
-
-        .impaire {
-
-            background-color: #DEB887;
-        }
-
-        .affichage {
-            margin-left: 2mm;
-
-
-        }
-
-        .affichage td {
-
-            padding-bottom: 0;
-        }
-
-        .affichage th {
-            padding-left: 2mm;
-        }
-
-        .footer {
-            border-top: solid 1px;
-        }
-        .footer td{
-            font-size: 14px;
-        }
-        .checkboxLine{
-            margin: 15px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            align-items: center;
-        }
-        .checkboxLine td{
-            width: 20%;
+            color: #FFFFFF;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 1.2mm 2mm;
             border: none;
         }
-        .checkboxLine2{
-            margin: 15px;
-            width: 100%;
-            display: flex;
-            justify-content: left;
-            gap: 15px;
-            align-items: center;
+
+        td.urgent {
+            color: #9A0000;
+            font-weight: bold;
+        }
+
+        th.urgent {
+            color: #9A0000;
+            font-weight: bold;
+        }
+
+        .header td {
+            border: none;
+            padding: 0;
+            font-size: 11px;
+        }
+
+        .check td {
+            border: none;
+            padding: 1mm 1mm;
+            vertical-align: middle;
+            font-size: 11px;
+        }
+
+        .check img {
+            vertical-align: middle;
+        }
+
+        .badge {
+            background-color: #E6F4E6;
+            font-weight: bold;
         }
     </style>
     <page <?php echo $marge ?>> <!-- page 1 -->
         <page_header>
-            <table>
+            <table class="header" cellspacing="0">
                 <tr>
-                    <td style=" width:50%;  vertical-align: top;  padding: 0; border: none"><img style="height: 10mm" src="../img/logo.jpg" alt=""></td>
-                    <td style="text-align: right;width:50%; vertical-align: middle; border: none"><?php echo $mrp->getText("Fiche information Participant") ?><br><?php echo $mrp->getText("Dernière mise à jour") ?>
+                    <td style="width: 95mm; vertical-align: top"><img style="height: 10mm" src="../img/logo.jpg" alt=""></td>
+                    <td style="width: 95mm; text-align: right; vertical-align: middle"><strong><?php echo $mrp->getText("Fiche information Participant") ?></strong><br><?php echo $mrp->getText("Dernière mise à jour") ?>
                         : <?php  if ($infoMedical['medMaj'] > $infoSocial['socMaj'])
     {echo dateToUser($infoMedical['medMaj']);}
 else
-    {echo dateToUser($infoSocial['socMaj']);}?> <br>
-                        
-
+    {echo dateToUser($infoSocial['socMaj']);}?>
                     </td>
                 </tr>
             </table>
         </page_header>
-        <table style="margin-top:-5mm; margin-bottom: 0mm">
+
+        <table cellspacing="0">
             <tr>
-                <th style=" width:50%"><h2><?php echo $mrp->getText("Boissons") ?></h2></th>
-                <td style=" width:50%; text-align: right;border: none;"> <strong> <?php echo $contact['conNom'] . ' ' . $contact['conPrenom']; ?>
-                        <br> Né(e) le <?php echo dateToUser($contact['conDateNaissance']) ?> </strong></td>
+                <td class="section" style="width: 120mm"><?php echo $mrp->getText("Boissons") ?></td>
+                <td class="nob" style="width: 63mm; text-align: right; vertical-align: middle; padding: 0 0 0 2mm"><strong><?php echo pdfTxt($contact['conNom'] . ' ' . $contact['conPrenom'], 30); ?></strong>
+                    <br>Né(e) le <?php echo dateToUser($contact['conDateNaissance']) ?></td>
             </tr>
         </table>
-        <table>
+        <table cellspacing="0">
             <tr>
-                <th style="width: 60%; padding-bottom: 0"><?php echo $mrp->getText("De quelle manière et conseils hydratation") ?></th>
-                <td style="width: 24%;padding: 0; text-align: right;border: none" rowspan="10">
+                <th style="width: 140mm"><?php echo $mrp->getText("De quelle manière et conseils hydratation") ?></th>
+                <td class="nob" rowspan="8" style="width: 42.4mm; padding: 1.6mm 0 0 4mm; text-align: right">
                     <?php
                     $portrait = "../imgParticipant/$id/portrait.jpg";
 
                     if (file_exists($portrait)) { ?>
-                        <img  src="../imgParticipant/<?php echo $id; ?>/portrait.jpg" style=" width: 95%;"> <?php
+                        <img src="../imgParticipant/<?php echo $id; ?>/portrait.jpg" style="max-width: 42mm; max-height: 58mm"> <?php
                     }
                     ?>
                 </td>
             </tr>
-
             <tr>
-                <td style="border: solid 1px; width: 145mm; padding-bottom: -2mm; height: 12mm "><?php echo $infoMedical['medBoisCondition'] ?></td>
+                <td style="width: 140mm; height: 10mm"><?php echo pdfTxt($infoMedical['medBoisCondition'], 70, true) ?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Boissons préférées") ?></th>
             </tr>
             <tr>
-                <td style="border: solid 1px;width: 145mm;"><?php echo $infoMedical['medBoisPrefere'] ?></td>
+                <td style="width: 140mm"><?php echo pdfTxt($infoMedical['medBoisPrefere'], 70, true) ?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Déconseillées") ?></th>
             </tr>
             <tr>
-                <td style="border: solid 1px;width: 145mm;"><?php echo $infoMedical['medBoisDecons'] ?></td>
+                <td style="width: 140mm"><?php echo pdfTxt($infoMedical['medBoisDecons'], 70, true) ?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Interdites") ?></th>
             </tr>
             <tr>
-                <td style="border: solid 1px;width: 145mm;"><?php echo $infoMedical['medBoisInterdit'] ?></td>
+                <td style="width: 140mm"><?php echo pdfTxt($infoMedical['medBoisInterdit'], 70, true) ?></td>
             </tr>
-
         </table>
-        <table>
+
+        <table cellspacing="0" style="margin-top: 4mm">
             <tr>
-                <th >
-                    <h2><?php echo $mrp->getText("Alimentation") ?> </h2>
-                </th>
+                <td class="section" style="width: 187mm"><?php echo $mrp->getText("Alimentation") ?></td>
             </tr>
+        </table>
+        <table cellspacing="0">
             <tr>
                 <th><?php echo $mrp->getText("De quelles manières et conseils alimentation"); //echo $mrp->getText("Dans quelle conditions") ?></th>
             </tr>
             <tr>
-                <td style="width: 195mm;border: solid 1px;"><?php echo nl2br($infoMedical['medAlimCommentair']) ?></td>
+                <td style="width: 190mm"><?php echo pdfTxt($infoMedical['medAlimCommentair'], 90, true) ?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Aliments préférés") ?></th>
             </tr>
             <tr>
-                <td style="border: solid 1px;width: 195mm"><?php echo $infoMedical['medAlimPrefere'] ?></td>
+                <td style="width: 190mm"><?php echo pdfTxt($infoMedical['medAlimPrefere'], 90, true) ?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Déconseillé") ?></th>
             </tr>
             <tr>
-                <td style="border: solid 1px;width: 195mm"><?php echo $infoMedical['medAlimDecons'] ?></td>
+                <td style="width: 190mm"><?php echo pdfTxt($infoMedical['medAlimDecons'], 90, true) ?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Interdit") ?></th>
             </tr>
             <tr>
-                <td style="border: solid 1px;width: 195mm"><?php echo $infoMedical['medAlimInterdit'] ?></td>
+                <td style="width: 190mm"><?php echo pdfTxt($infoMedical['medAlimInterdit'], 90, true) ?></td>
             </tr>
             <tr>
                 <th>Consistance du repas</th>
             </tr>
             <tr>
-                <td><?php echo determineConsistence($infoMedical['medFoodConsistence']); ?></td>
+                <td style="width: 190mm"><?php echo determineConsistence($infoMedical['medFoodConsistence']); ?></td>
             </tr>
-        </table>
-        <table>
-            <tr>
-                <th>
-                    <h2><?php echo $mrp->getText("Médication"); ?> </h2>
-                </th>
-            </tr>
-            <tr>   
-                <td style="width: 20mm; font-weight: bold; border: none;">
-                    <p><?php echo intval($medicalData['isMedicated']) === 1 ? 'Oui' : 'Non'; ?></p>
-                </td>
-            </tr> 
-        </table>
-        <table>
-            <tr class="checkboxLine">
-                    <td>
-                        <p><?php CheckBoxPDF($medicalData['matin']) ?>
-                        <?php echo "matin"; ?></p>
-                    </td>
-                    <td>
-                        <p><?php CheckBoxPDF($medicalData['midi']) ?>
-                        <?php echo "midi" ?></p>
-                    </td>
-                    <td>
-                        <p><?php CheckBoxPDF($medicalData['soir']) ?>
-                        <?php echo"soir" ?></p>
-                    </td>
-                    <td>
-                        <p><?php CheckBoxPDF($medicalData['nuit']) ?>
-                        <?php echo"nuit" ?></p>
-                    </td>
-                </tr>
-            </table>
-            <table>
-            <tr style="padding-top: 15px;">
-                <td style="border: none;">Habitudes</td>
-            </tr>
-            <tr>
-                <td style="padding: 2.5px; color: black; width: 195mm; height: min-content;"><?php echo $medicalData['habitudes']; ?></td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <th colspan="4"><h2><?php echo $mrp->getText("Infos médicales") ?></h2></th>
-            </tr>
-            <tr>
-                <th><?php echo $mrp->getText("Type de handicap") ?></th>
-                <th><?php echo $mrp->getText("Handicaps associés") ?></th>
-                <th><?php echo $mrp->getText("Allergies") ?></th>
-                <th><?php echo $mrp->getText("Degré d'impotence") ?></th>
-            </tr>
-            <tr>
-                <td style="width: 25mm"><?php echo $infoMedical['medTypeHandicap']; ?></td>
-                <td style="width: 60mm"><?php echo $infoMedical['medHandicapsAsso']; ?></td>
-                <td style="width: 64mm"><?php echo $infoMedical['medAllergies']; ?></td>
-                <td style="width: 15mm"><?php echo $infoMedical['impNom']; ?></td>
-            </tr>
-
         </table>
 
+        <table cellspacing="0" style="margin-top: 4mm">
+            <tr>
+                <td class="section" style="width: 150mm"><?php echo $mrp->getText("Médication"); ?></td>
+                <td class="section" style="width: 29mm; text-align: right"><?php echo intval($medicalData['isMedicated']) === 1 ? 'Oui' : 'Non'; ?></td>
+            </tr>
+        </table>
+        <table class="check" cellspacing="0" style="margin-top: 1mm">
+            <tr>
+                <td style="width: 44.7mm"><?php CheckBoxPDF($medicalData['matin']) ?> <?php echo "matin"; ?></td>
+                <td style="width: 44.7mm"><?php CheckBoxPDF($medicalData['midi']) ?> <?php echo "midi" ?></td>
+                <td style="width: 44.7mm"><?php CheckBoxPDF($medicalData['soir']) ?> <?php echo"soir" ?></td>
+                <td style="width: 44.7mm"><?php CheckBoxPDF($medicalData['nuit']) ?> <?php echo"nuit" ?></td>
+            </tr>
+        </table>
+        <table cellspacing="0">
+            <tr>
+                <th>Habitudes</th>
+            </tr>
+            <tr>
+                <td style="width: 190mm"><?php echo pdfTxt($medicalData['habitudes'], 90, true); ?></td>
+            </tr>
+        </table>
+
+        <table cellspacing="0" style="margin-top: 4mm">
+            <tr>
+                <td class="section" style="width: 187mm"><?php echo $mrp->getText("Infos médicales") ?></td>
+            </tr>
+        </table>
+        <table cellspacing="0">
+            <tr>
+                <th style="width: 40mm"><?php echo $mrp->getText("Type de handicap") ?></th>
+                <th style="width: 55mm"><?php echo $mrp->getText("Handicaps associés") ?></th>
+                <th style="width: 55mm"><?php echo $mrp->getText("Allergies") ?></th>
+                <th style="width: 26.6mm"><?php echo $mrp->getText("Degré d'impotence") ?></th>
+            </tr>
+            <tr>
+                <td style="width: 40mm"><?php echo pdfTxt($infoMedical['medTypeHandicap'], 20, true); ?></td>
+                <td style="width: 55mm"><?php echo pdfTxt($infoMedical['medHandicapsAsso'], 28, true); ?></td>
+                <td style="width: 55mm"><?php echo pdfTxt($infoMedical['medAllergies'], 28, true); ?></td>
+                <td style="width: 26.6mm"><?php echo pdfTxt($infoMedical['impNom'], 13); ?></td>
+            </tr>
+        </table>
 
         <page_footer>
             <?php include '../footerPrint.php';?>
 
         </page_footer>
-
-
     </page>
-     <page <?php echo $marge ?>> <!-- page 2 -->
+
+    <page <?php echo $marge ?>> <!-- page 2 -->
         <page_header>
-            <table>
+            <table class="header" cellspacing="0">
                 <tr>
-                    <td style=" width:50%;  vertical-align: top;  padding: 0;border: none;"><img style="height: 10mm" src="../img/logo.jpg" alt=""></td>
-                    <td style="text-align: right;width:50%; vertical-align: middle;border: none;"><?php echo $mrp->getText("Fiche information Participant") ?> <br> <?php echo $mrp->getText(" Dernière mise à jour") ?>
+                    <td style="width: 95mm; vertical-align: top"><img style="height: 10mm" src="../img/logo.jpg" alt=""></td>
+                    <td style="width: 95mm; text-align: right; vertical-align: middle"><strong><?php echo $mrp->getText("Fiche information Participant") ?></strong><br><?php echo $mrp->getText(" Dernière mise à jour") ?>
                         : <?php  if ($infoMedical['medMaj'] > $infoSocial['socMaj'])
                         {echo dateToUser($infoMedical['medMaj']);}
                         else
-                        {echo dateToUser($infoSocial['socMaj']);}?> <br>
-                        <?php echo $contact['conNom'] . ' ' . $contact['conPrenom']; ?>
+                        {echo dateToUser($infoSocial['socMaj']);}?><br>
+                        <?php echo pdfTxt($contact['conNom'] . ' ' . $contact['conPrenom'], 40); ?>
                     </td>
                 </tr>
             </table>
         </page_header>
-        <table >
+
+        <table cellspacing="0">
             <tr>
-                <th colspan="5"><h2><?php echo $mrp->getText("Contacts proches") ?></h2></th>
+                <td class="section" style="width: 187mm"><?php echo $mrp->getText("Contacts proches") ?></td>
             </tr>
+        </table>
+        <table cellspacing="0">
+            <col style="width: 45.5mm">
+            <col style="width: 51.5mm">
+            <col style="width: 25mm">
+            <col style="width: 25mm">
+            <col style="width: 25mm">
             <tr>
                 <th><?php echo $mrp->getText("Enfant de") ?></th>
                 <th><?php echo $mrp->getText("Adresse") ?></th>
-                <th><?php echo $enfantDe['telTyp1']?></th>
-                <th><?php echo $enfantDe['telTyp2']?></th>
-                <th><?php echo $enfantDe['telTyp3']?></th>
+                <th><?php echo pdfTxt($enfantDe['telTyp1'], 15)?></th>
+                <th><?php echo pdfTxt($enfantDe['telTyp2'], 15)?></th>
+                <th><?php echo pdfTxt($enfantDe['telTyp3'], 15)?></th>
             </tr>
             <tr>
-                <td style="width: 35mm"><?php echo $enfantDe[0].' '.$enfantDe[1]?></td>
-                <td style="width: 48mm"><?php echo $enfantDe['conAdresse'].'<br>'.$enfantDe['conNpa'].' '.$enfantDe['conLocaliter']?> </td>
-                <td style="width: 30mm"><?php echo $enfantDe['conTel1']?></td>
-                <td style="width: 30mm"><?php echo $enfantDe['conTel2']?></td>
-                <td style="width: 30mm"><?php echo $enfantDe['conTel3']?></td>
+                <td><?php echo pdfTxt($enfantDe[0].' '.$enfantDe[1], 23)?></td>
+                <td><?php echo pdfTxt($enfantDe['conAdresse'], 27).'<br>'.pdfTxt($enfantDe['conNpa'].' '.$enfantDe['conLocaliter'], 27)?></td>
+                <td><?php echo pdfTxt($enfantDe['conTel1'], 15)?></td>
+                <td><?php echo pdfTxt($enfantDe['conTel2'], 15)?></td>
+                <td><?php echo pdfTxt($enfantDe['conTel3'], 15)?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("et").' '.$mrp->getText("de") ?></th>
                 <th><?php echo $mrp->getText("Adresse") ?></th>
-                <th><?php echo $enfantEtDe['telTyp1']?></th>
-                <th><?php echo $enfantEtDe['telTyp2']?></th>
-                <th><?php echo $enfantEtDe['telTyp3']?></th>
+                <th><?php echo pdfTxt($enfantEtDe['telTyp1'], 15)?></th>
+                <th><?php echo pdfTxt($enfantEtDe['telTyp2'], 15)?></th>
+                <th><?php echo pdfTxt($enfantEtDe['telTyp3'], 15)?></th>
             </tr>
             <tr>
-                <td><?php echo $enfantEtDe[0].' '.$enfantEtDe[1]?></td>
-                <td><?php echo $enfantEtDe['conAdresse'].'<br>'.$enfantEtDe['conNpa'].' '.$enfantEtDe['conLocaliter']?></td>
-                <td><?php echo $enfantEtDe['conTel1']?></td>
-                <td><?php echo $enfantEtDe['conTel2']?></td>
-                <td><?php echo $enfantEtDe['conTel3']?></td>
+                <td><?php echo pdfTxt($enfantEtDe[0].' '.$enfantEtDe[1], 23)?></td>
+                <td><?php echo pdfTxt($enfantEtDe['conAdresse'], 27).'<br>'.pdfTxt($enfantEtDe['conNpa'].' '.$enfantEtDe['conLocaliter'], 27)?></td>
+                <td><?php echo pdfTxt($enfantEtDe['conTel1'], 15)?></td>
+                <td><?php echo pdfTxt($enfantEtDe['conTel2'], 15)?></td>
+                <td><?php echo pdfTxt($enfantEtDe['conTel3'], 15)?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Sous curatelle de") ?></th>
                 <th><?php echo $mrp->getText("Adresse") ?></th>
-                <th><?php echo $tuteur['telTyp1']?></th>
-                <th><?php echo $tuteur['telTyp2']?></th>
-                <th><?php echo $tuteur['telTyp3']?></th>
+                <th><?php echo pdfTxt($tuteur['telTyp1'], 15)?></th>
+                <th><?php echo pdfTxt($tuteur['telTyp2'], 15)?></th>
+                <th><?php echo pdfTxt($tuteur['telTyp3'], 15)?></th>
             </tr>
             <tr>
-                <td><?php echo $tuteur[0].' '.$tuteur[1]?></td>
-                <td><?php echo $tuteur['conAdresse'].'<br>'.$tuteur['conNpa'].' '.$tuteur['conLocaliter']?></td>
-                <td><?php echo $tuteur['conTel1']?></td>
-                <td><?php echo $tuteur['conTel2']?></td>
-                <td><?php echo $tuteur['conTel3']?></td>
+                <td><?php echo pdfTxt($tuteur[0].' '.$tuteur[1], 23)?></td>
+                <td><?php echo pdfTxt($tuteur['conAdresse'], 27).'<br>'.pdfTxt($tuteur['conNpa'].' '.$tuteur['conLocaliter'], 27)?></td>
+                <td><?php echo pdfTxt($tuteur['conTel1'], 15)?></td>
+                <td><?php echo pdfTxt($tuteur['conTel2'], 15)?></td>
+                <td><?php echo pdfTxt($tuteur['conTel3'], 15)?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Dans l'institution") ?></th>
                 <th><?php echo $mrp->getText("Adresse") ?></th>
-                <th><?php echo $Institution['telTyp1']?></th>
-                <th><?php echo $Institution['telTyp2']?></th>
-                <th><?php echo $Institution['telTyp3']?></th>
+                <th><?php echo pdfTxt($Institution['telTyp1'], 15)?></th>
+                <th><?php echo pdfTxt($Institution['telTyp2'], 15)?></th>
+                <th><?php echo pdfTxt($Institution['telTyp3'], 15)?></th>
             </tr>
             <tr>
-                <td style="width: 42mm;"><?php echo $Institution[0].' '.$Institution[1]?></td>
-                <td><?php echo $Institution['conAdresse'].'<br>'.$Institution['conNpa'].' '.$Institution['conLocaliter']?></td>
-                <td><?php echo $Institution['conTel1']?></td>
-                <td><?php echo $Institution['conTel2']?></td>
-                <td><?php echo $Institution['conTel3']?></td>
+                <td><?php echo pdfTxt($Institution[0].' '.$Institution[1], 23)?></td>
+                <td><?php echo pdfTxt($Institution['conAdresse'], 27).'<br>'.pdfTxt($Institution['conNpa'].' '.$Institution['conLocaliter'], 27)?></td>
+                <td><?php echo pdfTxt($Institution['conTel1'], 15)?></td>
+                <td><?php echo pdfTxt($Institution['conTel2'], 15)?></td>
+                <td><?php echo pdfTxt($Institution['conTel3'], 15)?></td>
             </tr>
             <tr>
-                <th><?php echo $mrp->getText("Référent dans l'institution") ?></th>
-                <td colspan="4"><?php echo $infoSocial['socReferentInstitut']?></td>
+                <th colspan="5"><?php echo $mrp->getText("Référent dans l'institution") ?></th>
             </tr>
             <tr>
-                <th colspan="2"><strong style="color: #9A0000"><?php echo $mrp->getText("En cas d'urgence, prévenir en priorité") ?></strong> </th>
-                <th><?php echo $urgence['telTyp1']?></th>
-                <th><?php echo $urgence['telTyp2']?></th>
-                <th><?php echo $urgence['telTyp3']?></th>
+                <td colspan="5"><?php echo pdfTxt($infoSocial['socReferentInstitut'], 90)?></td>
             </tr>
             <tr>
-                <td colspan="2"><?php echo $urgence[0].' '.$urgence[1]?></td>
-
-                <td><?php echo $urgence['conTel1']?></td>
-                <td><?php echo $urgence['conTel2']?></td>
-                <td><?php echo $urgence['conTel3']?></td>
+                <th colspan="2" class="urgent"><?php echo $mrp->getText("En cas d'urgence, prévenir en priorité") ?></th>
+                <th><?php echo pdfTxt($urgence['telTyp1'], 15)?></th>
+                <th><?php echo pdfTxt($urgence['telTyp2'], 15)?></th>
+                <th><?php echo pdfTxt($urgence['telTyp3'], 15)?></th>
             </tr>
-
+            <tr>
+                <td colspan="2" class="urgent"><?php echo pdfTxt($urgence[0].' '.$urgence[1], 50)?></td>
+                <td><?php echo pdfTxt($urgence['conTel1'], 15)?></td>
+                <td><?php echo pdfTxt($urgence['conTel2'], 15)?></td>
+                <td><?php echo pdfTxt($urgence['conTel3'], 15)?></td>
+            </tr>
         </table>
-        <table>
+
+        <table cellspacing="0" style="margin-top: 4mm">
             <tr>
-                <th colspan="5"><h2><?php echo $mrp->getText("Contacts médicaux") ?></h2></th>
+                <td class="section" style="width: 187mm"><?php echo $mrp->getText("Contacts médicaux") ?></td>
             </tr>
+        </table>
+        <table cellspacing="0">
+            <col style="width: 45.5mm">
+            <col style="width: 51.5mm">
+            <col style="width: 25mm">
+            <col style="width: 25mm">
+            <col style="width: 25mm">
             <tr>
                 <th><?php echo $mrp->getText("Médecin généraliste") ?></th>
                 <th><?php echo $mrp->getText("Adresse") ?></th>
-                <th><?php echo $medecin1['telTyp1']?></th>
-                <th><?php echo $medecin1['telTyp2']?></th>
-                <th><?php echo $medecin1['telTyp3']?></th>
+                <th><?php echo pdfTxt($medecin1['telTyp1'], 15)?></th>
+                <th><?php echo pdfTxt($medecin1['telTyp2'], 15)?></th>
+                <th><?php echo pdfTxt($medecin1['telTyp3'], 15)?></th>
             </tr>
             <tr>
-                <td style="width: 42mm"><?php echo $medecin1[0].' '.$medecin1[1]?></td>
-                <td style="width: 48mm"><?php echo $medecin1['conAdresse'].'<br>'.$medecin1['conNpa'].' '.$medecin1['conLocaliter']?></td>
-                <td style="width: 30mm"><?php echo $medecin1['conTel1']?></td>
-                <td style="width: 30mm"><?php echo $medecin1['conTel2']?></td>
-                <td style="width: 30mm"><?php echo $medecin1['conTel3']?></td>
+                <td><?php echo pdfTxt($medecin1[0].' '.$medecin1[1], 23)?></td>
+                <td><?php echo pdfTxt($medecin1['conAdresse'], 27).'<br>'.pdfTxt($medecin1['conNpa'].' '.$medecin1['conLocaliter'], 27)?></td>
+                <td><?php echo pdfTxt($medecin1['conTel1'], 15)?></td>
+                <td><?php echo pdfTxt($medecin1['conTel2'], 15)?></td>
+                <td><?php echo pdfTxt($medecin1['conTel3'], 15)?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Médecin, spécialiste") ?> 1</th>
                 <th>Adresse</th>
-                <th><?php echo $medecin2['telTyp1']?></th>
-                <th><?php echo $medecin2['telTyp2']?></th>
-                <th><?php echo $medecin2['telTyp3']?></th>
+                <th><?php echo pdfTxt($medecin2['telTyp1'], 15)?></th>
+                <th><?php echo pdfTxt($medecin2['telTyp2'], 15)?></th>
+                <th><?php echo pdfTxt($medecin2['telTyp3'], 15)?></th>
             </tr>
             <tr>
-                <td style="width: 42mm"><?php echo $medecin2[0].' '.$medecin2[1]?></td>
-                <td style="width: 48mm"><?php echo $medecin2['conAdresse'].'<br>'.$medecin2['conNpa'].' '.$medecin2['conLocaliter']?></td>
-                <td style="width: 30mm"><?php echo $medecin2['conTel1']?></td>
-                <td style="width: 30mm"><?php echo $medecin2['conTel2']?></td>
-                <td style="width: 30mm"><?php echo $medecin2['conTel3']?></td>
+                <td><?php echo pdfTxt($medecin2[0].' '.$medecin2[1], 23)?></td>
+                <td><?php echo pdfTxt($medecin2['conAdresse'], 27).'<br>'.pdfTxt($medecin2['conNpa'].' '.$medecin2['conLocaliter'], 27)?></td>
+                <td><?php echo pdfTxt($medecin2['conTel1'], 15)?></td>
+                <td><?php echo pdfTxt($medecin2['conTel2'], 15)?></td>
+                <td><?php echo pdfTxt($medecin2['conTel3'], 15)?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Médecin, spécialiste") ?> 2</th>
                 <th>Adresse</th>
-                <th><?php echo $medecin3['telTyp1']?></th>
-                <th><?php echo $medecin3['telTyp2']?></th>
-                <th><?php echo $medecin3['telTyp3']?></th>
+                <th><?php echo pdfTxt($medecin3['telTyp1'], 15)?></th>
+                <th><?php echo pdfTxt($medecin3['telTyp2'], 15)?></th>
+                <th><?php echo pdfTxt($medecin3['telTyp3'], 15)?></th>
             </tr>
             <tr>
-                <td style="width: 42mm"><?php echo $medecin3[0].' '.$medecin3[1]?></td>
-                <td style="width: 48mm"><?php echo $medecin3['conAdresse'].'<br>'.$medecin3['conNpa'].' '.$medecin3['conLocaliter']?></td>
-                <td style="width: 30mm"><?php echo $medecin3['conTel1']?></td>
-                <td style="width: 30mm"><?php echo $medecin3['conTel2']?></td>
-                <td style="width: 30mm"><?php echo $medecin3['conTel3']?></td>
+                <td><?php echo pdfTxt($medecin3[0].' '.$medecin3[1], 23)?></td>
+                <td><?php echo pdfTxt($medecin3['conAdresse'], 27).'<br>'.pdfTxt($medecin3['conNpa'].' '.$medecin3['conLocaliter'], 27)?></td>
+                <td><?php echo pdfTxt($medecin3['conTel1'], 15)?></td>
+                <td><?php echo pdfTxt($medecin3['conTel2'], 15)?></td>
+                <td><?php echo pdfTxt($medecin3['conTel3'], 15)?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Caisse maladie") ?></th>
                 <th><?php echo $mrp->getText("Adresse") ?></th>
-                <th><?php echo $caisseMaladie['telTyp1']?></th>
-                <th><?php echo $caisseMaladie['telTyp2']?></th>
-                <th><?php echo $caisseMaladie['telTyp3']?></th>
+                <th><?php echo pdfTxt($caisseMaladie['telTyp1'], 15)?></th>
+                <th><?php echo pdfTxt($caisseMaladie['telTyp2'], 15)?></th>
+                <th><?php echo pdfTxt($caisseMaladie['telTyp3'], 15)?></th>
             </tr>
             <tr>
-                <td style="width: 42mm"><?php echo $caisseMaladie[0].' '.$caisseMaladie[1]?></td>
-                <td style="width: 48mm"><?php echo $caisseMaladie['conAdresse'].'<br>'.$caisseMaladie['conNpa'].' '.$caisseMaladie['conLocaliter']?></td>
-                <td style="width: 30mm"><?php echo $caisseMaladie['conTel1']?></td>
-                <td style="width: 30mm"><?php echo $caisseMaladie['conTel2']?></td>
-                <td style="width: 30mm"><?php echo $caisseMaladie['conTel3']?></td>
+                <td><?php echo pdfTxt($caisseMaladie[0].' '.$caisseMaladie[1], 23)?></td>
+                <td><?php echo pdfTxt($caisseMaladie['conAdresse'], 27).'<br>'.pdfTxt($caisseMaladie['conNpa'].' '.$caisseMaladie['conLocaliter'], 27)?></td>
+                <td><?php echo pdfTxt($caisseMaladie['conTel1'], 15)?></td>
+                <td><?php echo pdfTxt($caisseMaladie['conTel2'], 15)?></td>
+                <td><?php echo pdfTxt($caisseMaladie['conTel3'], 15)?></td>
             </tr>
             <tr>
                 <th colspan="2"><?php echo $mrp->getText("N° d'assuré caisse maladie") ?></th>
-                <td colspan="3"><?php echo $infoMedical['medNoAssure']?></td>
+                <th colspan="3"></th>
             </tr>
             <tr>
-
-                <th colspan="2"> <?php echo $mrp->getText("Assurance accident") ?></th>
-                <th><?php echo $assAccident['telTyp1']?></th>
-                <th><?php echo $assAccident['telTyp2']?></th>
-                <th><?php echo $assAccident['telTyp3']?></th>
+                <td colspan="2"><?php echo pdfTxt($infoMedical['medNoAssure'], 50)?></td>
+                <td colspan="3" class="nob"></td>
             </tr>
             <tr>
-                <td colspan="2"><?php echo $assAccident[0].' '.$assAccident[1]?></td>
-
-                <td><?php echo $assAccident['conTel1']?></td>
-                <td><?php echo $assAccident['conTel2']?></td>
-                <td><?php echo $assAccident['conTel3']?></td>
+                <th colspan="2"><?php echo $mrp->getText("Assurance accident") ?></th>
+                <th><?php echo pdfTxt($assAccident['telTyp1'], 15)?></th>
+                <th><?php echo pdfTxt($assAccident['telTyp2'], 15)?></th>
+                <th><?php echo pdfTxt($assAccident['telTyp3'], 15)?></th>
+            </tr>
+            <tr>
+                <td colspan="2"><?php echo pdfTxt($assAccident[0].' '.$assAccident[1], 50)?></td>
+                <td><?php echo pdfTxt($assAccident['conTel1'], 15)?></td>
+                <td><?php echo pdfTxt($assAccident['conTel2'], 15)?></td>
+                <td><?php echo pdfTxt($assAccident['conTel3'], 15)?></td>
             </tr>
         </table>
-        <table>
-            <tr>              
-                <th style="width:60mm "><?php echo $mrp->getText("Fratrie et Amis") ?></th>
+
+        <table cellspacing="0" style="margin-top: 2mm">
+            <tr>
+                <th><?php echo $mrp->getText("Fratrie et Amis") ?></th>
             </tr>
             <tr>
-                <td  colspan="2" style="width: 195mm"><?php echo nl2br($infoSocial['socFraterie']) ?></td>
+                <td style="width: 190mm"><?php echo pdfTxt($infoSocial['socFraterie'], 90, true) ?></td>
             </tr>
             <tr>
-                <th style="width:60mm "><?php echo $mrp->getText("Famille") ?></th>
+                <th><?php echo $mrp->getText("Famille") ?></th>
             </tr>
             <tr>
-                <td colspan="2" style="width: 195mm"><?php echo nl2br($infoSocial['socFamille']) ?></td> 
+                <td style="width: 190mm"><?php echo pdfTxt($infoSocial['socFamille'], 90, true) ?></td>
             </tr>
         </table>
-        <table>
+        <table cellspacing="0" style="margin-top: 3mm">
             <tr>
-                <th style="padding: 7px;"><?php echo $mrp->getText("Est d'accord d'être publié(e)") ?>:</th>
-                <td style="padding: 7px;"><?php echo formatTextOfListeDeroulante4($infoSocial['socPublication'], 0); ?></td>
+                <td class="nob" style="width: 70mm; padding-left: 1mm; color: #00852B"><?php echo $mrp->getText("Est d'accord d'être publié(e)") ?> :</td>
+                <td class="badge" style="width: 30mm; text-align: center"><?php echo formatTextOfListeDeroulante4($infoSocial['socPublication'], 0); ?></td>
             </tr>
-
         </table>
         <?php function wrapWithoutCuttingWords($text, $maxLength = 20) {
                 $words = explode(' ', $text);
@@ -613,125 +597,128 @@ else
 
          </page_footer>
     </page>
+
     <page <?php echo $marge ?>> <!-- page 3 -->
         <page_header>
-            <table>
+            <table class="header" cellspacing="0">
                 <tr>
-                    <td style=" width:50%;  vertical-align: top;  padding: 0; border: none"><img style="height: 10mm" src="../img/logo.jpg" alt=""></td>
-                    <td style="text-align: right;width:50%; vertical-align: middle; border: none"> Fiche information Participant <br> Dernière mise à jour
+                    <td style="width: 95mm; vertical-align: top"><img style="height: 10mm" src="../img/logo.jpg" alt=""></td>
+                    <td style="width: 95mm; text-align: right; vertical-align: middle"><strong>Fiche information Participant</strong><br>Dernière mise à jour
                         : <?php  if ($infoMedical['medMaj'] > $infoSocial['socMaj'])
                         {echo dateToUser($infoMedical['medMaj']);}
                         else
-                        {echo dateToUser($infoSocial['socMaj']);}?> <br>
-                        <?php echo $contact['conNom'] . ' ' . $contact['conPrenom']; ?>
-
+                        {echo dateToUser($infoSocial['socMaj']);}?><br>
+                        <?php echo pdfTxt($contact['conNom'] . ' ' . $contact['conPrenom'], 40); ?>
                     </td>
                 </tr>
             </table>
         </page_header>
 
-        <table>
+        <table cellspacing="0">
             <tr>
-                <th colspan="2"><h2><?php echo $mrp->getText("Tissus social") ?></h2></th>
+                <td class="section" style="width: 187mm"><?php echo $mrp->getText("Tissus social") ?></td>
+            </tr>
+        </table>
+        <table cellspacing="0">
+            <tr>
+                <th style="width: 92mm"><?php echo $mrp->getText("De quelle manière communiquer"); ?> ?</th>
+                <th style="width: 92mm; text-align: right">Expression verbale : <strong style="color: #000"><?php echo intval($infoSocial['socExpressionVerbal']) === 1 ? 'Oui' : 'Non'; ?></strong></th>
             </tr>
             <tr>
-                <th style="width:50% "><?php echo $mrp->getText("De quelle manière communiquer"); ?> ? </th>
-                <th style="width:50% ">Expression verbale : <?php echo intval($infoSocial['socExpressionVerbal']) === 1 ? 'Oui' : 'Non'; ?></th>
-            </tr>
-            <tr>
-                <td colspan="2" style="width: 195mm"><?php echo nl2br($infoSocial['socExpresssion']) ?></td>
+                <td colspan="2" style="width: 190mm"><?php echo pdfTxt($infoSocial['socExpresssion'], 90, true) ?></td>
             </tr>
             <!-------- Activités peu appréciées, phobies -------------------->
             <tr>
-                <th style="width:50% "><?php echo $mrp->getText("Activités peu appréciées, phobies") ?></th>
+                <th colspan="2"><?php echo $mrp->getText("Activités peu appréciées, phobies") ?></th>
             </tr>
             <tr>
-                <td colspan="2" style="width: 195mm"><?php echo nl2br($infoSocial['socAimePas']) ?></td>
+                <td colspan="2" style="width: 190mm"><?php echo pdfTxt($infoSocial['socAimePas'], 90, true) ?></td>
             </tr>
             <!-------- Passion loisirs -------------------->
-            <tr>               
-                <th style="width:50% "><?php echo $mrp->getText("Passion loisirs") ?></th>
+            <tr>
+                <th colspan="2"><?php echo $mrp->getText("Passion loisirs") ?></th>
             </tr>
-            <tr>    
-                <td colspan="2" style="width: 195mm"><?php echo nl2br($infoSocial['socPassions']) ?></td>
+            <tr>
+                <td colspan="2" style="width: 190mm"><?php echo pdfTxt($infoSocial['socPassions'], 90, true) ?></td>
             </tr>
             <!-------- Amis -------------------->
-            <tr>    
-                <th style="width:60mm "><?php echo $mrp->getText("Amis") ?></th>
+            <tr>
+                <th colspan="2"><?php echo $mrp->getText("Amis") ?></th>
             </tr>
             <tr>
-                <td colspan="2" style="width: 195mm"><?php echo nl2br($infoSocial['socAmis']) ?></td>
+                <td colspan="2" style="width: 190mm"><?php echo pdfTxt($infoSocial['socAmis'], 90, true) ?></td>
             </tr>
             <!----------------------- Comportement et attitude ----------------------------->
-            <tr>    
-                <th style="width:60mm "><?php echo $mrp->getText("Comportement et attitude") ?></th>
+            <tr>
+                <th colspan="2"><?php echo $mrp->getText("Comportement et attitude") ?></th>
             </tr>
             <tr>
-                <td colspan="2" style="width: 195mm"><?php echo nl2br($infoSocial['socComportement']) ?></td>
+                <td colspan="2" style="width: 190mm"><?php echo pdfTxt($infoSocial['socComportement'], 90, true) ?></td>
             </tr>
         </table>
-        <table class="infoPratique">
-            <tr>
-                <th colspan="10"><h2><?php echo $mrp->getText("Infos pratiques") ?></h2></th>
-            </tr>
 
-        </table>
-        <table style="border: solid 1px;">
+        <table cellspacing="0" style="margin-top: 4mm">
             <tr>
-                <th colspan="4"><?php echo $mrp->getText("Argent de poche") ?></th>
-            </tr>
-            <tr>
-                <td style="width: 47mm; border: none"><?php echo $mrp->getText("Autonome") ?><?php CheckBoxPDF($infoSocial['socGereseul']) ?></td>
-                <td style="width: 47mm; border: none"><?php echo $mrp->getText("ne gère pas") ?> <?php CheckBoxPDF($infoSocial['socNegerepas']) ?></td>
-                <td style="width: 47mm; border: none"><?php echo $mrp->getText("aide") ?> <?php CheckBoxPDF($infoSocial['socAvecaidephys']) ?></td>
-                <td style="width: 47mm; border: none"> <?php echo $mrp->getText("avec conseils") ?> <?php CheckBoxPDF($infoSocial['socAvecconseil']) ?></td>
-
-            </tr>
-
-        </table>
-        <table style="border: solid 1px;" class="infoPratique">
-            <tr>
-                <th colspan="3"><?php echo $mrp->getText("Mobilité") ?></th>
-            </tr>
-            <tr>
-                <td style=" width: 62mm; border: none"><?php echo $mrp->getText("marche seul(e)") ?> <?php CheckBoxPDF($infoSocial['socMarcheseul']) ?></td>
-                <td style=" width: 62mm; border: none"><?php echo $mrp->getText("Fauteil roulant manuel") ?><?php CheckBoxPDF($infoSocial['socFauteuilMan']) ?></td>
-                <td style=" width: 63mm; border: none"><?php echo $mrp->getText("Electrique") ?> <?php CheckBoxPDF($infoSocial['socFauteuilElec']) ?></td>
-            </tr>
-            <tr>
-                <td style="border: none"><?php echo $mrp->getText(" avec de l'aide") ?><?php CheckBoxPDF($infoSocial['socMarchaide']) ?></td>
-                <td><?php echo $mrp->getText("moyens auxiliaires") ?><?php CheckBoxPDF($infoSocial['socMarchauxi']) ?></td>
-                <td style=" width: 63mm; border: none"><?php echo $mrp->getText("Siège bus") ?> <?php CheckBoxPDF($infoSocial['socSiege']) ?></td>
-
-            </tr>
-            <tr>
-                <th colspan="3"><?php echo $mrp->getText("Technique transferts et déplacements"); //$mrp->getText("pour les longs déplacements, commentaires mobilité") ?></th>
-            </tr>
-            <tr>
-
-                <td colspan="3" style="width: 195mm"><?php echo nl2br($infoSocial['socDeplacement']) ?></td>
+                <td class="section" style="width: 187mm"><?php echo $mrp->getText("Infos pratiques") ?></td>
             </tr>
         </table>
-        <table style=" width:195mm;">
+        <table cellspacing="0">
             <tr>
-                <th ><?php echo $mrp->getText("Habillement,autonomie et style") ?></th>
-            </tr>
-            <tr>
-                <td style="width: 195mm"><?php echo nl2br($infoSocial['socHabillement']) ?></td>
+                <th><?php echo $mrp->getText("Argent de poche") ?></th>
             </tr>
         </table>
-        <table style=" width:195mm;">
+        <table class="check" cellspacing="0" style="border: solid 0.2mm #7A7A7A">
             <tr>
-                <th><?php echo $mrp->getText("Habitudes piscine") ?></th>
-                <td style="width:191mm; border: none"><?php echo $mrp->getText("Avec gilet flottant") ?> : <?php echo formatTextOfListeDeroulante4($infoSocial['socPiscineGilet'], 0) ?></td>
+                <td style="width: 44.6mm"><?php CheckBoxPDF($infoSocial['socGereseul']) ?> <?php echo $mrp->getText("Autonome") ?></td>
+                <td style="width: 44.6mm"><?php CheckBoxPDF($infoSocial['socNegerepas']) ?> <?php echo $mrp->getText("ne gère pas") ?></td>
+                <td style="width: 44.6mm"><?php CheckBoxPDF($infoSocial['socAvecaidephys']) ?> <?php echo $mrp->getText("aide") ?></td>
+                <td style="width: 44.6mm"><?php CheckBoxPDF($infoSocial['socAvecconseil']) ?> <?php echo $mrp->getText("avec conseils") ?></td>
             </tr>
         </table>
-        <table>
+        <table cellspacing="0">
+            <tr>
+                <th><?php echo $mrp->getText("Mobilité") ?></th>
+            </tr>
+        </table>
+        <table class="check" cellspacing="0" style="border: solid 0.2mm #7A7A7A">
+            <tr>
+                <td style="width: 60.8mm"><?php CheckBoxPDF($infoSocial['socMarcheseul']) ?> <?php echo $mrp->getText("marche seul(e)") ?></td>
+                <td style="width: 60.8mm"><?php CheckBoxPDF($infoSocial['socFauteuilMan']) ?> <?php echo $mrp->getText("Fauteil roulant manuel") ?></td>
+                <td style="width: 60.8mm"><?php CheckBoxPDF($infoSocial['socFauteuilElec']) ?> <?php echo $mrp->getText("Electrique") ?></td>
+            </tr>
+            <tr>
+                <td style="width: 60.8mm"><?php CheckBoxPDF($infoSocial['socMarchaide']) ?> <?php echo $mrp->getText(" avec de l'aide") ?></td>
+                <td style="width: 60.8mm"><?php CheckBoxPDF($infoSocial['socMarchauxi']) ?> <?php echo $mrp->getText("moyens auxiliaires") ?></td>
+                <td style="width: 60.8mm"><?php CheckBoxPDF($infoSocial['socSiege']) ?> <?php echo $mrp->getText("Siège bus") ?></td>
+            </tr>
+        </table>
+        <table cellspacing="0">
+            <tr>
+                <th><?php echo $mrp->getText("Technique transferts et déplacements"); //$mrp->getText("pour les longs déplacements, commentaires mobilité") ?></th>
+            </tr>
+            <tr>
+                <td style="width: 190mm"><?php echo pdfTxt($infoSocial['socDeplacement'], 90, true) ?></td>
+            </tr>
+            <tr>
+                <th><?php echo $mrp->getText("Habillement,autonomie et style") ?></th>
+            </tr>
+            <tr>
+                <td style="width: 190mm"><?php echo pdfTxt($infoSocial['socHabillement'], 90, true) ?></td>
+            </tr>
+        </table>
+        <table cellspacing="0" style="margin-top: 3mm">
+            <tr>
+                <td class="nob" style="width: 50mm; padding-left: 1mm; color: #00852B"><?php echo $mrp->getText("Habitudes piscine") ?></td>
+                <td class="nob" style="width: 50mm; text-align: right; padding-right: 2mm"><?php echo $mrp->getText("Avec gilet flottant") ?> :</td>
+                <td class="badge" style="width: 30mm; text-align: center"><?php echo formatTextOfListeDeroulante4($infoSocial['socPiscineGilet'], 0) ?></td>
+            </tr>
+        </table>
+        <table cellspacing="0">
             <tr>
                 <th><?php echo $mrp->getText("Remarque concernant la piscine") ?></th>
             </tr>
             <tr>
-                <td style="width:136mm"><?php echo nl2br($infoSocial['socPiscine']) ?></td>
+                <td style="width: 190mm"><?php echo pdfTxt($infoSocial['socPiscine'], 90, true) ?></td>
             </tr>
         </table>
 
@@ -740,129 +727,130 @@ else
 
         </page_footer>
     </page>
+
     <page <?php echo $marge ?>> <!-- page 4 -->
         <page_header>
-            <table>
+            <table class="header" cellspacing="0">
                 <tr>
-                    <td style=" width:50%;  vertical-align: top;  padding: 0; border: none"><img style="height: 10mm" src="../img/logo.jpg" alt=""></td>
-                    <td style="text-align: right;width:50%; vertical-align: middle; border: none"> Fiche information Participant <br> Dernière mise à jour
+                    <td style="width: 95mm; vertical-align: top"><img style="height: 10mm" src="../img/logo.jpg" alt=""></td>
+                    <td style="width: 95mm; text-align: right; vertical-align: middle"><strong>Fiche information Participant</strong><br>Dernière mise à jour
                         : <?php  if ($infoMedical['medMaj'] > $infoSocial['socMaj'])
                         {echo dateToUser($infoMedical['medMaj']);}
                         else
-                        {echo dateToUser($infoSocial['socMaj']);}?> <br>
-                        <?php echo $contact['conNom'] . ' ' . $contact['conPrenom']; ?>
-
+                        {echo dateToUser($infoSocial['socMaj']);}?><br>
+                        <?php echo pdfTxt($contact['conNom'] . ' ' . $contact['conPrenom'], 40); ?>
                     </td>
                 </tr>
             </table>
         </page_header>
-        <table>
+
+        <table cellspacing="0">
             <tr>
-                <th colspan="2"><h2><?php echo $mrp->getText("Soins") ?></h2></th>
+                <td class="section" style="width: 187mm"><?php echo $mrp->getText("Soins") ?></td>
             </tr>
         </table>
-        <table>
-            <tr>               
+        <table cellspacing="0">
+            <tr>
                 <th><?php echo $mrp->getText("Aide à l'élimination") ?></th>
             </tr>
         </table>
-        <table>
-            <tr class="checkboxLine">
-                <td>
-                    <p><?php CheckBoxPDF($infoMedical['medSonde']) ?>
-                    <?php echo $mrp->getText("Sonde") ?></p>
-                </td>
-                <td>
-                    <p><?php CheckBoxPDF($infoMedical['medProtection']) ?>
-                    <?php echo $mrp->getText("Protection") ?></p>
-                </td>
-                <td>
-                    <p><?php CheckBoxPDF($infoMedical['medMiseWc']) ?>
-                    <?php echo $mrp->getText("Mise WC") ?></p>
-                </td>
+        <table class="check" cellspacing="0">
+            <tr>
+                <td style="width: 44.7mm"><?php CheckBoxPDF($infoMedical['medSonde']) ?> <?php echo $mrp->getText("Sonde") ?></td>
+                <td style="width: 44.7mm"><?php CheckBoxPDF($infoMedical['medProtection']) ?> <?php echo $mrp->getText("Protection") ?></td>
+                <td style="width: 44.7mm"><?php CheckBoxPDF($infoMedical['medMiseWc']) ?> <?php echo $mrp->getText("Mise WC") ?></td>
             </tr>
         </table>
-        <table>
+        <table cellspacing="0">
             <tr>
-                <td  style="width: 195mm;border: solid 1px;"><?php echo nl2br($infoMedical['medToilette']) ?></td>
+                <td style="width: 190mm"><?php echo pdfTxt($infoMedical['medToilette'], 90, true) ?></td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("Conseils pour soins et hygiène") ?></th>
             </tr>
             <tr>
-                <td style="width: 195mm;border: solid 1px;"><?php echo nl2br($infoMedical['medEncontinence']) ?></td>
+                <td style="width: 190mm"><?php echo pdfTxt($infoMedical['medEncontinence'], 90, true) ?></td>
             </tr>
             <tr>
-                <th colspan="2"><?php echo $mrp->getText("Soins particuliers") ?></th>
+                <th><?php echo $mrp->getText("Soins particuliers") ?></th>
             </tr>
             <tr>
-                <td style="width: 195mm;border: solid 1px;">
-                    <?php echo nl2br($infoMedical['medEscarres']) ?>
-                </td>
+                <td style="width: 190mm"><?php echo pdfTxt($infoMedical['medEscarres'], 90, true) ?></td>
             </tr>
         </table>
-        <table>
+
+        <table cellspacing="0" style="margin-top: 4mm">
             <tr>
-                <th style="width: 95mm"><h2><?php echo $mrp->getText("Confort jour") ?></h2></th>
-                <th style="width: 95mm"><h2><?php echo $mrp->getText("Confort nuit") ?></h2></th>
+                <td class="section" style="width: 89mm"><?php echo $mrp->getText("Confort jour") ?></td>
+                <td class="nob" style="width: 1mm; padding: 0"></td>
+                <td class="section" style="width: 89mm"><?php echo $mrp->getText("Confort nuit") ?></td>
+            </tr>
+        </table>
+        <table cellspacing="0">
+            <tr>
+                <th style="width: 92mm"><?php echo $mrp->getText("Fréquence des changements de position") ?></th>
+                <th style="width: 1mm; padding: 0"></th>
+                <th style="width: 92mm"></th>
             </tr>
             <tr>
-                <th><?php echo $mrp->getText("Fréquence des changements de position") ?></th>
-            </tr>
-            <tr>
-                <td style="width: 95mm"><?php echo nl2br($infoSocial['socFrequenceJour']) ?></td>
-                <td style="width: 95mm">
-                    <table>
+                <td style="width: 92.4mm"><?php echo pdfTxt($infoSocial['socFrequenceJour'], 46, true) ?></td>
+                <td class="nob" style="width: 1mm; padding: 0"></td>
+                <td class="nob" style="width: 97mm; padding: 0">
+                    <table cellspacing="0">
                         <tr>
-                            <td style="width: 20mm; border: 1px solid black; padding: 5px; vertical-align: center;"><?php echo $mrp->getText("Drap spécial"); ?></td><td style="padding: 5px; vertical-align: center; border: none; background-color: #7da6ff; color: white;"><?php echo formatTextOfListeDeroulante4($infoSocial['socdrapspec'], 0); //CheckBoxPDF($infoSocial['socdrapspec']) ?></td>   
-                            <td style="width: 20mm; border: 1px solid black; padding: 5px; vertical-align: center;"><?php echo $mrp->getText("Grenouillère"); ?></td><td style="padding: 5px; vertical-align: center; border: none; background-color: #7da6ff; color: white;"><?php echo formatTextOfListeDeroulante4($infoSocial['socgilet'], 0); ?></td>
+                            <td style="width: 26mm; vertical-align: middle"><?php echo $mrp->getText("Drap spécial"); ?></td>
+                            <td class="badge" style="width: 13.3mm; text-align: center; vertical-align: middle"><?php echo formatTextOfListeDeroulante4($infoSocial['socdrapspec'], 0); //CheckBoxPDF($infoSocial['socdrapspec']) ?></td>
+                            <td style="width: 26mm; vertical-align: middle"><?php echo $mrp->getText("Grenouillère"); ?></td>
+                            <td class="badge" style="width: 13.3mm; text-align: center; vertical-align: middle"><?php echo formatTextOfListeDeroulante4($infoSocial['socgilet'], 0); ?></td>
                         </tr>
                         <tr>
-                            <td style="width: 20mm; border: 1px solid black; padding: 5px; vertical-align: center;"><?php echo $mrp->getText("Attaches"); ?></td><td style="padding: 5px; vertical-align: center; border: none; background-color: #7da6ff; color: white;"><?php echo formatTextOfListeDeroulante4($infoSocial['socatache'], 0); ?></td>
-                            <td style="width: 20mm; border: 1px solid black; padding: 5px; vertical-align: center;"><?php echo $mrp->getText("Barrière"); ?></td><td style="padding: 5px; vertical-align: center; border: none; background-color: #7da6ff; color: white;"><?php echo formatTextOfListeDeroulante4($infoSocial['socbarriere'], 0); ?></td>
-                        </tr>  
-                    </table>      
+                            <td style="width: 26mm; vertical-align: middle"><?php echo $mrp->getText("Attaches"); ?></td>
+                            <td class="badge" style="width: 13.3mm; text-align: center; vertical-align: middle"><?php echo formatTextOfListeDeroulante4($infoSocial['socatache'], 0); ?></td>
+                            <td style="width: 26mm; vertical-align: middle"><?php echo $mrp->getText("Barrière"); ?></td>
+                            <td class="badge" style="width: 13.3mm; text-align: center; vertical-align: middle"><?php echo formatTextOfListeDeroulante4($infoSocial['socbarriere'], 0); ?></td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
             <tr>
                 <th><?php echo $mrp->getText("habitudes pour la sieste position") ?></th>
+                <th style="padding: 0"></th>
                 <th><?php echo $mrp->getText("Habitude - Rituel du couché") ?></th>
             </tr>
             <tr>
-                <td style="width: 95mm"><?php echo nl2br($infoSocial['socPossitionJour']) ?></td>
-                <td style="width: 95mm"><?php echo nl2br($infoSocial['socSomeil']) ?></td>
+                <td style="width: 92.4mm"><?php echo pdfTxt($infoSocial['socPossitionJour'], 46, true) ?></td>
+                <td class="nob" style="width: 1mm; padding: 0"></td>
+                <td style="width: 92.4mm"><?php echo pdfTxt($infoSocial['socSomeil'], 46, true) ?></td>
             </tr>
-
         </table>
-        <table>
+
+        <table cellspacing="0" style="margin-top: 2mm">
             <tr>
-                <th style="width: 95mm"><?php echo $mrp->getText("Illustration position jour") ?></th>
-                <th style="width: 95mm"><?php echo $mrp->getText("Illustration position nuit") ?></th>
+                <th style="width: 92mm"><?php echo $mrp->getText("Illustration position jour") ?></th>
+                <th style="width: 1mm; padding: 0"></th>
+                <th style="width: 92mm"><?php echo $mrp->getText("Illustration position nuit") ?></th>
             </tr>
             <tr>
-                <td style="height: 70mm; width: 95mm"> <?php
+                <td style="height: 66mm; width: 92.4mm; text-align: center; vertical-align: middle"> <?php
                     $portrait = "../imgParticipant/$id/pja.jpg";
 
                     if (file_exists($portrait)) { ?>
 
-                        <img src="../imgParticipant/<?php echo $id; ?>/pja.jpg" style=" max-width: 85mm"> <?php
+                        <img src="../imgParticipant/<?php echo $id; ?>/pja.jpg" style="max-width: 88mm; max-height: 64mm"> <?php
                     }
 
                     ?></td>
-                <td style="height: 70mm; width: 95mm"> <?php
+                <td class="nob" style="width: 1mm; padding: 0"></td>
+                <td style="height: 66mm; width: 92.4mm; text-align: center; vertical-align: middle"> <?php
                     $portrait = "../imgParticipant/$id/pna.jpg";
 
                     if (file_exists($portrait)) { ?>
 
-                        <img src="../imgParticipant/<?php echo $id; ?>/pna.jpg" style=" max-width: 85mm"> <?php
+                        <img src="../imgParticipant/<?php echo $id; ?>/pna.jpg" style="max-width: 88mm; max-height: 64mm"> <?php
                     }
 
                     ?></td>
             </tr>
-
-
-
-
         </table>
 
         <page_footer>
@@ -870,30 +858,7 @@ else
 
         </page_footer>
     </page>
-    <style>
-        .td-txt{
-            display: flex;
-        }
-        .medication-line{
-            display: flex;
-        }
-        .medication-line td{
-            border: none;
-        }
-        .medication-line p{
-            width: 20%;
-        }
-        #confort-night-zone{
-            /*width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            */
-        }
-        #confort-night-zone tr{
-            
-        }
-    </style>
+
 
 <?php
 
