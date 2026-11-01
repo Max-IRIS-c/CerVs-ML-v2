@@ -41,7 +41,8 @@ $bus = array (
 		7=>'BUS(par) Mercedes'
 );
 */
-	
+
+/***** BUS A REMETTRE *****************************
 	// Liste des bus construite depuis tblLogement (logtype = 2) via tblBusCorrespondance.
 	// L'index (busIdx) reste celui stocké dans tblchauffeur.busIdNom.
 	$bddBus = new PDO($dsn, $user, $password);
@@ -64,7 +65,7 @@ $bus = array (
 			$busActifs[$b['busIdx']] = $b['nom'];
 		}
 	}
-
+*/
 function dateToUserJour($dateSql)
 {
 if (isset($dateSql))
